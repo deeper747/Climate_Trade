@@ -6,7 +6,7 @@ date: "2025-12-10"
 
 ```{r}
 # Install packages once if needed:
-# install.packages(c("tidyverse", "sf", "rnaturalearth", "rnaturalearthdata", "wbstats"))
+# install.packages(c("tidyverse", "sf", "rnaturalearth", "rnaturalearthdata", "wbstats", "readr"))
 # install.packages("leaflet")   # if you don’t have it yet
 
 library(tidyverse)
@@ -17,6 +17,7 @@ library(wbstats)
 library(leaflet)
 library(sf)
 library(dplyr)
+library(readr)
 ```
 
 ```{r}
@@ -105,5 +106,21 @@ leaflet(world_leaf) %>%
     opacity = 0.8
   )
 
+```
+
+```{r}
+wb_dw <- wb_clean %>%
+  filter(!is.na(export_pct)) %>%
+  transmute(
+    DW_NAME = country,                 # full country name
+    VALUE   = round(export_pct, 1)     # exports (% of GDP), 1 decimal; remove round() if you prefer
+  )
+
+
+head(wb_dw)
+
+# 3) Export to data/processed as CSV
+output_path <- "data/processed/wb_exports_2023_datawrapper.csv"
+write_csv(wb_dw, output_path)
 ```
 
