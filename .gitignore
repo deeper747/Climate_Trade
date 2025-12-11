@@ -1,0 +1,17 @@
+# RStudio files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# R Markdown caches
+_cache/
+*.utf8.md
+
+# Data that should NOT be committed
+data/processed/
+data/*.zip
+
+# System files
+.DS_Store
+Thumbs.db
