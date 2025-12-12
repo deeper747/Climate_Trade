@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
-st.set_page_config(page_title="U.S. Hard-to-Abate Exports", layout="wide")
+st.set_page_config(page_title="U.S. Hard-to-Abate Exports and Imports", layout="wide")
 
-st.title("U.S. Hard-to-Abate Exports — Partner Shares Over Time")
+st.title("U.S. Hard-to-Abate Exports and Imports — Partner Shares Over Time")
 
 # ---- Load data ----
 df = pd.read_csv("data/raw/us_trade_hard_to_abate_partner_raw.csv")
