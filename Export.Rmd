@@ -112,8 +112,9 @@ leaflet(world_leaf) %>%
 wb_dw <- wb_clean %>%
   filter(!is.na(export_pct)) %>%
   transmute(
-    DW_NAME = country,                 # full country name
-    VALUE   = round(export_pct, 1)     # exports (% of GDP), 1 decimal; remove round() if you prefer
+    ISO3  = iso3,                   # Datawrapper can match this
+    NAME  = country,                # optional but nice to keep
+    VALUE = round(export_pct, 1)
   )
 
 

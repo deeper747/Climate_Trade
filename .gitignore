@@ -14,3 +14,9 @@ data/*.zip
 # System files
 .DS_Store
 Thumbs.db
+
+# secrets
+.env
+.env.*
+__pycache__/
+*.pyc
