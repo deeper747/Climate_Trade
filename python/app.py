@@ -216,6 +216,15 @@ hover_active = alt.selection_point(
     clear="mouseout"
 )
 
+hover_exists = alt.param(value=False)
+
+# When hover_active has a value, set hover_exists True (Vega expression)
+hover_exists = alt.param(
+    value=False,
+    expr="length(data('hover_active_store')) > 0"
+)
+
+
 base = alt.Chart(plot_df).encode(
     y=alt.Y(
         "year_flow:O",
@@ -259,7 +268,7 @@ bars = (
 
 share_line = (
     alt.Chart(plot_df)
-    .transform_filter(hover_active)     # only show selected partner+flow on hover
+    .transform_filter(hover_active) 
     .mark_line(point=True)
     .encode(
         x=alt.X(
@@ -274,19 +283,16 @@ share_line = (
             scale=alt.Scale(domain=[0, 100]),
             axis=alt.Axis(format=".1f"),
         ),
-        opacity=alt.condition(hover_active, alt.value(1.0), alt.value(0.0)),
         tooltip=[
-            alt.Tooltip("period:O", title="Year"),
+            alt.Tooltip("period_str:O", title="Year"),
             alt.Tooltip("flow:N", title="Flow"),
             alt.Tooltip("partner_group:N", title="Partner"),
             alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
         ],
     )
-    .add_params(hover_mask, hover_active)
+    .add_params(hover_active) 
     .properties(height=160)
 )
-
-plot_df["share_pct_label"] = plot_df["share_pct"].map(lambda x: f"{x:.1f}%")
 
 share_labels = (
     alt.Chart(plot_df)
@@ -296,9 +302,9 @@ share_labels = (
         x=alt.X("period_str:O", sort=YEAR_DOMAIN, scale=alt.Scale(domain=YEAR_DOMAIN)),
         y="share_pct:Q",
         text="share_pct_label:N",
-        opacity=alt.condition(hover_active, alt.value(1.0), alt.value(0.0)),
     )
 )
+
 
 share_chart = share_line + share_labels
 
