@@ -3,6 +3,47 @@ import pandas as pd
 import altair as alt
 
 st.set_page_config(page_title="U.S. Hard-to-Abate Exports and Imports", layout="wide")
+st.markdown(
+    """
+    <style>
+    :root { --niskanen-green: #19515e; }
+
+    /* ---- Slider (BaseWeb) ---- */
+    /* active (filled) track */
+    div[data-baseweb="slider"] div[role="slider"] + div {
+        background-color: var(--niskanen-green) !important;
+    }
+
+    /* inactive track */
+    div[data-baseweb="slider"] div[role="slider"] + div + div {
+        background-color: rgba(25, 81, 94, 0.25) !important;
+    }
+
+    /* thumb */
+    div[data-baseweb="slider"] div[role="slider"] {
+        background-color: var(--niskanen-green) !important;
+        border-color: var(--niskanen-green) !important;
+        box-shadow: none !important;
+    }
+
+    /* value label above the thumb */
+    div[data-baseweb="slider"] div[data-testid="stTickBar"] ~ div {
+        color: var(--niskanen-green) !important;
+    }
+
+    /* ---- Selectbox border (BaseWeb) ---- */
+    div[data-baseweb="select"] > div {
+        border-color: var(--niskanen-green) !important;
+    }
+    div[data-baseweb="select"] > div:focus-within {
+        border-color: var(--niskanen-green) !important;
+        box-shadow: 0 0 0 1px var(--niskanen-green) !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 st.title("U.S. Hard-to-Abate Exports and Imports — Partner Shares Over Time")
 
@@ -39,24 +80,38 @@ df = df.dropna(subset=["period", value_col, "sector", "partnerDesc"])
 df = df[df["partnerDesc"].str.lower() != "world"].copy()
 
 # ---- Settings ----
-TOP_N = st.slider("Top partners to show per year (others grouped as 'Other')", 3, 25, 12)
+left, right = st.columns([1, 4], gap="large")
 
-sectors = sorted(df["sector"].unique())
-sector = st.selectbox("Sector", sectors, index=0)
+with left:
+    st.subheader("Filters")
+    TOP_N = st.slider("Top partners to show per year (others grouped as 'Other')", 1, 5, 3)
+    sectors = sorted(df["sector"].unique())
+    sector = st.selectbox("Sector", sectors, index=0)
 
 d = df[df["sector"] == sector].copy()
+
 
 # ------------------------------
 # Fixed partner color palette
 # ------------------------------
 PARTNER_COLORS = {
-    "Canada": "#19515E",          # Primary green
-    "Mexico": "#193A5B",          # Navy
-    "China": "#8C2E1C",           # Red
-    "Rep. of Korea": "#4C6F8C",   # Muted blue
-    "India": "#7B9B97",           # Pale green
-    "Malaysia": "#E6C27A",        # Sand
-    "Other": "#A5A5A5",           # Gray
+    "Canada": "#19515E",     
+    "Mexico": "#193A5B",    
+    "China": "#8C2E1C",         
+    "Rep. of Korea": "#4C6F8C",  
+    "India": "#7B9B97",          
+    "Malaysia": "#E6C27A",    
+    "Germany": "#D97C4C",       
+    "United Arab Emirates": "#A17BB0",
+    "Türkiye": "#B89C2C", 
+    "Greece": "#649CF6",
+    "Viet Nam": "#4C6F8C",        
+    "Bahamas": "#2C5C2F",         
+    "Panama": "#681E70",        
+    "Br. Virgin Islands": "#938261",       
+    "Other Asia, nes": "#6F8597",        
+    "Brazil": "#3D613D",         
+    "Other": "#A5A5A5",           
 }
 
 COLOR_DOMAIN = list(PARTNER_COLORS.keys())
@@ -67,10 +122,6 @@ g = (
     d.groupby(["period", "flow", "partnerDesc"], as_index=False)
      .agg(export_value_usd=(value_col, "sum"))
 )
-
-# Compute year totals and share
-g["year_flow_total"] = g.groupby(["period", "flow"])["export_value_usd"].transform("sum")
-g["share"] = g["export_value_usd"] / g["year_flow_total"]
 
 # Rank partners within each year and group "Other"
 g["rank_in_year"] = g.groupby(["period", "flow"])["export_value_usd"].rank(method="first", ascending=False)
@@ -91,7 +142,10 @@ plot_df = (
 # ---------------------------------------------------
 all_years = sorted(plot_df["period"].unique())
 all_flows = sorted(plot_df["flow"].unique())
-all_groups = list(PARTNER_COLORS.keys())
+all_groups = sorted(plot_df["partner_group"].unique())
+if "Other" in all_groups:
+    all_groups = [g for g in all_groups if g != "Other"] + ["Other"]
+
 
 full_index = pd.MultiIndex.from_product(
     [all_years, all_flows, all_groups],
@@ -107,6 +161,19 @@ plot_df = (
 plot_df["year_flow_total"] = plot_df.groupby(["period","flow"])["export_value_usd"].transform("sum")
 plot_df["share"] = (plot_df["export_value_usd"] / plot_df["year_flow_total"]).fillna(0)
 plot_df["share_pct"] = (plot_df["share"] * 100).round(1)
+plot_df["share_pct_label"] = plot_df["share_pct"].map(lambda x: f"{x:.1f}%")
+plot_df["period_str"] = plot_df["period"].astype(str)
+YEAR_DOMAIN = sorted(plot_df["period_str"].unique().tolist())
+
+# ------------------------------
+# Color key for stable palette
+# ------------------------------
+known = set(PARTNER_COLORS.keys())
+
+plot_df["partner_color_key"] = plot_df["partner_group"].where(
+    plot_df["partner_group"].isin(known),
+    "Other"   # collapse unknown partners into gray
+)
 
 # ---------------------------------------------------
 # Stacking order: largest bottom, "Other" always top
@@ -117,41 +184,129 @@ plot_df["stack_order"] = (
 )
 plot_df.loc[plot_df["partner_group"] == "Other", "stack_order"] = 1e9
 
+
 # ---------------------------------------------------
 # Hover formatting
 # ---------------------------------------------------
-plot_df["export_value_usd_fmt"] = plot_df["export_value_usd"].map(
-    lambda x: f"${x/1e9:.2f}B" if x >= 1e9 else f"${x/1e6:.1f}M"
-)
+
+# --- Axis label helper: one bar per (year, flow) ---
+plot_df["year_flow"] = plot_df["period"].astype(str) + " " + plot_df["flow"]
+
+# Optional: force Export then Import ordering within each year
+ordered = []
+for y in sorted(plot_df["period"].dropna().unique()):
+    ordered += [f"{y} Export", f"{y} Import"]
+plot_df["year_flow"] = pd.Categorical(plot_df["year_flow"], categories=ordered, ordered=True)
 
 
 # ---- Chart ----
-chart = (
-    alt.Chart(plot_df)
-    .mark_bar()
+plot_df["value_bil"] = plot_df["export_value_usd"] / 1e9
+
+hover_mask = alt.selection_point(
+    fields=["partner_group", "flow"],
+    on="mouseover",
+    empty="all",
+    clear="mouseout"
+)
+
+hover_active = alt.selection_point(
+    fields=["partner_group", "flow"],
+    on="mouseover",
+    empty="none",
+    clear="mouseout"
+)
+
+base = alt.Chart(plot_df).encode(
+    y=alt.Y(
+        "year_flow:O",
+        title="Year / Flow",
+        sort=ordered,   # keep your custom order
+    ),
+)
+
+
+bars = (
+    base.mark_bar()
     .encode(
-        x=alt.X("period:O", title="Year"),
-        xOffset=alt.XOffset("flow:N", title=None),  # <-- makes two columns per year
-        y=alt.Y("export_value_usd:Q", title="Trade value (USD)", stack="zero"),
+        x=alt.X(
+            "value_bil:Q",
+            title="Trade value ($ billion USD)",
+            stack="zero",
+            axis=alt.Axis(format=",.1f"),
+        ),
         color=alt.Color(
-            "partner_group:N",
+            "partner_color_key:N",
             title="Partner",
-            scale=alt.Scale(domain=COLOR_DOMAIN, range=COLOR_RANGE)
+            scale=alt.Scale(
+                domain=list(PARTNER_COLORS.keys()),
+                range=list(PARTNER_COLORS.values()),
+            ),
         ),
         order=alt.Order("stack_order:Q", sort="ascending"),
+        opacity=alt.condition(hover_mask, alt.value(1.0), alt.value(0.15)),
         tooltip=[
             alt.Tooltip("period:O", title="Year"),
             alt.Tooltip("flow:N", title="Flow"),
             alt.Tooltip("partner_group:N", title="Partner"),
-            alt.Tooltip("export_value_usd:Q", title="Value (USD)", format=",.0f"),
-            alt.Tooltip("share_pct:Q", title="Share (%)"),
+            alt.Tooltip("value_bil:Q", title="Value ($B)", format=",.2f"),
+            alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
         ],
     )
-    .properties(height=520)
+    .add_params(hover_mask, hover_active)
+    .properties(height=620)
 )
 
-st.altair_chart(chart, use_container_width=True)
 
-# Optional: show the underlying data table
+share_line = (
+    alt.Chart(plot_df)
+    .transform_filter(hover_active)     # only show selected partner+flow on hover
+    .mark_line(point=True)
+    .encode(
+        x=alt.X(
+            "period_str:O",
+            title="Year",
+            sort=YEAR_DOMAIN,
+            scale=alt.Scale(domain=YEAR_DOMAIN),
+        ),
+        y=alt.Y(
+            "share_pct:Q",
+            title="Share of year total (%)",
+            scale=alt.Scale(domain=[0, 100]),
+            axis=alt.Axis(format=".1f"),
+        ),
+        opacity=alt.condition(hover_active, alt.value(1.0), alt.value(0.0)),
+        tooltip=[
+            alt.Tooltip("period:O", title="Year"),
+            alt.Tooltip("flow:N", title="Flow"),
+            alt.Tooltip("partner_group:N", title="Partner"),
+            alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
+        ],
+    )
+    .add_params(hover_mask, hover_active)
+    .properties(height=160)
+)
+
+plot_df["share_pct_label"] = plot_df["share_pct"].map(lambda x: f"{x:.1f}%")
+
+share_labels = (
+    alt.Chart(plot_df)
+    .transform_filter(hover_active)
+    .mark_text(dy=-15, fontSize=15)
+    .encode(
+        x=alt.X("period_str:O", sort=YEAR_DOMAIN, scale=alt.Scale(domain=YEAR_DOMAIN)),
+        y="share_pct:Q",
+        text="share_pct_label:N",
+        opacity=alt.condition(hover_active, alt.value(1.0), alt.value(0.0)),
+    )
+)
+
+share_chart = share_line + share_labels
+
+chart = alt.vconcat(bars, share_chart)
+with right:
+    st.altair_chart(chart, use_container_width=True)
+
+
+
 with st.expander("Show chart data"):
     st.dataframe(plot_df.sort_values(["period", "export_value_usd"], ascending=[True, False]))
