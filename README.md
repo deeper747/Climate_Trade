@@ -22,7 +22,7 @@ It includes tools to:
 
 ## Live dashboard
 
-The main output of this repository is an interactive Streamlit dashboard showing:
+The [main output](https://ushard2abatesectortrade.streamlit.app/) of this repository is an interactive Streamlit dashboard showing:
 - U.S. exports and imports in hard-to-abate sectors
 - Partner shares over time
 - Export vs. import comparisons by year and sector
@@ -34,5 +34,4 @@ The main output of this repository is an interactive Streamlit dashboard showing
 
 ## Notes
 
-- API keys are managed via environment variables and are **not** committed to the repository.
 - This project is under active development and intended for policy analysis and research use.
