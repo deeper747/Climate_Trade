@@ -13,26 +13,54 @@ st.set_page_config(
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neuton:wght@400;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 
-html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+html, body, [class*="css"] { font-family: 'Hanken Grotesk', sans-serif; }
 
 .block-container { padding-top: 2rem; padding-bottom: 3rem; max-width: 1400px; }
 
 /* ── Page header */
 .page-title {
-    font-size: 1.7rem;
-    font-weight: 700;
+    font-family: 'Neuton', serif;
+    font-size: 2.6rem;
+    font-weight: 800;
     color: #194852;
-    margin: 0 0 0.3rem 0;
-    line-height: 1.25;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
 }
 .page-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     color: #78a0a3;
-    margin: 0 0 1.4rem 0;
-    line-height: 1.6;
+    margin: 0 0 1rem 0;
+    line-height: 1.65;
     max-width: 860px;
+}
+.related-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 0 0 1.4rem 0;
+}
+.related-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #78a0a3;
+    white-space: nowrap;
+}
+.related-links a {
+    font-size: 0.82rem;
+    color: #348397;
+    text-decoration: none;
+    border-bottom: 1px solid #7dceda;
+    padding-bottom: 1px;
+}
+.related-links a:hover {
+    color: #194852;
+    border-color: #194852;
 }
 .divider { border: none; border-top: 1px solid #d0dbdd; margin: 0 0 1.5rem 0; }
 
@@ -137,6 +165,12 @@ st.markdown(
   to identify which countries face the greatest exposure to the EU's carbon tariff.
   Data: UN Comtrade, 2019–2023.
 </p>
+<div class="related-links">
+  <span class="related-label">Related reading</span>
+  <a href="https://www.niskanencenter.org/reforming-carbon-accounting-for-a-new-era-of-competition/" target="_blank" rel="noopener">Reforming carbon accounting for a new era of competition</a>
+  <a href="https://www.niskanencenter.org/where-u-s-carbon-policy-is-being-decided-in-2026/" target="_blank" rel="noopener">Where U.S. carbon policy is being decided in 2026</a>
+  <a href="https://www.niskanencenter.org/policy/climate/" target="_blank" rel="noopener">Niskanen climate &amp; energy policy</a>
+</div>
 <hr class="divider">
 """,
     unsafe_allow_html=True,
@@ -472,10 +506,10 @@ def build_trade_chart(df: pd.DataFrame, top_n: int) -> alt.TopLevelMixin:
     return (
         alt.vconcat(bars, share_chart, spacing=30)
         .configure_view(strokeWidth=0)
-        .configure(font="Inter")
-        .configure_axis(labelFont="Inter", titleFont="Inter")
-        .configure_legend(labelFont="Inter", titleFont="Inter")
-        .configure_title(font="Inter")
+        .configure(font="Hanken Grotesk")
+        .configure_axis(labelFont="Hanken Grotesk", titleFont="Hanken Grotesk")
+        .configure_legend(labelFont="Hanken Grotesk", titleFont="Hanken Grotesk")
+        .configure_title(font="Hanken Grotesk")
     )
 
 
