@@ -291,11 +291,12 @@ def build_trade_chart(df: pd.DataFrame, top_n: int) -> alt.TopLevelMixin:
         plot_df["partner_group"].isin(PARTNER_COLORS), "Other"
     )
 
-    # Stack order: largest partner at bottom, "Other" always on top
-    plot_df["stack_order"] = plot_df.groupby(["period", "flow"])[
-        "trade_value_usd"
-    ].rank(method="first", ascending=False)
-    plot_df.loc[plot_df["partner_group"] == "Other", "stack_order"] = 1e9
+    # Stack order: rank by total across ALL years/flows so each partner
+    # stays in the same position every bar — largest at bottom, Other on top
+    partner_totals = plot_df.groupby("partner_group")["trade_value_usd"].sum()
+    rank_map = partner_totals.rank(method="first", ascending=False).to_dict()
+    rank_map["Other"] = 1e9
+    plot_df["stack_order"] = plot_df["partner_group"].map(rank_map).fillna(500)
 
     # Ordered Y-axis categories: "2019 Export", "2019 Import", "2020 Export", …
     y_order = []
@@ -439,7 +440,8 @@ def build_trade_chart(df: pd.DataFrame, top_n: int) -> alt.TopLevelMixin:
                 alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
             ],
         )
-        .add_params(hover_mask, hover_active)
+        # No add_params here — params live only on bars to avoid conflicting
+        # Vega-Lite param scopes that break transform_filter
     )
 
     share_labels = (
