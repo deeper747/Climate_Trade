@@ -21,13 +21,14 @@ html, body, [class*="css"] { font-family: 'Hanken Grotesk', sans-serif; }
 
 /* ── Page header */
 .page-title {
-    font-family: 'Neuton', serif;
-    font-size: 8.4rem;
-    font-weight: 800;
-    color: #194852;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    font-family: 'Neuton', serif !important;
+    font-size: 4.4rem !important;
+    font-weight: 800 !important;
+    color: #194852 !important;
+    margin: 0 0 0.5rem 0 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    display: block;
 }
 .page-subtitle {
     font-size: 0.9rem;
