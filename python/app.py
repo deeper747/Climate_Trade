@@ -275,9 +275,10 @@ def load_us_data() -> pd.DataFrame:
 
 # ─── Chart builder ────────────────────────────────────────────────────────────
 def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
-    """Two stacked bar charts (Export on top, Import below).
+    """Two stacked-bar + hover share-trend blocks: Export on top, Import below.
 
-    Top-5 partners per flow direction are fixed by 2023 trade values.
+    Named partners = union of top-5 per flow across ALL years (2019–2023).
+    This captures trade champions that may have dropped out in later years (e.g. Russia).
     All remaining partners collapse into 'Other' (gray). Colors are stable across years.
     """
     # 1. Aggregate to (year, flow, partner)
@@ -285,21 +286,17 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
         trade_value_usd=("trade_value_usd", "sum")
     )
 
-    # 2. Top-5 per flow direction in 2023 (fall back to latest year if 2023 absent)
-    ref_year = 2023 if 2023 in g["period"].values else int(g["period"].max())
-    ref = g[g["period"] == ref_year]
-    top5 = (
-        ref.groupby(["flow", "partnerDesc"])["trade_value_usd"]
-        .sum()
-        .reset_index()
-        .sort_values("trade_value_usd", ascending=False)
-        .groupby("flow")
+    # 2. Union of top-5 per flow across ALL years
+    top5_any = (
+        g.sort_values(["period", "flow", "trade_value_usd"], ascending=[True, True, False])
+        .groupby(["period", "flow"])
         .head(5)[["flow", "partnerDesc"]]
+        .drop_duplicates(["flow", "partnerDesc"])
         .assign(is_top5=True)
     )
 
-    # 3. Assign partner_group: named for top-5, "Other" for the rest
-    g = g.merge(top5, on=["flow", "partnerDesc"], how="left")
+    # 3. Assign partner_group: named if ever top-5, else "Other"
+    g = g.merge(top5_any, on=["flow", "partnerDesc"], how="left")
     g["partner_group"] = g["partnerDesc"].where(g["is_top5"].eq(True), "Other")
 
     # 4. Re-aggregate with partner_group
@@ -312,30 +309,28 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
     )
     plot_df["value_bil"] = plot_df["trade_value_usd"] / 1e9
     plot_df["period_str"] = plot_df["period"].astype(str)
-    # Map to a known color key; any partner not in PARTNER_COLORS uses "Other" gray
     plot_df["partner_color_key"] = plot_df["partner_group"].where(
         plot_df["partner_group"].isin(PARTNER_COLORS), "Other"
     )
 
-    # 5. Stack order per flow: ranked by 2023 value, "Other" always last
-    ref_totals = (
-        plot_df[plot_df["period"] == ref_year]
-        .groupby(["flow", "partner_group"])["trade_value_usd"]
+    # 5. Stack order: rank by total across all years per flow, "Other" always last
+    totals = (
+        plot_df.groupby(["flow", "partner_group"])["trade_value_usd"]
         .sum()
         .reset_index()
     )
-    ref_totals["rank"] = ref_totals.groupby("flow")["trade_value_usd"].rank(
+    totals["rank"] = totals.groupby("flow")["trade_value_usd"].rank(
         method="first", ascending=False
     )
-    ref_totals.loc[ref_totals["partner_group"] == "Other", "rank"] = 1e9
+    totals.loc[totals["partner_group"] == "Other", "rank"] = 1e9
     plot_df = plot_df.merge(
-        ref_totals[["flow", "partner_group", "rank"]], on=["flow", "partner_group"], how="left"
+        totals[["flow", "partner_group", "rank"]], on=["flow", "partner_group"], how="left"
     )
     plot_df["stack_order"] = plot_df["rank"].fillna(500)
 
     YEAR_DOMAIN = sorted(plot_df["period_str"].unique().tolist())
 
-    def make_flow_chart(flow_name: str) -> alt.Chart:
+    def make_flow_chart(flow_name: str) -> alt.VConcatChart:
         fd = plot_df[plot_df["flow"] == flow_name].copy()
         if fd.empty:
             return (
@@ -345,7 +340,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                 .properties(height=180)
             )
 
-        # Build a per-chart color scale (only partners present in this flow)
+        # Per-chart color scale (only partners present in this flow)
         key_order = (
             fd[fd["partner_color_key"] != "Other"]
             .drop_duplicates("partner_color_key")
@@ -357,7 +352,25 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
         c_range = [PARTNER_COLORS.get(k, "#d0dbdd") for k in c_domain]
         color_scale = alt.Scale(domain=c_domain, range=c_range)
 
-        return (
+        # Unique selection names per flow to prevent param collisions in vconcat
+        slug = flow_name.lower()
+        hover = alt.selection_point(
+            name=f"hover_{slug}",
+            fields=["partner_group"],
+            on="mouseover",
+            empty=False,       # Altair 5: False = show nothing when selection is empty
+            clear="mouseout",
+        )
+        hover_mask = alt.selection_point(
+            name=f"mask_{slug}",
+            fields=["partner_group"],
+            on="mouseover",
+            empty=True,        # Altair 5: True = treat all as selected when nothing hovered
+            clear="mouseout",
+        )
+
+        # ── Stacked bar chart
+        bars = (
             alt.Chart(fd)
             .mark_bar()
             .encode(
@@ -394,7 +407,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                 ),
                 color=alt.Color(
                     "partner_color_key:N",
-                    title="Partner (2023 rank)",
+                    title="Partner",
                     scale=color_scale,
                     legend=alt.Legend(
                         orient="right",
@@ -408,6 +421,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                     ),
                 ),
                 order=alt.Order("stack_order:Q", sort="ascending"),
+                opacity=alt.condition(hover_mask, alt.value(1.0), alt.value(0.25)),
                 tooltip=[
                     alt.Tooltip("period_str:O", title="Year"),
                     alt.Tooltip("partner_group:N", title="Partner"),
@@ -415,6 +429,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                     alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
                 ],
             )
+            .add_params(hover, hover_mask)
             .properties(
                 height=220,
                 title=alt.TitleParams(
@@ -427,11 +442,86 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
             )
         )
 
-    export_chart = make_flow_chart("Export")
-    import_chart = make_flow_chart("Import")
+        # ── Share trend line (only visible on hover; params live on bars above)
+        share_line = (
+            alt.Chart(fd)
+            .transform_filter(hover)
+            .mark_line(strokeWidth=2.5, point=alt.OverlayMarkDef(size=55, strokeWidth=2))
+            .encode(
+                x=alt.X(
+                    "period_str:O",
+                    sort=YEAR_DOMAIN,
+                    title="Year",
+                    axis=alt.Axis(
+                        labelFontSize=10,
+                        titleFontSize=11,
+                        titleColor="#78a0a3",
+                        titlePadding=8,
+                        ticks=False,
+                        domain=False,
+                        grid=False,
+                        labelPadding=4,
+                    ),
+                ),
+                y=alt.Y(
+                    "share_pct:Q",
+                    title="Share of total (%)",
+                    scale=alt.Scale(domain=[0, 100]),
+                    axis=alt.Axis(
+                        format=".0f",
+                        labelFontSize=10,
+                        titleFontSize=11,
+                        titleColor="#78a0a3",
+                        titlePadding=8,
+                        grid=True,
+                        gridColor="#edf1f2",
+                        gridDash=[3, 3],
+                        domain=False,
+                        ticks=False,
+                        tickCount=4,
+                        labelPadding=4,
+                    ),
+                ),
+                color=alt.Color("partner_color_key:N", scale=color_scale, legend=None),
+                tooltip=[
+                    alt.Tooltip("period_str:O", title="Year"),
+                    alt.Tooltip("partner_group:N", title="Partner"),
+                    alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
+                ],
+            )
+        )
+
+        share_labels = (
+            alt.Chart(fd)
+            .transform_filter(hover)
+            .mark_text(dy=-12, fontSize=10, fontWeight=600)
+            .encode(
+                x=alt.X("period_str:O", sort=YEAR_DOMAIN),
+                y="share_pct:Q",
+                text=alt.Text("share_pct:Q", format=".1f"),
+                color=alt.Color("partner_color_key:N", scale=color_scale, legend=None),
+            )
+        )
+
+        share_chart = (share_line + share_labels).properties(
+            height=130,
+            title=alt.TitleParams(
+                text="Hover a bar segment \u2192 partner share over time",
+                fontSize=10,
+                color="#78a0a3",
+                anchor="start",
+                fontStyle="italic",
+                dy=-4,
+            ),
+        )
+
+        return alt.vconcat(bars, share_chart, spacing=16)
+
+    export_block = make_flow_chart("Export")
+    import_block = make_flow_chart("Import")
 
     return (
-        alt.vconcat(export_chart, import_chart, spacing=28)
+        alt.vconcat(export_block, import_block, spacing=36)
         .configure_view(strokeWidth=0)
         .configure(font="Hanken Grotesk")
         .configure_axis(labelFont="Hanken Grotesk", titleFont="Hanken Grotesk")
@@ -457,7 +547,9 @@ with tab_eu:
   from 2026, levies a carbon price on imports of iron &amp; steel, aluminum, and
   cement—based on the embedded carbon intensity of production. Countries with large
   export shares to the EU in these sectors face the highest compliance burden.
-  Top 5 partners are identified by 2023 trade values; all others are grouped as "Other."
+  Top partners are the union of top-5 by trade value in each year (2019–2023), capturing
+  countries whose share shifted over time. All others are grouped as "Other."
+  <strong>Hover a bar segment</strong> to trace that partner's share over time.
 </div>""",
         unsafe_allow_html=True,
     )
@@ -509,7 +601,9 @@ with tab_us:
   U.S. bilateral trade in the same hard-to-abate sectors targeted by CBAM. While the
   U.S. operates outside of CBAM, this view provides a comparison of trade
   patterns—and may inform U.S. trade and climate policy discussions.
-  Top 5 partners are identified by 2023 trade values; all others are grouped as "Other."
+  Top partners are the union of top-5 by trade value in each year (2019–2023), capturing
+  countries whose share shifted over time. All others are grouped as "Other."
+  <strong>Hover a bar segment</strong> to trace that partner's share over time.
 </div>""",
         unsafe_allow_html=True,
     )
