@@ -186,6 +186,7 @@ PARTNER_COLORS = {
     # ── EU CBAM top partners (orange/red = high exposure)
     "China":                "#da5831",  # orange-red  — biggest CBAM concern
     "Russia":               "#8d381c",  # dark rust
+    "Russian Federation":   "#8d381c",  # same — UN Comtrade EU name variant
     "Türkiye":              "#bca45e",  # gold
     "Turkey":               "#bca45e",
     "India":                "#8655b2",  # medium purple
@@ -199,6 +200,9 @@ PARTNER_COLORS = {
     "Indonesia":            "#503961",  # dark purple
     "Egypt":                "#52482a",  # dark olive-khaki
     "United Arab Emirates": "#78a0a3",  # muted teal-gray
+    "USA":                  "#D7f881",  # bright lime — top EU export destination
+    "Switzerland":          "#e0c6fc",  # light lavender
+    "Norway":               "#f4da91",  # light gold
     # ── U.S. top partners
     "Canada":               "#0c2a30",  # very dark navy-teal
     "Mexico":               "#7dceda",  # light teal
@@ -447,6 +451,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
             alt.Chart(fd)
             .transform_filter(hover)
             .mark_line(strokeWidth=2.5, point=alt.OverlayMarkDef(size=55, strokeWidth=2))
+            .properties(width="container")
             .encode(
                 x=alt.X(
                     "period_str:O",
@@ -505,6 +510,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
 
         share_chart = (share_line + share_labels).properties(
             height=130,
+            width="container",
             title=alt.TitleParams(
                 text="Hover a bar segment \u2192 partner share over time",
                 fontSize=10,
