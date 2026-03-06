@@ -22,12 +22,12 @@ html, body, [class*="css"] { font-family: 'Hanken Grotesk', sans-serif; }
 /* ── Page header */
 .page-title {
     font-family: 'Neuton', serif;
-    font-size: 3.4rem;
+    font-size: 4.4rem;
     font-weight: 800;
     color: #194852;
     margin: 0 0 0.5rem 0;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 .page-subtitle {
     font-size: 0.9rem;
@@ -159,7 +159,7 @@ div[data-baseweb="select"] > div:focus-within {
 # ─── Page header ──────────────────────────────────────────────────────────────
 st.markdown(
     """
-<p class="page-title">EU Carbon Border Adjustment Mechanism — Trade Impact Monitor</p>
+<p class="page-title">EU CBAM &amp; U.S. Hard-to-Abate Trade Monitor</p>
 <p class="page-subtitle">
   Tracking bilateral trade in hard-to-abate sectors (iron &amp; steel, aluminum, cement)
   to identify which countries face the greatest exposure to the EU's carbon tariff.
@@ -311,7 +311,16 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
     plot_df["share_pct"] = (
         (plot_df["trade_value_usd"] / plot_df["yf_total"] * 100).fillna(0).round(1)
     )
-    plot_df["value_bil"] = plot_df["trade_value_usd"] / 1e9
+    # Adaptive display unit: billions for large sectors, millions for cement-scale
+    max_usd = plot_df["trade_value_usd"].max()
+    if max_usd >= 2e9:
+        plot_df["trade_display"] = plot_df["trade_value_usd"] / 1e9
+        x_title = "Trade value (billion USD)"
+        x_format = ",.0f" if max_usd >= 10e9 else ",.1f"
+    else:
+        plot_df["trade_display"] = plot_df["trade_value_usd"] / 1e6
+        x_title = "Trade value (million USD)"
+        x_format = ",.0f"
     plot_df["period_str"] = plot_df["period"].astype(str)
     plot_df["partner_color_key"] = plot_df["partner_group"].where(
         plot_df["partner_group"].isin(PARTNER_COLORS), "Other"
@@ -392,11 +401,11 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                     ),
                 ),
                 x=alt.X(
-                    "value_bil:Q",
-                    title="Trade value (billion USD)",
+                    "trade_display:Q",
+                    title=x_title,
                     stack="zero",
                     axis=alt.Axis(
-                        format=",.0f",
+                        format=x_format,
                         labelFontSize=10,
                         titleFontSize=11,
                         titleColor="#78a0a3",
@@ -429,7 +438,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                 tooltip=[
                     alt.Tooltip("period_str:O", title="Year"),
                     alt.Tooltip("partner_group:N", title="Partner"),
-                    alt.Tooltip("value_bil:Q", title="Value ($B)", format=",.2f"),
+                    alt.Tooltip("trade_display:Q", title=x_title.replace("Trade value (", "Value ("), format=",.2f"),
                     alt.Tooltip("share_pct:Q", title="Share (%)", format=".1f"),
                 ],
             )
