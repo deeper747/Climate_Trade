@@ -186,19 +186,19 @@ st.markdown(
 PARTNER_COLORS = {
     # ── EU CBAM top partners (orange/red = high exposure)
     "China":                "#da5831",  # orange-red  — biggest CBAM concern
-    "Russia":               "#8d381c",  # dark rust
-    "Russian Federation":   "#8d381c",  # same — UN Comtrade EU name variant
+    "Russia":               "#503961",  # dark purple  (distinct from China's red)
+    "Russian Federation":   "#503961",  # same — UN Comtrade EU name variant
     "Türkiye":              "#bca45e",  # gold
     "Turkey":               "#bca45e",
     "India":                "#8655b2",  # medium purple
-    "United Kingdom":       "#348397",  # medium teal
+    "United Kingdom":       "#f17d3a",  # bright orange (distinct from Korea's teal)
     "Rep. of Korea":        "#194852",  # brand dark teal
     "Korea, Rep.":          "#194852",
     "Ukraine":              "#709628",  # olive green
     "Viet Nam":             "#2c3811",  # dark forest green
     "Vietnam":              "#2c3811",
-    "Japan":                "#f17d3a",  # bright orange
-    "Indonesia":            "#503961",  # dark purple
+    "Japan":                "#348397",  # medium teal
+    "Indonesia":            "#8d381c",  # dark rust
     "Egypt":                "#52482a",  # dark olive-khaki
     "United Arab Emirates": "#78a0a3",  # muted teal-gray
     "USA":                  "#D7f881",  # bright lime — top EU export destination
@@ -342,6 +342,12 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
     )
     plot_df["stack_order"] = plot_df["rank"].fillna(500)
 
+    # Per-year rank: sort segments within each bar from largest → smallest
+    plot_df["year_rank"] = plot_df.groupby(["period", "flow"])["trade_value_usd"].rank(
+        method="first", ascending=False
+    )
+    plot_df.loc[plot_df["partner_group"] == "Other", "year_rank"] = 1e9
+
     YEAR_DOMAIN = sorted(plot_df["period_str"].unique().tolist())
 
     def make_flow_chart(flow_name: str) -> alt.VConcatChart:
@@ -434,7 +440,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                         rowPadding=5,
                     ),
                 ),
-                order=alt.Order("stack_order:Q", sort="ascending"),
+                order=alt.Order("year_rank:Q", sort="ascending"),
                 opacity=alt.condition(hover_mask, alt.value(1.0), alt.value(0.25)),
                 tooltip=[
                     alt.Tooltip("period_str:O", title="Year"),
