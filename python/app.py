@@ -190,7 +190,7 @@ PARTNER_COLORS = {
     "Russian Federation":   "#503961",  # same — UN Comtrade EU name variant
     "Türkiye":              "#bca45e",  # gold
     "Turkey":               "#bca45e",
-    "India":                "#8655b2",  # medium purple
+    "India":                "#b5d955",  # lime green (distinct from all EU top partners)
     "United Kingdom":       "#f17d3a",  # bright orange (distinct from Korea's teal)
     "Rep. of Korea":        "#194852",  # brand dark teal
     "Korea, Rep.":          "#194852",
@@ -360,17 +360,17 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                 .properties(height=180)
             )
 
-        # Per-chart color scale (only partners present in this flow)
-        key_order = (
+        # Global color scale — stable mapping regardless of which partners are present.
+        # The legend is filtered to only show partners in this chart via values=.
+        color_scale = alt.Scale(domain=COLOR_DOMAIN, range=COLOR_RANGE)
+        legend_partners = (
             fd[fd["partner_color_key"] != "Other"]
             .drop_duplicates("partner_color_key")
             .sort_values("stack_order")["partner_color_key"]
             .tolist()
         )
-        has_other = "Other" in fd["partner_color_key"].values
-        c_domain = key_order + (["Other"] if has_other else [])
-        c_range = [PARTNER_COLORS.get(k, "#d0dbdd") for k in c_domain]
-        color_scale = alt.Scale(domain=c_domain, range=c_range)
+        if "Other" in fd["partner_color_key"].values:
+            legend_partners = legend_partners + ["Other"]
 
         # Unique selection names per flow to prevent param collisions in vconcat
         slug = flow_name.lower()
@@ -430,6 +430,7 @@ def build_trade_charts(df: pd.DataFrame) -> alt.TopLevelMixin:
                     title="Partner",
                     scale=color_scale,
                     legend=alt.Legend(
+                        values=legend_partners,
                         orient="right",
                         titleFontSize=11,
                         titleColor="#194852",
