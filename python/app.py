@@ -22,7 +22,7 @@ html, body, [class*="css"] { font-family: 'Hanken Grotesk', sans-serif; }
 /* ── Page header */
 .page-title {
     font-family: 'Neuton', serif;
-    font-size: 4.4rem;
+    font-size: 8.4rem;
     font-weight: 800;
     color: #194852;
     margin: 0 0 0.5rem 0;
