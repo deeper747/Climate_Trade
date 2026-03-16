@@ -13,15 +13,10 @@ BATCHES = [
     "2808+2834+3102+3105+2601+2804+7201+7202+7203+7205",
 ]
 
-# Load existing CSV to preserve tonnage data
-existing = pd.read_csv("data/raw/comext_us_cbam_trade.csv")
-existing["cn4"] = existing["cn4"].astype(str).str.zfill(4)
-print(f"Loaded {len(existing)} rows from existing CSV")
+YEARS = [2022, 2023, 2024]
 
-# Re-query API leaving flow AND indicators blank to get everything
 all_dfs = []
 for batch in BATCHES:
-    # Leave flow and indicators both blank: A.EU27_2020.US.{batch}../
     url = f"{BASE}/A.EU27_2020.US.{batch}../"
     r = requests.get(
         url,
@@ -33,39 +28,46 @@ for batch in BATCHES:
         continue
     df = pd.read_csv(StringIO(r.text))
     all_dfs.append(df)
-    print(f"  Batch ok: {len(df)} rows, indicators: {df['indicators'].unique()}")
 
 df_all = pd.concat(all_dfs, ignore_index=True)
-print(f"\nTotal rows: {len(df_all)}")
-print("All indicators found:", df_all["indicators"].unique())
-print("All flows found:", df_all["flow"].unique())
+print(f"Total rows: {len(df_all)}, indicators: {df_all['indicators'].unique()}, flows: {df_all['flow'].unique()}")
 
-# Filter to flow=1 (imports to EU) and VALUE indicator only
-df_val = df_all[
-    (df_all["indicators"] == "VALUE_IN_EUROS") & (df_all["flow"] == 1)
-].copy()
-print(f"\nVALUE_IN_EUROS rows (flow=1): {len(df_val)}")
+# Flow 1 = imports to EU from US
+df = df_all[df_all["flow"] == 1].copy()
+df["cn4"] = df["product"].astype(str).str.zfill(4)
+df["year"] = df["TIME_PERIOD"].astype(int)
 
-if len(df_val) == 0:
-    print("WARNING: No value data found. Dumping sample of all data:")
-    print(df_all.head(10).to_string())
-else:
-    df_val["eur"] = df_val["OBS_VALUE"]  # already in EUR
-    df_val["product"] = df_val["product"].astype(str).str.zfill(4)
+df_qty = df[df["indicators"] == "QUANTITY_IN_100KG"].copy()
+df_val = df[df["indicators"] == "VALUE_IN_EUROS"].copy()
 
-    val_avg = (
-        df_val.groupby("product")["eur"]
-        .mean()
-        .reset_index()
-        .rename(columns={"product": "cn4", "eur": "avg_eur_per_year"})
-    )
+# Convert units
+df_qty["tonnes"] = df_qty["OBS_VALUE"] / 10      # 100kg → tonnes
+df_val["eur"] = df_val["OBS_VALUE"]               # already in EUR
 
-    # Merge new EUR values into existing tonnes data
-    result = existing[["cn4", "avg_tonnes_per_year"]].merge(val_avg, on="cn4", how="left")
-    result = result[["cn4", "avg_tonnes_per_year", "avg_eur_per_year"]]
+# Pivot to wide format
+qty_wide = df_qty.pivot_table(index="cn4", columns="year", values="tonnes", aggfunc="sum")
+val_wide = df_val.pivot_table(index="cn4", columns="year", values="eur", aggfunc="sum")
 
-    print(f"\nResult ({len(result)} rows, {result['avg_eur_per_year'].notna().sum()} with EUR values):")
-    print(result.to_string())
+qty_wide.columns = [f"tonnes_{y}" for y in qty_wide.columns]
+val_wide.columns = [f"eur_{y}" for y in val_wide.columns]
 
-    result.to_csv("data/raw/comext_us_cbam_trade.csv", index=False)
-    print("\nSaved to data/raw/comext_us_cbam_trade.csv")
+result = qty_wide.join(val_wide, how="outer").reset_index()
+
+# Ensure all year columns exist even if missing from API
+for y in YEARS:
+    for col in [f"tonnes_{y}", f"eur_{y}"]:
+        if col not in result.columns:
+            result[col] = float("nan")
+
+# Averages
+result["avg_tonnes_per_year"] = result[[f"tonnes_{y}" for y in YEARS]].mean(axis=1)
+result["avg_eur_per_year"] = result[[f"eur_{y}" for y in YEARS]].mean(axis=1)
+
+# Final column order
+cols = ["cn4", "tonnes_2022", "eur_2022", "tonnes_2023", "eur_2023", "tonnes_2024", "eur_2024",
+        "avg_tonnes_per_year", "avg_eur_per_year"]
+result = result[cols].sort_values("cn4").reset_index(drop=True)
+
+print(result.to_string())
+result.to_csv("data/raw/comext_us_cbam_trade.csv", index=False)
+print(f"\nSaved {len(result)} rows to data/raw/comext_us_cbam_trade.csv")
