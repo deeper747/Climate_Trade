@@ -13,36 +13,59 @@ BATCHES = [
     "2808+2834+3102+3105+2601+2804+7201+7202+7203+7205",
 ]
 
+# Load existing CSV to preserve tonnage data
+existing = pd.read_csv("data/raw/comext_us_cbam_trade.csv")
+existing["cn4"] = existing["cn4"].astype(str).str.zfill(4)
+print(f"Loaded {len(existing)} rows from existing CSV")
+
+# Re-query API leaving flow AND indicators blank to get everything
 all_dfs = []
 for batch in BATCHES:
-    url = f"{BASE}/A.EU27_2020.US.{batch}.1./"
-    r = requests.get(url, params={"format": "SDMX-CSV", "startPeriod": "2021", "endPeriod": "2024"}, timeout=60)
+    # Leave flow and indicators both blank: A.EU27_2020.US.{batch}../
+    url = f"{BASE}/A.EU27_2020.US.{batch}../"
+    r = requests.get(
+        url,
+        params={"format": "SDMX-CSV", "startPeriod": "2022", "endPeriod": "2024"},
+        timeout=60,
+    )
     if r.status_code != 200:
-        print(f"Error {r.status_code}: {r.text[:300]}")
+        print(f"  Error {r.status_code} for batch {batch[:20]}...: {r.text[:200]}")
         continue
     df = pd.read_csv(StringIO(r.text))
     all_dfs.append(df)
+    print(f"  Batch ok: {len(df)} rows, indicators: {df['indicators'].unique()}")
 
 df_all = pd.concat(all_dfs, ignore_index=True)
+print(f"\nTotal rows: {len(df_all)}")
+print("All indicators found:", df_all["indicators"].unique())
+print("All flows found:", df_all["flow"].unique())
 
-print("Available indicators:", df_all["indicators"].unique())
+# Filter to flow=1 (imports to EU) and VALUE indicator only
+df_val = df_all[
+    (df_all["indicators"] == "VALUE_IN_EUROS") & (df_all["flow"] == 1)
+].copy()
+print(f"\nVALUE_IN_EUROS rows (flow=1): {len(df_val)}")
 
-# Keep only the two measures we need
-df_val = df_all[df_all["indicators"] == "VALUE_IN_1000EUR"].copy()
-df_qty = df_all[df_all["indicators"] == "QUANTITY_IN_100KG"].copy()
+if len(df_val) == 0:
+    print("WARNING: No value data found. Dumping sample of all data:")
+    print(df_all.head(10).to_string())
+else:
+    df_val["eur"] = df_val["OBS_VALUE"]  # already in EUR
+    df_val["product"] = df_val["product"].astype(str).str.zfill(4)
 
-print(f"Value rows: {len(df_val)}, Quantity rows: {len(df_qty)}")
+    val_avg = (
+        df_val.groupby("product")["eur"]
+        .mean()
+        .reset_index()
+        .rename(columns={"product": "cn4", "eur": "avg_eur_per_year"})
+    )
 
-# Convert units: 1000 EUR → EUR; 100kg → tonnes (/10)
-df_val["eur"] = df_val["OBS_VALUE"] * 1000
-df_qty["tonnes"] = df_qty["OBS_VALUE"] / 10
+    # Merge new EUR values into existing tonnes data
+    result = existing[["cn4", "avg_tonnes_per_year"]].merge(val_avg, on="cn4", how="left")
+    result = result[["cn4", "avg_tonnes_per_year", "avg_eur_per_year"]]
 
-# Average across 2021–2024 per product
-val_avg = df_val.groupby("product")["eur"].mean().reset_index()
-qty_avg = df_qty.groupby("product")["tonnes"].mean().reset_index()
+    print(f"\nResult ({len(result)} rows, {result['avg_eur_per_year'].notna().sum()} with EUR values):")
+    print(result.to_string())
 
-result = val_avg.merge(qty_avg, on="product", how="outer")
-result = result.rename(columns={"product": "cn4", "eur": "avg_eur_per_year", "tonnes": "avg_tonnes_per_year"})
-print(result.to_string())
-result.to_csv("data/raw/comext_us_cbam_trade.csv", index=False)
-print("Saved to data/raw/comext_us_cbam_trade.csv")
+    result.to_csv("data/raw/comext_us_cbam_trade.csv", index=False)
+    print("\nSaved to data/raw/comext_us_cbam_trade.csv")
