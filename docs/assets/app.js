@@ -81,8 +81,9 @@ function uniq(values) {
   return [...new Set(values)];
 }
 
-function sumBy(items, getter) {
-  return items.reduce((total, item) => total + getter(item), 0);
+function getChartWidth(chartEl) {
+  const measured = chartEl?.clientWidth || chartEl?.parentElement?.clientWidth || 0;
+  return Math.max(Math.floor(measured) - 12, 320);
 }
 
 function aggregateRows(rows) {
@@ -185,12 +186,13 @@ function buildTradeChartData(rows) {
   return { plotRows, yearDomain, xTitle, xFormat };
 }
 
-function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat) {
+function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWidth) {
   if (!flowRows.length) {
     return {
       data: { values: [{ note: `No ${flowName} data` }] },
       mark: { type: "text", color: "#78a0a3", fontSize: 12 },
       encoding: { text: { field: "note" } },
+      width: chartWidth,
       height: 180,
     };
   }
@@ -222,7 +224,7 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat) {
       },
     ],
     mark: { type: "bar", cornerRadiusEnd: 1.5 },
-    width: "container",
+    width: chartWidth,
     height: 210,
     encoding: {
       y: {
@@ -296,14 +298,14 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat) {
     encoding: {
       text: { field: "partner_group", type: "nominal" },
     },
-    width: "container",
+    width: chartWidth,
     height: 18,
   };
 
   const shareLine = {
     data: { values: flowRows },
     transform: [{ filter: { param: hoverName, empty: false } }],
-    width: "container",
+    width: chartWidth,
     height: 130,
     layer: [
       {
@@ -389,7 +391,7 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat) {
   };
 }
 
-function buildSpec(rows) {
+function buildSpec(rows, chartWidth) {
   const { plotRows, yearDomain, xTitle, xFormat } = buildTradeChartData(rows);
   const exportRows = plotRows.filter((row) => row.flow === "Export");
   const importRows = plotRows.filter((row) => row.flow === "Import");
@@ -411,8 +413,8 @@ function buildSpec(rows) {
       },
     },
     vconcat: [
-      buildFlowSpec(exportRows, "Export", yearDomain, xTitle, xFormat),
-      buildFlowSpec(importRows, "Import", yearDomain, xTitle, xFormat),
+      buildFlowSpec(exportRows, "Export", yearDomain, xTitle, xFormat, chartWidth),
+      buildFlowSpec(importRows, "Import", yearDomain, xTitle, xFormat, chartWidth),
     ],
     spacing: 36,
   };
@@ -457,13 +459,14 @@ async function renderDashboard(key) {
   const tableEl = document.getElementById(config.tableId);
   const headerEl = document.getElementById(config.headerId);
   const rows = state[key].rows.filter((row) => row.sector === state[key].selectedSector);
+  const chartWidth = getChartWidth(chartEl);
 
   headerEl.textContent = `${fmtSector(state[key].selectedSector)} - ${config.titleSuffix}`;
   renderTable(tableEl, rows);
   chartEl.innerHTML = '<div class="chart-loading">Rendering chart...</div>';
 
   try {
-    await vegaEmbed(`#${config.chartId}`, buildSpec(rows), {
+    await vegaEmbed(`#${config.chartId}`, buildSpec(rows, chartWidth), {
       actions: false,
       renderer: "svg",
     });
@@ -498,6 +501,7 @@ function initTabs() {
       const tab = button.dataset.tab;
       buttons.forEach((item) => item.classList.toggle("is-active", item === button));
       panels.forEach((panel) => panel.classList.toggle("is-active", panel.dataset.panel === tab));
+      renderDashboard(tab);
     });
   });
 }
@@ -527,5 +531,16 @@ async function bootstrap() {
     });
   }
 }
+
+let resizeTimer = null;
+window.addEventListener("resize", () => {
+  window.clearTimeout(resizeTimer);
+  resizeTimer = window.setTimeout(() => {
+    const activePanel = document.querySelector(".panel.is-active");
+    if (activePanel) {
+      renderDashboard(activePanel.dataset.panel);
+    }
+  }, 120);
+});
 
 window.addEventListener("DOMContentLoaded", bootstrap);
