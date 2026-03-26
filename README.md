@@ -4,7 +4,7 @@ This repository tracks bilateral trade in hard-to-abate sectors to identify whic
 
 ## Live dashboard
 
-[ushard2abatesectortrade.streamlit.app](https://ushard2abatesectortrade.streamlit.app/)
+[deeper747.github.io/Climate_Trade](https://deeper747.github.io/Climate_Trade/)
 
 The dashboard has two tabs:
 
@@ -15,11 +15,12 @@ The dashboard has two tabs:
 
 ```
 python/
-  app.py                   # Streamlit dashboard (EU + U.S. tabs)
+  app.py                   # Original Streamlit dashboard
+  build_pages_trade_data.py   # Builds JSON payloads for GitHub Pages
   eu_trade.py              # Downloads EU→US trade data from Eurostat COMEXT API
-  comtrade_query.py        # Downloads U.S. trade data from UN Comtrade API
-  download_eu_trade.py     # Downloads EU trade data from UN Comtrade API
-  clean_eu_trade.py        # Cleans raw EU trade data
+  fetch_us_trade_raw.py    # Downloads raw U.S. trade data from UN Comtrade API
+  fetch_eu_trade_raw.py    # Downloads raw EU trade data from UN Comtrade API
+  build_eu_trade_processed.py  # Builds processed EU trade data from the raw export
   process_exports.py       # Processes U.S. export data
 
 data/
@@ -30,6 +31,9 @@ data/
   processed/                   # Cleaned datasets used by the dashboard
 
 docs/
+  index.html                 # GitHub Pages entrypoint
+  assets/                    # Static JS + CSS for the dashboard
+  data/                      # Generated JSON used by the browser app
   EU_CBAM_default_value_US.xlsx  # Official EU CBAM default embedded-emission values
                                  # per CN code for US exporters, with mark-up rates
                                  # (10%/20%/30%) for 2026, 2027, and 2028+
@@ -51,6 +55,17 @@ docs/
 - Years: 2019–2024
 
 ## Running locally
+
+### Static GitHub Pages version
+
+```bash
+python3 python/build_pages_trade_data.py
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000/docs/`.
+
+### Streamlit version
 
 ```bash
 pip install -r requirements.txt
