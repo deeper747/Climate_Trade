@@ -108,19 +108,28 @@ function aggregateRows(rows) {
 function buildTradeChartData(rows) {
   const grouped = aggregateRows(rows);
 
-  const top5Any = new Set();
-  uniq(grouped.map((row) => `${row.period}||${row.flow}`)).forEach((key) => {
-    const [periodKey, flowKey] = key.split("||");
+  const topPartnersByFlow = new Set();
+  ["Export", "Import"].forEach((flow) => {
+    const totals = new Map();
     grouped
-      .filter((row) => String(row.period) === periodKey && row.flow === flowKey)
-      .sort((a, b) => b.trade_value_usd - a.trade_value_usd)
+      .filter((row) => row.flow === flow)
+      .forEach((row) => {
+        totals.set(row.partnerDesc, (totals.get(row.partnerDesc) || 0) + row.trade_value_usd);
+      });
+
+    [...totals.entries()]
+      .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-      .forEach((row) => top5Any.add(`${row.flow}||${row.partnerDesc}`));
+      .forEach(([partnerDesc]) => {
+        topPartnersByFlow.add(`${flow}||${partnerDesc}`);
+      });
   });
 
   const collapsedMap = new Map();
   grouped.forEach((row) => {
-    const partnerGroup = top5Any.has(`${row.flow}||${row.partnerDesc}`) ? row.partnerDesc : "Other";
+    const partnerGroup = topPartnersByFlow.has(`${row.flow}||${row.partnerDesc}`)
+      ? row.partnerDesc
+      : "Other";
     const key = [row.period, row.flow, partnerGroup].join("||");
     collapsedMap.set(key, (collapsedMap.get(key) || 0) + row.trade_value_usd);
   });
@@ -155,6 +164,7 @@ function buildTradeChartData(rows) {
   plotRows.forEach((row) => {
     row.trade_display = useBillions ? row.trade_value_usd / 1e9 : row.trade_value_usd / 1e6;
     row.partner_color_key = PARTNER_COLORS[row.partner_group] ? row.partner_group : "Other";
+    row.partner_color = PARTNER_COLORS[row.partner_color_key] || PARTNER_COLORS.Other;
   });
 
   const totalsByFlowPartner = new Map();
@@ -206,8 +216,6 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
   if (flowRows.some((row) => row.partner_color_key === "Other")) {
     colorDomain.push("Other");
   }
-
-  const colorRange = colorDomain.map((key) => PARTNER_COLORS[key] || PARTNER_COLORS.Other);
   const hoverName = `hover_${flowName.toLowerCase()}`;
   const maskName = `mask_${flowName.toLowerCase()}`;
 
@@ -261,9 +269,9 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
         },
       },
       color: {
-        field: "partner_color_key",
+        field: "partner_color",
         type: "nominal",
-        scale: { domain: colorDomain, range: colorRange },
+        scale: null,
         legend: null,
       },
       order: { field: "stack_order", type: "quantitative" },
@@ -348,9 +356,9 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
             },
           },
           color: {
-            field: "partner_color_key",
+            field: "partner_color",
             type: "nominal",
-            scale: { domain: colorDomain, range: colorRange },
+            scale: null,
             legend: null,
           },
           tooltip: [
@@ -367,9 +375,9 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
           y: { field: "share_pct", type: "quantitative" },
           text: { field: "share_pct", type: "quantitative", format: ".1f" },
           color: {
-            field: "partner_color_key",
+            field: "partner_color",
             type: "nominal",
-            scale: { domain: colorDomain, range: colorRange },
+            scale: null,
             legend: null,
           },
         },
