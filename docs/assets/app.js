@@ -399,17 +399,23 @@ function buildSpec(rows, chartWidth) {
   return {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     background: null,
+    autosize: {
+      type: "fit-x",
+      contains: "padding",
+      resize: true,
+    },
     config: {
       font: "Hanken Grotesk",
+      view: {
+        continuousWidth: chartWidth,
+        stroke: null,
+      },
       axis: {
         labelFont: "Hanken Grotesk",
         titleFont: "Hanken Grotesk",
       },
       title: {
         font: "Hanken Grotesk",
-      },
-      view: {
-        stroke: null,
       },
     },
     vconcat: [

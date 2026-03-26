@@ -180,6 +180,23 @@ body {
 
 .chart-card {
   min-height: 540px;
+  width: 100%;
+}
+
+.content {
+  min-width: 0;
+}
+
+.chart-card .vega-embed,
+.chart-card .vega-embed > div,
+.chart-card svg,
+.chart-card canvas {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.chart-card .vega-embed {
+  display: block;
 }
 
 .chart-loading,
