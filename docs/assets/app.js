@@ -51,6 +51,7 @@ const DASHBOARDS = {
     tableId: "eu-table",
     headerId: "eu-chart-header",
     titlePrefix: "EU Top-5 Export & Import Partners",
+    flowOrder: ["Import", "Export"],
   },
   us: {
     dataUrl: "./data/us_trade.json",
@@ -59,6 +60,7 @@ const DASHBOARDS = {
     tableId: "us-table",
     headerId: "us-chart-header",
     titlePrefix: "U.S. Top-5 Export & Import Partners",
+    flowOrder: ["Export", "Import"],
   },
 };
 
@@ -430,10 +432,12 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
   };
 }
 
-function buildSpec(rows, chartWidth) {
+function buildSpec(rows, chartWidth, flowOrder) {
   const { plotRows, yearDomain, xTitle, xFormat } = buildTradeChartData(rows);
-  const exportRows = plotRows.filter((row) => row.flow === "Export");
-  const importRows = plotRows.filter((row) => row.flow === "Import");
+  const rowsByFlow = {
+    Export: plotRows.filter((row) => row.flow === "Export"),
+    Import: plotRows.filter((row) => row.flow === "Import"),
+  };
 
   return {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
@@ -457,10 +461,9 @@ function buildSpec(rows, chartWidth) {
         font: "Hanken Grotesk",
       },
     },
-    vconcat: [
-      buildFlowSpec(importRows, "Import", yearDomain, xTitle, xFormat, chartWidth),
-      buildFlowSpec(exportRows, "Export", yearDomain, xTitle, xFormat, chartWidth),
-    ],
+    vconcat: flowOrder.map((flow) =>
+      buildFlowSpec(rowsByFlow[flow], flow, yearDomain, xTitle, xFormat, chartWidth)
+    ),
     spacing: 36,
   };
 }
@@ -513,7 +516,7 @@ async function renderDashboard(key) {
   chartEl.innerHTML = '<div class="chart-loading">Rendering chart...</div>';
 
   try {
-    await vegaEmbed(`#${config.chartId}`, buildSpec(rows, chartWidth), {
+    await vegaEmbed(`#${config.chartId}`, buildSpec(rows, chartWidth, config.flowOrder), {
       actions: false,
       renderer: "svg",
     });

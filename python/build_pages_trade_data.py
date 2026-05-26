@@ -29,6 +29,7 @@ def load_eu_data() -> pd.DataFrame:
 
 def load_us_data() -> pd.DataFrame:
     df = pd.read_csv(ROOT / "data" / "raw" / "us_trade_hard_to_abate_partner_raw.csv")
+    # Support both old UN Comtrade schema and new Census schema
     if "flow" not in df.columns:
         if "flowCode" in df.columns:
             df["flow"] = df["flowCode"].map({"X": "Export", "M": "Import"})
@@ -42,6 +43,15 @@ def load_us_data() -> pd.DataFrame:
     df[value_col] = pd.to_numeric(df[value_col], errors="coerce")
     df = df.dropna(subset=["period", value_col, "sector", "partnerDesc", "flow"])
     df = df[df["partnerDesc"].str.lower() != "world"]
+
+    # Merge iron_steel_72 + iron_steel_73 → iron_steel for US tab if split sectors present;
+    # otherwise pass sector names through unchanged.
+    if "iron_steel_72" in df["sector"].values or "iron_steel_73" in df["sector"].values:
+        df["sector"] = df["sector"].replace(
+            {"iron_steel_72": "iron_steel", "iron_steel_73": "iron_steel"}
+        )
+        df = df.groupby(["period", "flow", "sector", "partnerDesc"], as_index=False)[value_col].sum()
+
     df = df.rename(columns={value_col: "trade_value_usd"})
     return df[["period", "flow", "sector", "partnerDesc", "trade_value_usd"]]
 
