@@ -34,13 +34,13 @@ const PARTNER_COLORS = {
 
 const SECTOR_LABELS = {
   iron_steel: "Iron & Steel",
-  iron_steel_72: "Iron & Steel - Primary (HS 72)",
-  iron_steel_73: "Iron & Steel - Articles (HS 73)",
+  iron_steel_72: "Iron & Steel — Primary (CBAM CN codes)",
+  iron_steel_73: "Iron & Steel — Articles (CBAM CN codes)",
   aluminum: "Aluminum",
-  aluminum_76: "Aluminum (HS 76)",
+  aluminum_76: "Aluminum (CBAM CN codes)",
   aluminium: "Aluminum",
   cement: "Cement",
-  cement_2523: "Cement (HS 2523)",
+  cement_2523: "Cement & Precursors (CBAM CN codes)",
 };
 
 const DASHBOARDS = {
@@ -458,8 +458,8 @@ function buildSpec(rows, chartWidth) {
       },
     },
     vconcat: [
-      buildFlowSpec(exportRows, "Export", yearDomain, xTitle, xFormat, chartWidth),
       buildFlowSpec(importRows, "Import", yearDomain, xTitle, xFormat, chartWidth),
+      buildFlowSpec(exportRows, "Export", yearDomain, xTitle, xFormat, chartWidth),
     ],
     spacing: 36,
   };
