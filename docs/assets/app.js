@@ -50,7 +50,7 @@ const DASHBOARDS = {
     chartId: "eu-chart",
     tableId: "eu-table",
     headerId: "eu-chart-header",
-    titleSuffix: "EU Top-5 Export & Import Partners, 2019-2023",
+    titlePrefix: "EU Top-5 Export & Import Partners",
   },
   us: {
     dataUrl: "./data/us_trade.json",
@@ -58,7 +58,7 @@ const DASHBOARDS = {
     chartId: "us-chart",
     tableId: "us-table",
     headerId: "us-chart-header",
-    titleSuffix: "U.S. Top-5 Export & Import Partners, 2019-2023",
+    titlePrefix: "U.S. Top-5 Export & Import Partners",
   },
 };
 
@@ -218,9 +218,10 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
   }
   const hoverName = `hover_${flowName.toLowerCase()}`;
   const maskName = `mask_${flowName.toLowerCase()}`;
+  const lastYear = yearDomain[yearDomain.length - 1];
 
-  const bars = {
-    data: { values: flowRows },
+  // Pure rect bars — no corner radius (Tufte: remove non-data decoration)
+  const barLayer = {
     params: [
       {
         name: hoverName,
@@ -231,9 +232,7 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
         select: { type: "point", fields: ["partner_group"], on: "mouseover", clear: "mouseout", empty: true },
       },
     ],
-    mark: { type: "bar", cornerRadiusEnd: 1.5 },
-    width: chartWidth,
-    height: 210,
+    mark: { type: "bar" },
     encoding: {
       y: {
         field: "period_str",
@@ -277,15 +276,39 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
       order: { field: "stack_order", type: "quantitative" },
       opacity: {
         condition: { param: maskName, value: 1 },
-        value: 0.18,
+        value: 0.35,
       },
       tooltip: [
         { field: "period_str", type: "ordinal", title: "Year" },
         { field: "partner_group", type: "nominal", title: "Partner" },
-        { field: "trade_value_usd", type: "quantitative", title: "Value (USD)", format: ",.0f" },
+        { field: "trade_value_usd", type: "quantitative", title: "Value", format: ",.0f" },
         { field: "share_pct", type: "quantitative", title: "Share (%)", format: ".1f" },
       ],
     },
+  };
+
+  // Direct total annotation at bar end — replaces need to read axis precisely
+  const totalLabelLayer = {
+    transform: [
+      {
+        aggregate: [{ op: "sum", field: "trade_display", as: "total_display" }],
+        groupby: ["period_str"],
+      },
+    ],
+    mark: { type: "text", align: "left", dx: 5, baseline: "middle", fontSize: 9.5 },
+    encoding: {
+      y: { field: "period_str", type: "ordinal", sort: yearDomain },
+      x: { field: "total_display", type: "quantitative" },
+      text: { field: "total_display", type: "quantitative", format: xFormat },
+      color: { value: "#78a0a3" },
+    },
+  };
+
+  const bars = {
+    data: { values: flowRows },
+    width: chartWidth,
+    height: 210,
+    layer: [barLayer, totalLabelLayer],
     title: {
       text: flowName,
       anchor: "start",
@@ -351,7 +374,7 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
               gridDash: [3, 3],
               domain: false,
               ticks: false,
-              tickCount: 4,
+              tickCount: 3,
               labelPadding: 4,
             },
           },
@@ -382,15 +405,23 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
           },
         },
       },
+      // Partner name anchored at end of line — direct label removes need for separate legend
+      {
+        transform: [{ filter: `datum.period_str === '${lastYear}'` }],
+        mark: { type: "text", align: "left", dx: 7, baseline: "middle", fontSize: 10, fontWeight: 600 },
+        encoding: {
+          x: { field: "period_str", type: "ordinal", sort: yearDomain },
+          y: { field: "share_pct", type: "quantitative" },
+          text: { field: "partner_group", type: "nominal" },
+          color: {
+            field: "partner_color",
+            type: "nominal",
+            scale: null,
+            legend: null,
+          },
+        },
+      },
     ],
-    title: {
-      text: "Hover a bar segment -> partner share over time",
-      anchor: "start",
-      color: "#78a0a3",
-      fontSize: 10,
-      fontStyle: "italic",
-      dy: -4,
-    },
   };
 
   return {
@@ -475,7 +506,9 @@ async function renderDashboard(key) {
   const rows = state[key].rows.filter((row) => row.sector === state[key].selectedSector);
   const chartWidth = getChartWidth(chartEl);
 
-  headerEl.textContent = `${fmtSector(state[key].selectedSector)} - ${config.titleSuffix}`;
+  const years = uniq(rows.map((r) => r.period)).sort();
+  const yearRange = years.length >= 2 ? `${years[0]}–${years[years.length - 1]}` : (years[0] ?? "");
+  headerEl.textContent = `${fmtSector(state[key].selectedSector)} — ${config.titlePrefix}, ${yearRange}`;
   renderTable(tableEl, rows);
   chartEl.innerHTML = '<div class="chart-loading">Rendering chart...</div>';
 
