@@ -120,6 +120,7 @@ PARTNER_NAMES: dict[str, str] = {
     "AR": "Argentina",
     "MK": "North Macedonia",
     "RS": "Serbia",
+    "XS": "Serbia",          # Eurostat legacy code for Serbia
     "BA": "Bosnia and Herzegovina",
     "AL": "Albania",
     "ME": "Montenegro",
@@ -132,6 +133,21 @@ PARTNER_NAMES: dict[str, str] = {
     "BY": "Belarus",
     "LY": "Libya",
     "TN": "Tunisia",
+    "IL": "Israel",
+    "SG": "Singapore",
+    "IS": "Iceland",
+    "QA": "Qatar",
+    "MZ": "Mozambique",
+    "BH": "Bahrain",
+    "CL": "Chile",
+    "CO": "Colombia",
+    "VE": "Venezuela",
+    "EG": "Egypt",
+    "KW": "Kuwait",
+    "OM": "Oman",
+    "QP": "Palestine",       # Eurostat code for Palestinian Territory
+    "QM": "Montenegro",      # Eurostat legacy code
+    "XK": "Kosovo",
 }
 
 # Partner codes to drop: EU-level aggregates + all EU-27 member states.
@@ -141,8 +157,8 @@ AGGREGATE_CODES: set[str] = {
     "EU27_2020", "EU28", "EU27", "EU25", "EU15",
     "INT_EU27_2020", "EXT_EU27_2020",
     "WORLD", "WRL", "TOTAL", "EEA", "EFTA", "INTRA_EU", "EXTRA_EU",
-    # EU-27 member states
-    "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "EL", "ES",
+    # EU-27 member states (Eurostat uses "EL" for Greece, but "GR" appears in some data vintages)
+    "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "EL", "GR", "ES",
     "FI", "FR", "HR", "HU", "IE", "IT", "LT", "LU", "LV", "MT",
     "NL", "PL", "PT", "RO", "SE", "SI", "SK",
 }
