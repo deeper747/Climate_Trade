@@ -75,6 +75,10 @@ SECTORS: dict[str, list[str]] = {
         "25070080",
         "25231000", "25232100", "25232900", "25233000", "25239000",
     ],
+    "hydrogen_2804": [
+        # HS 2804 10 — hydrogen (pure)
+        "28041000",
+    ],
 }
 
 FLOW_CODES: dict[str, str] = {

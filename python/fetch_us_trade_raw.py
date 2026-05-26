@@ -66,6 +66,9 @@ SECTOR_HEADINGS: dict[str, set[str]] = {
         "2507",   # kaolinic clay (CBAM precursor)
         "2523",   # cement and clinker
     },
+    "hydrogen_2804": {
+        "2804",   # hydrogen (HS-4; also covers noble gases at this level)
+    },
 }
 
 ALL_CBAM_HEADINGS: set[str] = set().union(*SECTOR_HEADINGS.values())

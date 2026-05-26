@@ -41,6 +41,7 @@ const SECTOR_LABELS = {
   aluminium: "Aluminum",
   cement: "Cement",
   cement_2523: "Cement & Precursors (CBAM CN codes)",
+  hydrogen_2804: "Hydrogen",
 };
 
 const DASHBOARDS = {
