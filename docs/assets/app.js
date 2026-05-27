@@ -449,6 +449,19 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
 }
 
 function buildSpec(rows, chartWidth, flowOrder, metricMode) {
+  if (metricMode === "quantity" && !rows.some((r) => r.quantity_mt != null && r.quantity_mt > 0)) {
+    return {
+      $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+      background: null,
+      config: { font: "Hanken Grotesk" },
+      data: { values: [{ note: "Volume data not available for this dataset" }] },
+      mark: { type: "text", color: "#78a0a3", fontSize: 13 },
+      encoding: { text: { field: "note" } },
+      width: chartWidth,
+      height: 120,
+    };
+  }
+
   const { plotRows, yearDomain, xTitle, xFormat } = buildTradeChartData(rows, metricMode);
   const rowsByFlow = {
     Export: plotRows.filter((row) => row.flow === "Export"),

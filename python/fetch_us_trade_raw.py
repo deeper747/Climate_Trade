@@ -201,7 +201,7 @@ def fetch_year_flow(flow_name: str, year: int) -> pd.DataFrame:
     val  = cfg["val_col"]
 
     params = {
-        "get":      f"{cmd},CTY_CODE,CTY_NAME,{val}",
+        "get":      f"{cmd},CTY_CODE,CTY_NAME,{val},AIR_WGT_YR,VES_WGT_YR",
         "YEAR":     str(year),
         "MONTH":    "12",     # cumulative full-year value
         "COMM_LVL": "HS4",
@@ -253,6 +253,9 @@ def process(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
     val = cfg["val_col"]
 
     df[val] = pd.to_numeric(df[val], errors="coerce")
+    df["AIR_WGT_YR"] = pd.to_numeric(df.get("AIR_WGT_YR", 0), errors="coerce").fillna(0)
+    df["VES_WGT_YR"] = pd.to_numeric(df.get("VES_WGT_YR", 0), errors="coerce").fillna(0)
+    df["quantity_kg"] = df["AIR_WGT_YR"] + df["VES_WGT_YR"]
 
     # Keep only CBAM-relevant headings
     df = df[df[cmd].isin(ALL_CBAM_HEADINGS)].copy()
@@ -277,7 +280,7 @@ def process(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
     # Aggregate headings → partner × sector × year
     return (
         df.groupby(["period", "flow", "sector", "partnerDesc"], as_index=False)
-          ["primaryValue"].sum()
+          .agg(primaryValue=("primaryValue", "sum"), quantity_kg=("quantity_kg", "sum"))
     )
 
 
