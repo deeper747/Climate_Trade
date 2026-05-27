@@ -35,6 +35,7 @@
     <nav class="tabs" aria-label="Dashboard tabs">
       <button class="tab-button is-active" type="button" data-tab="eu">EU Trade - CBAM Exposure</button>
       <button class="tab-button" type="button" data-tab="us">U.S. Trade</button>
+      <button class="tab-button" type="button" data-tab="us_eu">U.S. trade with EU</button>
       <div class="metric-toggle" role="group" aria-label="Display metric">
         <button class="metric-btn is-active" type="button" data-metric="value">Value (USD)</button>
         <button class="metric-btn" type="button" data-metric="quantity">Volume (thousand t)</button>
@@ -98,6 +99,35 @@
             <summary>Show underlying data</summary>
             <div class="table-wrap">
               <table id="us-table" class="data-table"></table>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" data-panel="us_eu">
+      <div class="callout">
+        U.S. trade in CBAM-regulated product categories with the <strong>European Union (EU27)</strong>,
+        broken down by commodity (HS6 code). The top-5 commodity codes by trade value are highlighted;
+        all others are grouped as "Other." Select a sector to view its commodity breakdown.
+        <strong>Hover a bar segment</strong> to trace that commodity's share over time.
+      </div>
+
+      <div class="dashboard-grid">
+        <aside class="filters">
+          <label class="filter-label" for="us-eu-sector">Sector</label>
+          <select id="us-eu-sector" class="filter-select"></select>
+        </aside>
+
+        <div class="content">
+          <p id="us-eu-chart-header" class="chart-header"></p>
+          <div id="us-eu-chart" class="chart-card"></div>
+          <p class="source-note">Source: U.S. Census Bureau International Trade (api.census.gov). EU27 aggregate partner. Prepared by Jia-Shen Tsai, Niskanen Center. Values in current USD.</p>
+
+          <details class="data-panel">
+            <summary>Show underlying data</summary>
+            <div class="table-wrap">
+              <table id="us-eu-table" class="data-table"></table>
             </div>
           </details>
         </div>

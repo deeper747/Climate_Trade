@@ -58,6 +58,7 @@ const DASHBOARDS = {
     headerId: "eu-chart-header",
     titlePrefix: "EU Top-5 Export & Import Partners",
     flowOrder: ["Import", "Export"],
+    groupByHs6: false,
   },
   us: {
     dataUrl: "./data/us_trade.json",
@@ -67,6 +68,17 @@ const DASHBOARDS = {
     headerId: "us-chart-header",
     titlePrefix: "U.S. Top-5 Export & Import Partners",
     flowOrder: ["Export", "Import"],
+    groupByHs6: false,
+  },
+  us_eu: {
+    dataUrl: "./data/us_eu_trade.json",
+    selectId: "us-eu-sector",
+    chartId: "us-eu-chart",
+    tableId: "us-eu-table",
+    headerId: "us-eu-chart-header",
+    titlePrefix: "U.S.–EU27 Trade by Commodity (HS6)",
+    flowOrder: ["Export", "Import"],
+    groupByHs6: true,
   },
 };
 
@@ -74,7 +86,14 @@ const state = {
   metricMode: "value",  // "value" | "quantity"
   eu: { rows: [], selectedSector: null },
   us: { rows: [], selectedSector: null },
+  us_eu: { rows: [], selectedSector: null },
 };
+
+// Colors for top-5 HS6 commodity codes (Niskanen palette, distinct from partner colors)
+const HS6_COLOR_PALETTE = [
+  "#348397", "#da5831", "#b5d955", "#bca45e", "#8655b2",
+  "#f17d3a", "#709628", "#52482a", "#f4da91", "#503961",
+];
 
 function fmtSector(value) {
   return SECTOR_LABELS[value] || value.replaceAll("_", " ").replace(/\b\w/g, (m) => m.toUpperCase());
@@ -501,6 +520,305 @@ function buildSpec(rows, chartWidth, flowOrder, metricMode) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// HS6 commodity chart builders (used by the "U.S. trade with EU" tab)
+// ---------------------------------------------------------------------------
+
+function buildTradeChartDataByHs6(rows, metricMode) {
+  const metricField = metricMode === "quantity" ? "quantity_mt" : "trade_value_usd";
+
+  const bucket = new Map();
+  rows.forEach((row) => {
+    const key = [row.period, row.flow, row.hs6].join("||");
+    bucket.set(key, (bucket.get(key) || 0) + (row[metricField] || 0));
+  });
+  const grouped = [...bucket.entries()].map(([key, metricValue]) => {
+    const [period, flow, hs6] = key.split("||");
+    return { period: Number(period), flow, hs6, metric_value: metricValue };
+  });
+
+  // Top-5 HS6 codes per flow by total across all years
+  const topHs6ByFlow = new Set();
+  ["Export", "Import"].forEach((flow) => {
+    const totals = new Map();
+    grouped.filter((r) => r.flow === flow).forEach((r) => {
+      totals.set(r.hs6, (totals.get(r.hs6) || 0) + r.metric_value);
+    });
+    [...totals.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .forEach(([hs6]) => topHs6ByFlow.add(`${flow}||${hs6}`));
+  });
+
+  // Collapse non-top-5 into "Other"
+  const collapsedMap = new Map();
+  grouped.forEach((row) => {
+    const group = topHs6ByFlow.has(`${row.flow}||${row.hs6}`) ? row.hs6 : "Other";
+    const key = [row.period, row.flow, group].join("||");
+    collapsedMap.set(key, (collapsedMap.get(key) || 0) + row.metric_value);
+  });
+
+  const plotRows = [...collapsedMap.entries()].map(([key, metricValue]) => {
+    const [period, flow, hs6Group] = key.split("||");
+    return { period: Number(period), period_str: String(period), flow, hs6_group: hs6Group, metric_value: metricValue };
+  });
+
+  // Share of total per year × flow
+  const totalsByYearFlow = new Map();
+  plotRows.forEach((r) => {
+    const key = `${r.period}||${r.flow}`;
+    totalsByYearFlow.set(key, (totalsByYearFlow.get(key) || 0) + r.metric_value);
+  });
+  plotRows.forEach((r) => {
+    const total = totalsByYearFlow.get(`${r.period}||${r.flow}`) || 0;
+    r.share_pct = total ? Number(((r.metric_value / total) * 100).toFixed(1)) : 0;
+  });
+
+  // Scale metric_value → metric_display
+  let xTitle, xFormat;
+  if (metricMode === "quantity") {
+    const maxMt = Math.max(...plotRows.map((r) => r.metric_value), 0);
+    plotRows.forEach((r) => { r.metric_display = r.metric_value / 1000; });
+    xTitle = "Volume (thousand t)";
+    xFormat = maxMt / 1000 >= 1000 ? ",.0f" : ",.1f";
+  } else {
+    const maxUsd = Math.max(...plotRows.map((r) => r.metric_value), 0);
+    const useBillions = maxUsd >= 2e9;
+    plotRows.forEach((r) => {
+      r.metric_display = useBillions ? r.metric_value / 1e9 : r.metric_value / 1e6;
+    });
+    xTitle = useBillions ? "Trade value (billion USD)" : "Trade value (million USD)";
+    xFormat = useBillions && maxUsd >= 10e9 ? ",.0f" : ",.1f";
+  }
+
+  // Assign colors + stack order per flow
+  const totalsByFlowHs6 = new Map();
+  plotRows.forEach((r) => {
+    const key = `${r.flow}||${r.hs6_group}`;
+    totalsByFlowHs6.set(key, (totalsByFlowHs6.get(key) || 0) + r.metric_value);
+  });
+  ["Export", "Import"].forEach((flow) => {
+    const ordered = [...totalsByFlowHs6.entries()]
+      .filter(([k]) => k.startsWith(`${flow}||`))
+      .map(([k, total]) => ({ hs6_group: k.split("||")[1], total }))
+      .sort((a, b) => {
+        if (a.hs6_group === "Other") return 1;
+        if (b.hs6_group === "Other") return -1;
+        return b.total - a.total;
+      });
+    ordered.forEach((entry, index) => {
+      const color = entry.hs6_group === "Other" ? "#d0dbdd" : (HS6_COLOR_PALETTE[index] ?? "#d0dbdd");
+      plotRows
+        .filter((r) => r.flow === flow && r.hs6_group === entry.hs6_group)
+        .forEach((r) => { r.stack_order = index + 1; r.hs6_color = color; });
+    });
+  });
+
+  const yearDomain = uniq(plotRows.map((r) => r.period_str)).sort();
+  return { plotRows, yearDomain, xTitle, xFormat, metricMode };
+}
+
+function buildFlowSpecByHs6(flowRows, flowName, yearDomain, xTitle, xFormat, chartWidth, metricMode) {
+  if (!flowRows.length) {
+    return {
+      data: { values: [{ note: `No ${flowName} data` }] },
+      mark: { type: "text", color: "#78a0a3", fontSize: 12 },
+      encoding: { text: { field: "note" } },
+      width: chartWidth,
+      height: 180,
+    };
+  }
+
+  const hoverName = `hover_hs6_${flowName.toLowerCase()}`;
+  const maskName  = `mask_hs6_${flowName.toLowerCase()}`;
+  const lastYear  = yearDomain[yearDomain.length - 1];
+  const tooltipLabel = metricMode === "quantity" ? "Volume (t)" : "Value (USD)";
+
+  const barLayer = {
+    params: [
+      { name: hoverName, select: { type: "point", fields: ["hs6_group"], on: "mouseover", clear: "mouseout" } },
+      { name: maskName,  select: { type: "point", fields: ["hs6_group"], on: "mouseover", clear: "mouseout", empty: true } },
+    ],
+    mark: { type: "bar" },
+    encoding: {
+      y: {
+        field: "period_str", type: "ordinal", sort: yearDomain, title: null,
+        axis: { labelFontSize: 11, labelColor: "#78a0a3", ticks: false, domain: false, grid: false, labelPadding: 4 },
+      },
+      x: {
+        field: "metric_display", type: "quantitative", stack: "zero", title: xTitle,
+        axis: {
+          format: xFormat, labelFontSize: 10, titleFontSize: 11, titleColor: "#78a0a3", titlePadding: 8,
+          grid: true, gridColor: "#edf1f2", gridDash: [3, 3], domain: false, ticks: false, labelPadding: 4,
+        },
+      },
+      color: { field: "hs6_color", type: "nominal", scale: null, legend: null },
+      order: { field: "stack_order", type: "quantitative" },
+      opacity: { condition: { param: maskName, value: 1 }, value: 0.35 },
+      tooltip: [
+        { field: "period_str",   type: "ordinal",     title: "Year" },
+        { field: "hs6_group",    type: "nominal",      title: "Commodity (HS6)" },
+        { field: "metric_value", type: "quantitative", title: tooltipLabel, format: ",.0f" },
+        { field: "share_pct",    type: "quantitative", title: "Share (%)", format: ".1f" },
+      ],
+    },
+  };
+
+  const totalLabelLayer = {
+    transform: [{ aggregate: [{ op: "sum", field: "metric_display", as: "total_display" }], groupby: ["period_str"] }],
+    mark: { type: "text", align: "left", dx: 5, baseline: "middle", fontSize: 9.5 },
+    encoding: {
+      y: { field: "period_str", type: "ordinal", sort: yearDomain },
+      x: { field: "total_display", type: "quantitative" },
+      text: { field: "total_display", type: "quantitative", format: xFormat },
+      color: { value: "#78a0a3" },
+    },
+  };
+
+  const bars = {
+    data: { values: flowRows },
+    width: chartWidth,
+    height: 210,
+    layer: [barLayer, totalLabelLayer],
+    title: { text: flowName, anchor: "start", color: "#194852", fontSize: 14, fontWeight: 600, dy: -6 },
+  };
+
+  const shareTitle = {
+    data: { values: flowRows },
+    transform: [
+      { filter: { param: hoverName, empty: false } },
+      { aggregate: [{ op: "max", field: "hs6_group", as: "hs6_group" }], groupby: [] },
+    ],
+    mark: { type: "text", align: "left", baseline: "bottom", fontSize: 12, fontWeight: 600, color: "#194852" },
+    encoding: { text: { field: "hs6_group", type: "nominal" } },
+    width: chartWidth,
+    height: 18,
+  };
+
+  const shareLine = {
+    data: { values: flowRows },
+    transform: [{ filter: { param: hoverName, empty: false } }],
+    width: chartWidth,
+    height: 130,
+    layer: [
+      {
+        mark: { type: "line", strokeWidth: 2.5, point: { filled: true, size: 55 } },
+        encoding: {
+          x: {
+            field: "period_str", type: "ordinal", sort: yearDomain, title: "Year",
+            axis: { labelFontSize: 10, titleFontSize: 11, titleColor: "#78a0a3", titlePadding: 8, ticks: false, domain: false, grid: false, labelPadding: 4 },
+          },
+          y: {
+            field: "share_pct", type: "quantitative", title: "Share of total (%)", scale: { domain: [0, 100] },
+            axis: { format: ".0f", labelFontSize: 10, titleFontSize: 11, titleColor: "#78a0a3", titlePadding: 8, grid: true, gridColor: "#edf1f2", gridDash: [3, 3], domain: false, ticks: false, tickCount: 3, labelPadding: 4 },
+          },
+          color: { field: "hs6_color", type: "nominal", scale: null, legend: null },
+          tooltip: [
+            { field: "period_str", type: "ordinal",     title: "Year" },
+            { field: "hs6_group",  type: "nominal",      title: "Commodity (HS6)" },
+            { field: "share_pct",  type: "quantitative", title: "Share (%)", format: ".1f" },
+          ],
+        },
+      },
+      {
+        mark: { type: "text", dy: -12, fontSize: 10, fontWeight: 600 },
+        encoding: {
+          x: { field: "period_str", type: "ordinal", sort: yearDomain },
+          y: { field: "share_pct", type: "quantitative" },
+          text: { field: "share_pct", type: "quantitative", format: ".1f" },
+          color: { field: "hs6_color", type: "nominal", scale: null, legend: null },
+        },
+      },
+      {
+        transform: [{ filter: `datum.period_str === '${lastYear}'` }],
+        mark: { type: "text", align: "left", dx: 7, baseline: "middle", fontSize: 10, fontWeight: 600 },
+        encoding: {
+          x: { field: "period_str", type: "ordinal", sort: yearDomain },
+          y: { field: "share_pct", type: "quantitative" },
+          text: { field: "hs6_group", type: "nominal" },
+          color: { field: "hs6_color", type: "nominal", scale: null, legend: null },
+        },
+      },
+    ],
+  };
+
+  return { vconcat: [bars, { vconcat: [shareTitle, shareLine], spacing: 2 }], spacing: 16 };
+}
+
+function buildSpecByHs6(rows, chartWidth, flowOrder, metricMode) {
+  if (metricMode === "quantity" && !rows.some((r) => r.quantity_mt != null && r.quantity_mt > 0)) {
+    return {
+      $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+      background: null,
+      config: { font: "Hanken Grotesk" },
+      data: { values: [{ note: "Volume data not available for this dataset" }] },
+      mark: { type: "text", color: "#78a0a3", fontSize: 13 },
+      encoding: { text: { field: "note" } },
+      width: chartWidth,
+      height: 120,
+    };
+  }
+
+  const { plotRows, yearDomain, xTitle, xFormat } = buildTradeChartDataByHs6(rows, metricMode);
+  const rowsByFlow = {
+    Export: plotRows.filter((r) => r.flow === "Export"),
+    Import: plotRows.filter((r) => r.flow === "Import"),
+  };
+
+  return {
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    background: null,
+    autosize: { type: "fit-x", contains: "padding", resize: true },
+    config: {
+      font: "Hanken Grotesk",
+      view: { continuousWidth: chartWidth, stroke: null },
+      axis: { labelFont: "Hanken Grotesk", titleFont: "Hanken Grotesk" },
+      title: { font: "Hanken Grotesk" },
+    },
+    vconcat: flowOrder.map((flow) =>
+      buildFlowSpecByHs6(rowsByFlow[flow], flow, yearDomain, xTitle, xFormat, chartWidth, metricMode)
+    ),
+    spacing: 36,
+  };
+}
+
+function renderTableByHs6(tableEl, rows, metricMode) {
+  const useQuantity = metricMode === "quantity";
+  const sortField = useQuantity ? "quantity_mt" : "trade_value_usd";
+  const colHeader = useQuantity ? "Volume (thousand t)" : "Trade Value (USD)";
+
+  const orderedRows = [...rows].sort((a, b) => {
+    if (a.period !== b.period) return a.period - b.period;
+    return (b[sortField] || 0) - (a[sortField] || 0);
+  });
+
+  const head = `
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Flow</th>
+        <th>Commodity (HS6)</th>
+        <th>${colHeader}</th>
+      </tr>
+    </thead>
+  `;
+
+  const body = orderedRows
+    .map(
+      (row) => `
+        <tr>
+          <td>${row.period}</td>
+          <td>${row.flow}</td>
+          <td>${row.hs6}</td>
+          <td>${useQuantity ? formatQuantity(row.quantity_mt) : formatTradeValue(row.trade_value_usd)}</td>
+        </tr>
+      `
+    )
+    .join("");
+
+  tableEl.innerHTML = `${head}<tbody>${body}</tbody>`;
+}
+
 function renderTable(tableEl, rows, metricMode) {
   const useQuantity = metricMode === "quantity";
   const sortField = useQuantity ? "quantity_mt" : "trade_value_usd";
@@ -550,14 +868,18 @@ async function renderDashboard(key) {
   const years = uniq(rows.map((r) => r.period)).sort();
   const yearRange = years.length >= 2 ? `${years[0]}–${years[years.length - 1]}` : (years[0] ?? "");
   headerEl.textContent = `${fmtSector(state[key].selectedSector)} — ${config.titlePrefix}, ${yearRange}`;
-  renderTable(tableEl, rows, metricMode);
+  if (config.groupByHs6) {
+    renderTableByHs6(tableEl, rows, metricMode);
+  } else {
+    renderTable(tableEl, rows, metricMode);
+  }
   chartEl.innerHTML = '<div class="chart-loading">Rendering chart...</div>';
 
   try {
-    await vegaEmbed(`#${config.chartId}`, buildSpec(rows, chartWidth, config.flowOrder, metricMode), {
-      actions: false,
-      renderer: "svg",
-    });
+    const spec = config.groupByHs6
+      ? buildSpecByHs6(rows, chartWidth, config.flowOrder, metricMode)
+      : buildSpec(rows, chartWidth, config.flowOrder, metricMode);
+    await vegaEmbed(`#${config.chartId}`, spec, { actions: false, renderer: "svg" });
   } catch (error) {
     chartEl.innerHTML = `<div class="chart-error">Chart failed to render: ${error.message}</div>`;
   }
@@ -613,13 +935,18 @@ function initMetricToggle() {
 async function loadData() {
   await Promise.all(
     Object.entries(DASHBOARDS).map(async ([key, config]) => {
-      const response = await fetch(config.dataUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to load ${config.dataUrl}`);
+      try {
+        const response = await fetch(config.dataUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        state[key].rows = await response.json();
+        hydrateSelect(key);
+        await renderDashboard(key);
+      } catch (error) {
+        const chartEl = document.getElementById(config.chartId);
+        if (chartEl) {
+          chartEl.innerHTML = `<div class="chart-error">Data unavailable: ${error.message}</div>`;
+        }
       }
-      state[key].rows = await response.json();
-      hydrateSelect(key);
-      await renderDashboard(key);
     })
   );
 }

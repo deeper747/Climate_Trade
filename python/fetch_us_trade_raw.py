@@ -326,12 +326,51 @@ def process(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
     )
 
 
+def process_eu(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
+    """Extract EU27 aggregate rows, preserving HS6 code for commodity-level breakdown."""
+    cfg = FLOW_CONFIG[flow_name]
+    cmd = cfg["cmd_col"]
+    val = cfg["val_col"]
+
+    df = df.copy()
+    df[val] = pd.to_numeric(df[val], errors="coerce")
+    df["AIR_WGT_YR"] = pd.to_numeric(df.get("AIR_WGT_YR", 0), errors="coerce").fillna(0)
+    df["VES_WGT_YR"] = pd.to_numeric(df.get("VES_WGT_YR", 0), errors="coerce").fillna(0)
+    df["quantity_kg"] = df["AIR_WGT_YR"] + df["VES_WGT_YR"]
+
+    # Filter to CBAM-relevant HS6 codes
+    df = df[df[cmd].apply(_is_cbam)].copy()
+
+    # Keep only the EU27 aggregate partner
+    eu_mask = df["CTY_NAME"].str.upper().str.contains("EUROPEAN UNION", na=False)
+    df = df[eu_mask].copy()
+
+    if df.empty:
+        return pd.DataFrame()
+
+    df = df[df[val].notna() & (df[val] > 0)].copy()
+
+    df["sector"] = df[cmd].apply(_sector)
+    df = df[df["sector"].notna()].copy()
+
+    df["period"] = year
+    df["flow"]   = flow_name
+    df["hs6"]    = df[cmd]
+    df = df.rename(columns={val: "primaryValue"})
+
+    return (
+        df.groupby(["period", "flow", "sector", "hs6"], as_index=False)
+          .agg(primaryValue=("primaryValue", "sum"), quantity_kg=("quantity_kg", "sum"))
+    )
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
 def main() -> None:
     frames: list[pd.DataFrame] = []
+    eu_frames: list[pd.DataFrame] = []
 
     for year in range(START_YEAR, END_YEAR + 1):
         for flow_name in ("Export", "Import"):
@@ -347,6 +386,12 @@ def main() -> None:
             df = process(df_raw, flow_name, year)
             print(f"{len(df):,} aggregated rows")
             frames.append(df)
+
+            df_eu = process_eu(df_raw, flow_name, year)
+            if not df_eu.empty:
+                eu_frames.append(df_eu)
+                print(f"  (EU27: {len(df_eu):,} HS6 rows)")
+
             time.sleep(0.5)
 
     if not frames:
@@ -360,6 +405,15 @@ def main() -> None:
     out.to_csv(out_path, index=False)
     print(f"\nSaved: {out_path}  ({len(out):,} rows)")
     print("Note: primaryValue in USD; quantity_kg = AIR_WGT_YR + VES_WGT_YR (kg).")
+
+    if eu_frames:
+        eu_out = pd.concat(eu_frames, ignore_index=True)
+        eu_out = eu_out.dropna(subset=["period", "hs6", "primaryValue", "sector"])
+        eu_out_path = OUTDIR / "us_eu27_trade_raw.csv"
+        eu_out.to_csv(eu_out_path, index=False)
+        print(f"Saved EU27: {eu_out_path}  ({len(eu_out):,} rows)")
+    else:
+        print("Warning: No EU27 rows found — Census may not report EU as an aggregate partner.")
 
 
 if __name__ == "__main__":

@@ -83,10 +83,41 @@ def export_json(df: pd.DataFrame, filename: str) -> None:
         json.dump(records, fh, ensure_ascii=False, separators=(",", ":"))
 
 
+def load_us_eu_data() -> pd.DataFrame:
+    p = ROOT / "data" / "raw" / "us_eu27_trade_raw.csv"
+    if not p.exists():
+        raise FileNotFoundError(
+            f"EU27 data not found at {p}. Run fetch_us_trade_raw.py first."
+        )
+    df = pd.read_csv(p)
+    df["period"] = pd.to_numeric(df["period"], errors="coerce").astype("Int64")
+    df["primaryValue"] = pd.to_numeric(df["primaryValue"], errors="coerce")
+    df = df.dropna(subset=["period", "primaryValue", "sector", "hs6", "flow"])
+    df = df[df["primaryValue"] > 0]
+    df["sector"] = df["sector"].replace(
+        {"iron_steel_72": "iron_steel", "iron_steel_73": "iron_steel"}
+    )
+    df = df.rename(columns={"primaryValue": "trade_value_usd"})
+    extra: list[str] = []
+    if "quantity_kg" in df.columns:
+        df["quantity_mt"] = pd.to_numeric(df["quantity_kg"], errors="coerce") / 1000.0
+        extra = ["quantity_mt"]
+    agg_spec: dict = {"trade_value_usd": ("trade_value_usd", "sum")}
+    for col in extra:
+        agg_spec[col] = (col, "sum")
+    cols = ["period", "flow", "sector", "hs6", "trade_value_usd"] + extra
+    return df[cols].groupby(["period", "flow", "sector", "hs6"], as_index=False).agg(**agg_spec)
+
+
 def main() -> None:
     export_json(load_eu_data(), "eu_trade.json")
     export_json(load_us_data(), "us_trade.json")
-    print(f"Wrote data files to {OUTDIR}")
+    try:
+        export_json(load_us_eu_data(), "us_eu_trade.json")
+        print(f"Wrote eu_trade.json, us_trade.json, us_eu_trade.json to {OUTDIR}")
+    except FileNotFoundError as exc:
+        print(f"Warning: {exc}")
+        print(f"Wrote eu_trade.json and us_trade.json to {OUTDIR}")
 
 
 if __name__ == "__main__":
