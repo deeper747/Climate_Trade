@@ -29,6 +29,10 @@ const PARTNER_COLORS = {
   Panama: "#709628",
   "Br. Virgin Islands": "#8d381c",
   "Other Asia, nes": "#78a0a3",
+  Netherlands: "#8655b2",
+  Jamaica: "#f17d3a",
+  "Dominican Republic": "#f4da91",
+  "Trinidad and Tobago": "#52482a",
   Other: "#d0dbdd",
 };
 
