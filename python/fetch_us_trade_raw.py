@@ -69,6 +69,13 @@ SECTOR_HEADINGS: dict[str, set[str]] = {
     "hydrogen_2804": {
         "2804",   # hydrogen (HS-4; also covers noble gases at this level)
     },
+    "fertilizers": {
+        "2808",   # Nitric acid
+        "2814",   # Ammonia (anhydrous + aqueous)
+        "2834",   # Nitrates (potassium nitrate)
+        "3102",   # Nitrogenous fertilizers (urea, ammonium nitrate, etc.)
+        "3105",   # NPK / NP / NK fertilizers
+    },
 }
 
 ALL_CBAM_HEADINGS: set[str] = set().union(*SECTOR_HEADINGS.values())

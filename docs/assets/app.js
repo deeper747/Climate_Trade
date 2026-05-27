@@ -42,6 +42,7 @@ const SECTOR_LABELS = {
   cement: "Cement",
   cement_2523: "Cement & Precursors (CBAM CN codes)",
   hydrogen_2804: "Hydrogen",
+  fertilizers: "Fertilizers",
 };
 
 const DASHBOARDS = {
@@ -66,6 +67,7 @@ const DASHBOARDS = {
 };
 
 const state = {
+  metricMode: "value",  // "value" | "quantity"
   eu: { rows: [], selectedSector: null },
   us: { rows: [], selectedSector: null },
 };
@@ -80,6 +82,13 @@ function formatTradeValue(value) {
   }).format(value);
 }
 
+function formatQuantity(valueMt) {
+  if (valueMt == null || isNaN(valueMt)) return "—";
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 1,
+  }).format(valueMt / 1000);
+}
+
 function uniq(values) {
   return [...new Set(values)];
 }
@@ -89,37 +98,33 @@ function getChartWidth(chartEl) {
   return Math.max(Math.floor(measured) - 12, 320);
 }
 
-function aggregateRows(rows) {
+// Aggregate rows by (period, flow, partner), summing the chosen metric field.
+// Returns objects with a normalised `metric_value` key.
+function aggregateRows(rows, metricField) {
   const bucket = new Map();
-
   rows.forEach((row) => {
     const key = [row.period, row.flow, row.partnerDesc].join("||");
-    bucket.set(key, (bucket.get(key) || 0) + row.trade_value_usd);
+    bucket.set(key, (bucket.get(key) || 0) + (row[metricField] || 0));
   });
-
-  return [...bucket.entries()].map(([key, tradeValue]) => {
+  return [...bucket.entries()].map(([key, metricValue]) => {
     const [period, flow, partnerDesc] = key.split("||");
-    return {
-      period: Number(period),
-      flow,
-      partnerDesc,
-      trade_value_usd: tradeValue,
-    };
+    return { period: Number(period), flow, partnerDesc, metric_value: metricValue };
   });
 }
 
-function buildTradeChartData(rows) {
-  const grouped = aggregateRows(rows);
+function buildTradeChartData(rows, metricMode) {
+  const metricField = metricMode === "quantity" ? "quantity_mt" : "trade_value_usd";
+  const grouped = aggregateRows(rows, metricField);
 
+  // Top-5 partners per flow (by total metric across all years)
   const topPartnersByFlow = new Set();
   ["Export", "Import"].forEach((flow) => {
     const totals = new Map();
     grouped
       .filter((row) => row.flow === flow)
       .forEach((row) => {
-        totals.set(row.partnerDesc, (totals.get(row.partnerDesc) || 0) + row.trade_value_usd);
+        totals.set(row.partnerDesc, (totals.get(row.partnerDesc) || 0) + row.metric_value);
       });
-
     [...totals.entries()]
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
@@ -128,54 +133,67 @@ function buildTradeChartData(rows) {
       });
   });
 
+  // Collapse non-top-5 into "Other"
   const collapsedMap = new Map();
   grouped.forEach((row) => {
     const partnerGroup = topPartnersByFlow.has(`${row.flow}||${row.partnerDesc}`)
       ? row.partnerDesc
       : "Other";
     const key = [row.period, row.flow, partnerGroup].join("||");
-    collapsedMap.set(key, (collapsedMap.get(key) || 0) + row.trade_value_usd);
+    collapsedMap.set(key, (collapsedMap.get(key) || 0) + row.metric_value);
   });
 
-  const plotRows = [...collapsedMap.entries()].map(([key, tradeValue]) => {
+  const plotRows = [...collapsedMap.entries()].map(([key, metricValue]) => {
     const [period, flow, partnerGroup] = key.split("||");
     return {
       period: Number(period),
       period_str: String(period),
       flow,
       partner_group: partnerGroup,
-      trade_value_usd: tradeValue,
+      metric_value: metricValue,
     };
   });
 
+  // Share of total per year × flow
   const totalsByYearFlow = new Map();
   plotRows.forEach((row) => {
     const key = `${row.period}||${row.flow}`;
-    totalsByYearFlow.set(key, (totalsByYearFlow.get(key) || 0) + row.trade_value_usd);
+    totalsByYearFlow.set(key, (totalsByYearFlow.get(key) || 0) + row.metric_value);
   });
-
   plotRows.forEach((row) => {
     const total = totalsByYearFlow.get(`${row.period}||${row.flow}`) || 0;
-    row.share_pct = total ? Number(((row.trade_value_usd / total) * 100).toFixed(1)) : 0;
+    row.share_pct = total ? Number(((row.metric_value / total) * 100).toFixed(1)) : 0;
   });
 
-  const maxUsd = Math.max(...plotRows.map((row) => row.trade_value_usd), 0);
-  const useBillions = maxUsd >= 2e9;
-  const xTitle = useBillions ? "Trade value (billion USD)" : "Trade value (million USD)";
-  const xFormat = useBillions && maxUsd >= 10e9 ? ",.0f" : ",.1f";
+  // Scale metric_value → metric_display for the x-axis
+  let xTitle, xFormat;
+  if (metricMode === "quantity") {
+    const maxMt = Math.max(...plotRows.map((r) => r.metric_value), 0);
+    plotRows.forEach((r) => { r.metric_display = r.metric_value / 1000; });
+    xTitle = "Volume (thousand t)";
+    xFormat = maxMt / 1000 >= 1000 ? ",.0f" : ",.1f";
+  } else {
+    const maxUsd = Math.max(...plotRows.map((r) => r.metric_value), 0);
+    const useBillions = maxUsd >= 2e9;
+    plotRows.forEach((r) => {
+      r.metric_display = useBillions ? r.metric_value / 1e9 : r.metric_value / 1e6;
+    });
+    xTitle = useBillions ? "Trade value (billion USD)" : "Trade value (million USD)";
+    xFormat = useBillions && maxUsd >= 10e9 ? ",.0f" : ",.1f";
+  }
 
+  // Assign colors
   plotRows.forEach((row) => {
-    row.trade_display = useBillions ? row.trade_value_usd / 1e9 : row.trade_value_usd / 1e6;
     row.partner_color_key = PARTNER_COLORS[row.partner_group] ? row.partner_group : "Other";
     row.partner_color = PARTNER_COLORS[row.partner_color_key] || PARTNER_COLORS.Other;
   });
 
+  // Stack order (largest partner first, Other last)
   const totalsByFlowPartner = new Map();
   plotRows.forEach((row) => {
     const key = `${row.flow}||${row.partner_group}`;
-    totalsByFlowPartner.set(key, (totalsByFlowPartner.get(key) || 0) + row.trade_value_usd);
+    totalsByFlowPartner.set(key, (totalsByFlowPartner.get(key) || 0) + row.metric_value);
   });
-
   ["Export", "Import"].forEach((flow) => {
     const ordered = [...totalsByFlowPartner.entries()]
       .filter(([key]) => key.startsWith(`${flow}||`))
@@ -185,21 +203,18 @@ function buildTradeChartData(rows) {
         if (b.partner_group === "Other") return -1;
         return b.total - a.total;
       });
-
     ordered.forEach((entry, index) => {
       plotRows
         .filter((row) => row.flow === flow && row.partner_group === entry.partner_group)
-        .forEach((row) => {
-          row.stack_order = index + 1;
-        });
+        .forEach((row) => { row.stack_order = index + 1; });
     });
   });
 
   const yearDomain = uniq(plotRows.map((row) => row.period_str)).sort();
-  return { plotRows, yearDomain, xTitle, xFormat };
+  return { plotRows, yearDomain, xTitle, xFormat, metricMode };
 }
 
-function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWidth) {
+function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWidth, metricMode) {
   if (!flowRows.length) {
     return {
       data: { values: [{ note: `No ${flowName} data` }] },
@@ -215,15 +230,17 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
     .sort((a, b) => a.stack_order - b.stack_order)
     .map((row) => row.partner_color_key)
     .filter((value, index, list) => list.indexOf(value) === index);
-
   if (flowRows.some((row) => row.partner_color_key === "Other")) {
     colorDomain.push("Other");
   }
+
   const hoverName = `hover_${flowName.toLowerCase()}`;
   const maskName = `mask_${flowName.toLowerCase()}`;
   const lastYear = yearDomain[yearDomain.length - 1];
 
-  // Pure rect bars — no corner radius (Tufte: remove non-data decoration)
+  const tooltipLabel = metricMode === "quantity" ? "Volume (t)" : "Value (USD)";
+  const tooltipFormat = ",.0f";
+
   const barLayer = {
     params: [
       {
@@ -252,7 +269,7 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
         },
       },
       x: {
-        field: "trade_display",
+        field: "metric_display",
         type: "quantitative",
         stack: "zero",
         title: xTitle,
@@ -284,17 +301,16 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
       tooltip: [
         { field: "period_str", type: "ordinal", title: "Year" },
         { field: "partner_group", type: "nominal", title: "Partner" },
-        { field: "trade_value_usd", type: "quantitative", title: "Value", format: ",.0f" },
+        { field: "metric_value", type: "quantitative", title: tooltipLabel, format: tooltipFormat },
         { field: "share_pct", type: "quantitative", title: "Share (%)", format: ".1f" },
       ],
     },
   };
 
-  // Direct total annotation at bar end — replaces need to read axis precisely
   const totalLabelLayer = {
     transform: [
       {
-        aggregate: [{ op: "sum", field: "trade_display", as: "total_display" }],
+        aggregate: [{ op: "sum", field: "metric_display", as: "total_display" }],
         groupby: ["period_str"],
       },
     ],
@@ -408,7 +424,6 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
           },
         },
       },
-      // Partner name anchored at end of line — direct label removes need for separate legend
       {
         transform: [{ filter: `datum.period_str === '${lastYear}'` }],
         mark: { type: "text", align: "left", dx: 7, baseline: "middle", fontSize: 10, fontWeight: 600 },
@@ -433,8 +448,8 @@ function buildFlowSpec(flowRows, flowName, yearDomain, xTitle, xFormat, chartWid
   };
 }
 
-function buildSpec(rows, chartWidth, flowOrder) {
-  const { plotRows, yearDomain, xTitle, xFormat } = buildTradeChartData(rows);
+function buildSpec(rows, chartWidth, flowOrder, metricMode) {
+  const { plotRows, yearDomain, xTitle, xFormat } = buildTradeChartData(rows, metricMode);
   const rowsByFlow = {
     Export: plotRows.filter((row) => row.flow === "Export"),
     Import: plotRows.filter((row) => row.flow === "Import"),
@@ -463,16 +478,20 @@ function buildSpec(rows, chartWidth, flowOrder) {
       },
     },
     vconcat: flowOrder.map((flow) =>
-      buildFlowSpec(rowsByFlow[flow], flow, yearDomain, xTitle, xFormat, chartWidth)
+      buildFlowSpec(rowsByFlow[flow], flow, yearDomain, xTitle, xFormat, chartWidth, metricMode)
     ),
     spacing: 36,
   };
 }
 
-function renderTable(tableEl, rows) {
+function renderTable(tableEl, rows, metricMode) {
+  const useQuantity = metricMode === "quantity";
+  const sortField = useQuantity ? "quantity_mt" : "trade_value_usd";
+  const colHeader = useQuantity ? "Volume (thousand t)" : "Trade Value (USD)";
+
   const orderedRows = [...rows].sort((a, b) => {
     if (a.period !== b.period) return a.period - b.period;
-    return b.trade_value_usd - a.trade_value_usd;
+    return (b[sortField] || 0) - (a[sortField] || 0);
   });
 
   const head = `
@@ -481,7 +500,7 @@ function renderTable(tableEl, rows) {
         <th>Year</th>
         <th>Flow</th>
         <th>Partner</th>
-        <th>Trade Value (USD)</th>
+        <th>${colHeader}</th>
       </tr>
     </thead>
   `;
@@ -493,7 +512,7 @@ function renderTable(tableEl, rows) {
           <td>${row.period}</td>
           <td>${row.flow}</td>
           <td>${row.partnerDesc}</td>
-          <td>${formatTradeValue(row.trade_value_usd)}</td>
+          <td>${useQuantity ? formatQuantity(row.quantity_mt) : formatTradeValue(row.trade_value_usd)}</td>
         </tr>
       `
     )
@@ -509,15 +528,16 @@ async function renderDashboard(key) {
   const headerEl = document.getElementById(config.headerId);
   const rows = state[key].rows.filter((row) => row.sector === state[key].selectedSector);
   const chartWidth = getChartWidth(chartEl);
+  const metricMode = state.metricMode;
 
   const years = uniq(rows.map((r) => r.period)).sort();
   const yearRange = years.length >= 2 ? `${years[0]}–${years[years.length - 1]}` : (years[0] ?? "");
   headerEl.textContent = `${fmtSector(state[key].selectedSector)} — ${config.titlePrefix}, ${yearRange}`;
-  renderTable(tableEl, rows);
+  renderTable(tableEl, rows, metricMode);
   chartEl.innerHTML = '<div class="chart-loading">Rendering chart...</div>';
 
   try {
-    await vegaEmbed(`#${config.chartId}`, buildSpec(rows, chartWidth, config.flowOrder), {
+    await vegaEmbed(`#${config.chartId}`, buildSpec(rows, chartWidth, config.flowOrder, metricMode), {
       actions: false,
       renderer: "svg",
     });
@@ -557,6 +577,22 @@ function initTabs() {
   });
 }
 
+function initMetricToggle() {
+  document.querySelectorAll(".metric-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (btn.dataset.metric === state.metricMode) return;
+      state.metricMode = btn.dataset.metric;
+      document.querySelectorAll(".metric-btn").forEach((b) => {
+        b.classList.toggle("is-active", b.dataset.metric === state.metricMode);
+      });
+      const activePanel = document.querySelector(".panel.is-active");
+      if (activePanel) {
+        await renderDashboard(activePanel.dataset.panel);
+      }
+    });
+  });
+}
+
 async function loadData() {
   await Promise.all(
     Object.entries(DASHBOARDS).map(async ([key, config]) => {
@@ -573,6 +609,7 @@ async function loadData() {
 
 async function bootstrap() {
   initTabs();
+  initMetricToggle();
   try {
     await loadData();
   } catch (error) {

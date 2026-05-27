@@ -18,9 +18,9 @@
     <header class="page-header">
       <p class="page-title">EU CBAM &amp; U.S. Hard-to-Abate Trade Monitor</p>
       <p class="page-subtitle">
-        Tracking bilateral trade in CBAM-regulated sectors (iron &amp; steel, aluminum, cement)
-        to identify which countries face the greatest exposure to the EU's carbon tariff.
-        EU data: Eurostat, 2019–2025. U.S. data: U.S. Census Bureau, 2019–2024.
+        Tracking bilateral trade in CBAM-regulated sectors (iron &amp; steel, aluminum, cement,
+        hydrogen, fertilizers) to identify which countries face the greatest exposure to the
+        EU's carbon tariff. EU data: Eurostat, 2019–2025. U.S. data: U.S. Census Bureau, 2019–2024.
       </p>
       <div class="related-links">
         <span class="related-label">Related reading</span>
@@ -35,6 +35,10 @@
     <nav class="tabs" aria-label="Dashboard tabs">
       <button class="tab-button is-active" type="button" data-tab="eu">EU Trade - CBAM Exposure</button>
       <button class="tab-button" type="button" data-tab="us">U.S. Trade</button>
+      <div class="metric-toggle" role="group" aria-label="Display metric">
+        <button class="metric-btn is-active" type="button" data-metric="value">Value (USD)</button>
+        <button class="metric-btn" type="button" data-metric="quantity">Volume (thousand t)</button>
+      </div>
     </nav>
 
     <section class="panel is-active" data-panel="eu">

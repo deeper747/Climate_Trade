@@ -79,6 +79,23 @@ SECTORS: dict[str, list[str]] = {
         # HS 2804 10 — hydrogen (pure)
         "28041000",
     ],
+    "fertilizers": [
+        # HS 28 — precursor acids and ammonia
+        "28080000",                   # Nitric acid
+        "28141000", "28142000",       # Ammonia (anhydrous, aqueous)
+        "28342100",                   # Potassium nitrate
+        # HS 31 — nitrogenous fertilizers (3102) and NPK/NP/NK (3105)
+        "31021012", "31021015", "31021019", "31021090",  # Urea
+        "31022100", "31022900",       # Ammonium sulphate / double salts
+        "31023010", "31023090",       # Ammonium nitrate
+        "31024010", "31024090",       # AN + CaCO₃
+        "31025000", "31026000",       # Sodium nitrate, Ca nitrate/AN mix
+        "31028000", "31029000",       # UAN solution, other N fertilizers
+        "31051000", "31052010", "31052090",  # NPK
+        "31053000", "31054000",       # DAP, MAP
+        "31055100", "31055900",       # NP nitrates, NP other
+        "31059020", "31059080",       # NK >10%N, NK ≤10%N
+    ],
 }
 
 FLOW_CODES: dict[str, str] = {
@@ -210,11 +227,8 @@ def fetch_batch(cn_codes: list[str], flow_code: str) -> pd.DataFrame:
 
 
 def clean_df(df: pd.DataFrame, flow_name: str, sector_name: str) -> pd.DataFrame | None:
-    """Normalise columns, filter to EUR values, map partner codes → names."""
+    """Normalise columns, extract EUR value and 100kg quantity, map partner codes → names."""
     df.columns = [c.lower() for c in df.columns]
-
-    if "indicators" in df.columns:
-        df = df[df["indicators"].str.upper() == "VALUE_IN_EUROS"].copy()
 
     missing = [c for c in ("partner", "time_period", "obs_value") if c not in df.columns]
     if missing:
@@ -226,11 +240,31 @@ def clean_df(df: pd.DataFrame, flow_name: str, sector_name: str) -> pd.DataFrame
 
     df["partnerDesc"] = df["partner"].astype(str).map(PARTNER_NAMES).fillna(df["partner"].astype(str))
     df["period"]      = pd.to_numeric(df["time_period"].astype(str).str[:4], errors="coerce").astype("Int64")
-    df["primaryValue"] = pd.to_numeric(df["obs_value"], errors="coerce")
-    df["flow"]         = flow_name
-    df["sector"]       = sector_name
+    df["obs_value"]   = pd.to_numeric(df["obs_value"], errors="coerce")
+    df["flow"]        = flow_name
+    df["sector"]      = sector_name
 
-    return df[["period", "flow", "sector", "partnerDesc", "primaryValue"]]
+    if "indicators" not in df.columns:
+        result = df[["period", "flow", "sector", "partnerDesc", "obs_value"]].rename(
+            columns={"obs_value": "primaryValue"}
+        ).copy()
+        result["quantity_100kg"] = pd.NA
+        return result
+
+    # Use product code as join key so value/quantity merge is 1-to-1 per CN code
+    product_col = next((c for c in df.columns if c == "product"), None)
+    key = ["period", "partnerDesc", "flow", "sector"]
+    if product_col:
+        key = ["period", "partnerDesc", product_col, "flow", "sector"]
+
+    val_df = df[df["indicators"].str.upper() == "VALUE_IN_EUROS"].copy()
+    qty_df = df[df["indicators"].str.upper() == "QUANTITY_IN_100KG"].copy()
+
+    val_frame = val_df[key + ["obs_value"]].rename(columns={"obs_value": "primaryValue"})
+    qty_frame = qty_df[key + ["obs_value"]].rename(columns={"obs_value": "quantity_100kg"})
+
+    result = val_frame.merge(qty_frame, on=key, how="left")
+    return result[["period", "flow", "sector", "partnerDesc", "primaryValue", "quantity_100kg"]]
 
 
 # ---------------------------------------------------------------------------
@@ -269,7 +303,8 @@ def main() -> None:
                 combined = pd.concat(sector_frames, ignore_index=True)
                 agg = (
                     combined.groupby(["period", "flow", "sector", "partnerDesc"], as_index=False)
-                            ["primaryValue"].sum()
+                            .agg(primaryValue=("primaryValue", "sum"),
+                                 quantity_100kg=("quantity_100kg", "sum"))
                 )
                 frames.append(agg)
                 print(f"  → {len(agg):,} aggregated rows")

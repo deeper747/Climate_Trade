@@ -89,6 +89,7 @@ body {
 .tabs {
   display: flex;
   gap: 0;
+  align-items: center;
   margin-bottom: 1.75rem;
   border-bottom: 1.5px solid var(--ink-200);
 }
@@ -109,6 +110,37 @@ body {
 .tab-button.is-active {
   color: var(--ink-700);
   border-bottom-color: var(--ink-500);
+}
+
+.metric-toggle {
+  margin-left: auto;
+  margin-bottom: -1.5px;
+  display: flex;
+  border: 1px solid var(--ink-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.metric-btn {
+  border: 0;
+  border-right: 1px solid var(--ink-200);
+  background: transparent;
+  color: var(--ink-400);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.38rem 0.85rem;
+  white-space: nowrap;
+}
+
+.metric-btn:last-child {
+  border-right: 0;
+}
+
+.metric-btn.is-active {
+  background: var(--ink-100);
+  color: var(--ink-700);
+  font-weight: 600;
 }
 
 .panel {
