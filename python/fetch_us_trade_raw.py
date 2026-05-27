@@ -5,12 +5,13 @@ API docs: https://www.census.gov/data/developers/data-sets/international-trade.h
 Exports:  https://api.census.gov/data/timeseries/intltrade/exports/hs
 Imports:  https://api.census.gov/data/timeseries/intltrade/imports/hs
 
-Strategy: query COMM_LVL=HS4 once per year per flow — returns all 4-digit HS
-headings × all countries in a single call (~127k rows). Filter client-side to
-the CBAM-relevant headings and drop geographic aggregate groups (OECD, APEC …).
+Strategy: query COMM_LVL=HS6 once per year per flow (~380k rows per call).
+Filter client-side to CBAM-relevant HS6 codes derived from EU IR 2025/2620 Annex I:
+  - 6-digit entries → exact HS6 match (mirrors specific CN sub-codes from the EU script)
+  - 4-digit entries → prefix match (all HS6 sub-codes under that heading are in-scope,
+    matching EU entries that cover an entire HS heading without sub-code restriction)
 
-4-digit HS headings are internationally harmonized, so the CBAM CN code list
-(EU IR 2025/2620 Annex I) maps directly to US Schedule B / HTS at this level.
+Weight: AIR_WGT_YR + VES_WGT_YR (kg). Census does not publish ALL_WGT_YR at HS6.
 
 Add CENSUS_API_KEY to the project .env file before running.
 Output: data/raw/us_trade_hard_to_abate_partner_raw.csv
@@ -37,53 +38,103 @@ EXPORT_URL = "https://api.census.gov/data/timeseries/intltrade/exports/hs"
 IMPORT_URL = "https://api.census.gov/data/timeseries/intltrade/imports/hs"
 
 START_YEAR = 2019
-END_YEAR   = 2025   # Census publishes through the most recent completed year
+END_YEAR   = 2025
 
 # ---------------------------------------------------------------------------
-# 4-digit HS headings per sector — derived from CBAM CN codes in cbamBenchmarks.js.
-# HS-4 headings are internationally harmonized (same in EU CN and US HTS/Schedule B).
+# Sector headings — derived from CBAM CN codes in fetch_eu_trade_raw.py.
+#
+# 6-digit codes: exact HS6 match (first 6 digits of the EU CN-8 code).
+# 4-digit codes: prefix match — any HS6 sub-code under that heading qualifies,
+#   mirroring EU entries where the entire HS heading is CBAM-regulated.
 # ---------------------------------------------------------------------------
 SECTOR_HEADINGS: dict[str, set[str]] = {
     "iron_steel_72": {
-        "2601",                           # agglomerated iron ore (CBAM precursor)
-        "7201", "7202", "7203",           # pig iron, ferro-alloys, DRI
-        "7205", "7206",                   # granules/powders, ingots
-        "7208", "7209", "7210", "7211",   # flat-rolled products
-        "7212", "7213", "7214", "7215", "7216", "7217",  # bars, rods, angles, wire
-        "7218", "7219",                   # stainless ingots/flat-rolled
-        "7221", "7223", "7224", "7225",   # SS/alloy bars, wire, ingots, flat-rolled
+        # Precursor
+        "260112",                               # agglomerated iron ores (26011200)
+        # HS 72 — 4-digit prefix entries (all sub-codes covered by CBAM)
+        "7201", "7203", "7205",                 # pig iron, DRI, granules/powders
+        "7208", "7209", "7210",                 # HR/CR flat-rolled ≥600mm, coated
+        "7212", "7213", "7215", "7216", "7221", # bars, rods, angles, SS bars
+        # HS 72 — 6-digit exact entries
+        "720211", "720241", "720260",           # ferro-manganese, ferro-chromium, ferro-nickel
+        "720610",                               # non-alloy steel ingots
+        "721113",                               # wide flats 150–600mm
+        "721420",                               # rebars
+        "721710", "721720",                     # wire uncoated / zinc-coated
+        "721810", "721911", "721931",           # stainless ingots / HR / CR flat-rolled
+        "722300",                               # stainless wire
+        "722410", "722511", "722530", "722550", # alloy steel ingots, Si-electrical, HR, CR
     },
     "iron_steel_73": {
-        "7301", "7302", "7303", "7304", "7305", "7306",  # sheet piling, rail, tubes/pipes
-        "7307", "7308", "7309", "7310", "7311",           # fittings, structures, tanks
-        "7318", "7326",                                   # screws/bolts/nuts, other articles
+        # 4-digit prefix entries
+        "7301", "7302",                         # sheet piling, railway track
+        "7305", "7308", "7309", "7310",         # large-diameter pipes, structures, tanks
+        # 6-digit exact entries
+        "730300",                               # cast iron tubes/pipes
+        "730419", "730439",                     # seamless line pipe / circular tubes non-SS
+        "730619", "730630",                     # welded line pipe / tubes 168–406mm non-SS
+        "730721", "730791",                     # SS flanges, non-SS flanges
+        "731100",                               # containers for compressed gas
+        "731815", "731816",                     # screws/bolts, nuts
+        "731822", "731823",                     # washers, rivets
+        "732690",                               # articles of iron/steel NES
     },
     "aluminum_76": {
-        "7601", "7603", "7604", "7605", "7606", "7607",
-        "7608", "7609", "7610", "7611", "7612", "7613", "7614", "7616",
+        # 4-digit prefix entries
+        "7601", "7603",                         # unwrought aluminum, powders/flakes
+        "7605", "7606", "7607", "7608",         # wire, plates, foil, tubes/pipes
+        "7612", "7614",                         # casks/drums, stranded wire/cables
+        # 6-digit exact entries
+        "760410", "760421", "760429",           # extruded profiles
+        "760900",                               # tube/pipe fittings
+        "761010", "761100",                     # structures/tanks (large)
+        "761300",                               # containers for compressed gas
+        "761610", "761691", "761699",           # nails, cloth/netting, other articles
     },
     "cement_2523": {
-        "2507",   # kaolinic clay (CBAM precursor)
-        "2523",   # cement and clinker
+        # 6-digit exact entries only (no full-heading entries needed)
+        "250700",                               # kaolinic clays precursor (25070080)
+        "252310", "252321", "252329",           # clinker, white/grey Portland cement
+        "252330", "252390",                     # aluminous cement, other hydraulic cements
     },
     "hydrogen_2804": {
-        "2804",   # hydrogen (HS-4; also covers noble gases at this level)
+        "280410",                               # hydrogen only — excludes noble gases
     },
     "fertilizers": {
-        "2808",   # Nitric acid
-        "2814",   # Ammonia (anhydrous + aqueous)
-        "2834",   # Nitrates (potassium nitrate)
-        "3102",   # Nitrogenous fertilizers (urea, ammonium nitrate, etc.)
-        "3105",   # NPK / NP / NK fertilizers
+        # HS 28 precursors
+        "280800",                               # nitric acid
+        "281410", "281420",                     # ammonia anhydrous / aqueous
+        "283421",                               # potassium nitrate
+        # HS 31 nitrogenous fertilizers (3102)
+        "310210",                               # urea (all sub-types)
+        "310221", "310229",                     # ammonium sulphate / double salts
+        "310230",                               # ammonium nitrate
+        "310240",                               # AN + CaCO₃
+        "310250", "310260",                     # sodium nitrate, Ca nitrate/AN mix
+        "310280", "310290",                     # UAN solution, other N fertilizers
+        # HS 31 NPK/NP/NK (3105)
+        "310510", "310520",                     # NPK packaged, NPK bulk
+        "310530", "310540",                     # DAP, MAP
+        "310551", "310559",                     # NP nitrates, NP other
+        "310590",                               # NK fertilizers
     },
 }
 
-ALL_CBAM_HEADINGS: set[str] = set().union(*SECTOR_HEADINGS.values())
+# HS6 codes that must match exactly
+HS6_EXACT: set[str] = {c for codes in SECTOR_HEADINGS.values() for c in codes if len(c) == 6}
+# 4-digit prefixes where any HS6 sub-code qualifies
+HS4_PREFIXES: set[str] = {c for codes in SECTOR_HEADINGS.values() for c in codes if len(c) == 4}
 
-# Build a reverse map: heading → sector (for fast lookup)
+def _is_cbam(hs6: str) -> bool:
+    return hs6 in HS6_EXACT or hs6[:4] in HS4_PREFIXES
+
+# heading → sector (supports both 4-digit and 6-digit keys)
 HEADING_TO_SECTOR: dict[str, str] = {
-    h: sector for sector, headings in SECTOR_HEADINGS.items() for h in headings
+    code: sector for sector, codes in SECTOR_HEADINGS.items() for code in codes
 }
+
+def _sector(hs6: str) -> str | None:
+    return HEADING_TO_SECTOR.get(hs6) or HEADING_TO_SECTOR.get(hs6[:4])
 
 FLOW_CONFIG = {
     "Export": {
@@ -102,22 +153,13 @@ FLOW_CONFIG = {
 # Census country name normalisation
 # ---------------------------------------------------------------------------
 
-# Geographic aggregates / blocs — not individual countries
-# Substring markers: safe because no single country name contains these strings.
 AGGREGATE_MARKERS = {
     "OECD", "APEC", "USMCA", "NAFTA", "NATO",
     "EUROPEAN UNION", "G20", "G7", "OPEC", "ASEAN", "ADB",
     "TOTAL", "WORLD", "REST OF WORLD",
-    # Census Bureau regional trade-bloc labels
-    "LATIN AMERICAN",   # "Twenty Latin American Republics", "Latin American…"
-    "PACIFIC RIM",      # "Pacific Rim Countries"
-    "EURO AREA",        # "Euro Area"
-    "CAFTA",            # "Cafta-Dr"
-    "LAFTA",            # Latin American Free Trade Association
-    "AND OCEANIA",      # "Australia And Oceania"
+    "LATIN AMERICAN", "PACIFIC RIM", "EURO AREA",
+    "CAFTA", "LAFTA", "AND OCEANIA",
 }
-# Exact matches for continental names where substring would cause false positives
-# (e.g. "AFRICA" substring would match "South Africa").
 AGGREGATE_EXACT = {
     "AFRICA", "NORTH AFRICA", "SUB-SAHARAN AFRICA",
     "ASIA", "EAST ASIA", "SOUTH ASIA", "SOUTHEAST ASIA", "CENTRAL ASIA",
@@ -132,7 +174,6 @@ def _is_aggregate(name: str) -> bool:
     n = name.upper()
     return n in AGGREGATE_EXACT or any(marker in n for marker in AGGREGATE_MARKERS)
 
-# Census country name (uppercase) → display name aligned with app.js PARTNER_COLORS
 PARTNER_NAMES: dict[str, str] = {
     "CHINA":                    "China",
     "CHINA, MAINLAND":          "China",
@@ -195,22 +236,22 @@ PARTNER_NAMES: dict[str, str] = {
 # ---------------------------------------------------------------------------
 
 def fetch_year_flow(flow_name: str, year: int) -> pd.DataFrame:
-    """One API call → all HS-4 headings × all countries for one year+flow."""
-    cfg  = FLOW_CONFIG[flow_name]
-    cmd  = cfg["cmd_col"]
-    val  = cfg["val_col"]
+    """One API call → all HS-6 codes × all countries for one year + flow."""
+    cfg = FLOW_CONFIG[flow_name]
+    cmd = cfg["cmd_col"]
+    val = cfg["val_col"]
 
     params = {
         "get":      f"{cmd},CTY_CODE,CTY_NAME,{val},AIR_WGT_YR,VES_WGT_YR",
         "YEAR":     str(year),
-        "MONTH":    "12",     # cumulative full-year value
-        "COMM_LVL": "HS4",
+        "MONTH":    "12",
+        "COMM_LVL": "HS6",
         "key":      CENSUS_KEY,
     }
 
     for attempt in range(5):
         try:
-            resp = requests.get(cfg["url"], params=params, timeout=120)
+            resp = requests.get(cfg["url"], params=params, timeout=180)
         except requests.RequestException as exc:
             print(f"\n    Network error (attempt {attempt + 1}): {exc}")
             time.sleep(2 ** attempt)
@@ -247,7 +288,7 @@ def fetch_year_flow(flow_name: str, year: int) -> pd.DataFrame:
 
 
 def process(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
-    """Filter to CBAM headings, drop aggregates, map names, return tidy frame."""
+    """Filter to CBAM HS6 codes, drop aggregates, map names, return tidy frame."""
     cfg = FLOW_CONFIG[flow_name]
     cmd = cfg["cmd_col"]
     val = cfg["val_col"]
@@ -257,8 +298,8 @@ def process(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
     df["VES_WGT_YR"] = pd.to_numeric(df.get("VES_WGT_YR", 0), errors="coerce").fillna(0)
     df["quantity_kg"] = df["AIR_WGT_YR"] + df["VES_WGT_YR"]
 
-    # Keep only CBAM-relevant headings
-    df = df[df[cmd].isin(ALL_CBAM_HEADINGS)].copy()
+    # Filter to CBAM-relevant HS6 codes (exact or 4-digit prefix match)
+    df = df[df[cmd].apply(_is_cbam)].copy()
 
     # Drop geographic aggregates and zero-value rows
     df = df[~df["CTY_NAME"].apply(_is_aggregate)].copy()
@@ -271,13 +312,14 @@ def process(df: pd.DataFrame, flow_name: str, year: int) -> pd.DataFrame:
                       .fillna(df["CTY_NAME"].str.title())
     )
 
-    # Assign sector
-    df["sector"] = df[cmd].map(HEADING_TO_SECTOR)
+    # Assign sector (exact HS6 match first, then 4-digit prefix fallback)
+    df["sector"] = df[cmd].apply(_sector)
+    df = df[df["sector"].notna()].copy()
+
     df["period"] = year
     df["flow"]   = flow_name
     df = df.rename(columns={val: "primaryValue"})
 
-    # Aggregate headings → partner × sector × year
     return (
         df.groupby(["period", "flow", "sector", "partnerDesc"], as_index=False)
           .agg(primaryValue=("primaryValue", "sum"), quantity_kg=("quantity_kg", "sum"))
@@ -317,7 +359,7 @@ def main() -> None:
     out_path = OUTDIR / "us_trade_hard_to_abate_partner_raw.csv"
     out.to_csv(out_path, index=False)
     print(f"\nSaved: {out_path}  ({len(out):,} rows)")
-    print("Note: 'primaryValue' is in USD (Census Bureau, Schedule B / HTS).")
+    print("Note: primaryValue in USD; quantity_kg = AIR_WGT_YR + VES_WGT_YR (kg).")
 
 
 if __name__ == "__main__":
