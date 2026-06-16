@@ -1,19 +1,12 @@
 """
 Build docs/data/trade_data.json from Census Bureau + Eurostat Comext APIs.
 
-Census Bureau (https://api.census.gov/data/timeseries/intltrade/):
-  RAW[hs_key][series][period]
-  hs_key  : "72","73","76","2523","280410","31","2814"
-  annual  : ae, awx, awm, aew  (period = "2019".."current_year")
-  monthly : me, mw, mew        (period = "202401".."latest_month")
+Annual EU27 US exports (ae, aew) come from the existing CSV produced by
+fetch_us_trade_raw.py.  World totals (awx, awm) and monthly series (me, mew,
+mw) come from the Census Bureau API.  EU imports from US come from Comext.
 
-Eurostat Comext DS-045409 (monthly EU27 imports from US):
-  RAWEU[sector][period] → [eur, tonnes]
-  sector  : "steel","alu","cement","fert","h2"
-  period  : "202201".."latest_month"
-
-Run:  python python/build_data.py
-Env:  CENSUS_API_KEY in project .env
+Existing trade_data.json is loaded as a baseline; fields are only overwritten
+when new data is non-empty, so an API failure never wipes good old data.
 """
 from __future__ import annotations
 
@@ -27,21 +20,22 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT  = ROOT / "docs" / "data" / "trade_data.json"
+ROOT    = Path(__file__).resolve().parents[1]
+OUT     = ROOT / "docs" / "data" / "trade_data.json"
+EU27_CSV = ROOT / "data" / "raw" / "us_eu27_trade_raw.csv"
 
 load_dotenv(ROOT / ".env")
 CENSUS_KEY = os.getenv("CENSUS_API_KEY", "")
 if not CENSUS_KEY:
     raise RuntimeError("CENSUS_API_KEY not found — add it to the project .env file")
 
-EXPORT_URL   = "https://api.census.gov/data/timeseries/intltrade/exports/hs"
-IMPORT_URL   = "https://api.census.gov/data/timeseries/intltrade/imports/hs"
-COMEXT_BASE  = "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409"
+EXPORT_URL  = "https://api.census.gov/data/timeseries/intltrade/exports/hs"
+IMPORT_URL  = "https://api.census.gov/data/timeseries/intltrade/imports/hs"
+COMEXT_BASE = "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409"
 
-START_YEAR    = 2019
-CURRENT_YEAR  = date.today().year
-MONTHLY_FROM  = (2024, 1)   # start of monthly window
+START_YEAR   = 2019
+CURRENT_YEAR = date.today().year
+MONTHLY_FROM = (2024, 1)
 
 # ---------------------------------------------------------------------------
 # CBAM sector definitions — kept in sync with fetch_us_trade_raw.py
@@ -114,29 +108,18 @@ HS4_PREFIXES: set[str] = {c for codes in SECTOR_HEADINGS.values() for c in codes
 def _is_cbam(hs6: str) -> bool:
     return hs6 in HS6_EXACT or hs6[:4] in HS4_PREFIXES
 
-# ---------------------------------------------------------------------------
-# HS6 code → RAW key  (aligns with SECTORS in index.html)
-# ---------------------------------------------------------------------------
 def hs6_to_key(hs6: str) -> Optional[str]:
-    if hs6 == "260112" or hs6.startswith("72"):
-        return "72"
-    if hs6.startswith("73"):
-        return "73"
-    if hs6.startswith("76"):
-        return "76"
-    if hs6.startswith("2523") or hs6.startswith("2507"):
-        return "2523"
-    if hs6 == "280410":
-        return "280410"
-    if hs6.startswith("2814"):
-        return "2814"
-    if hs6.startswith("31"):
-        return "31"
-    # Other HS28 codes (nitric acid 280800, potassium nitrate 283421): no RAW key
+    if hs6 == "260112" or hs6.startswith("72"): return "72"
+    if hs6.startswith("73"):                     return "73"
+    if hs6.startswith("76"):                     return "76"
+    if hs6.startswith("2523") or hs6.startswith("2507"): return "2523"
+    if hs6 == "280410":                          return "280410"
+    if hs6.startswith("2814"):                   return "2814"
+    if hs6.startswith("31"):                     return "31"
     return None
 
 # ---------------------------------------------------------------------------
-# Aggregate detection — mirrors fetch_us_trade_raw.py
+# Aggregate-country detection (mirrors fetch_us_trade_raw.py)
 # ---------------------------------------------------------------------------
 _AGG_MARKERS = {
     "OECD","APEC","USMCA","NAFTA","NATO","EUROPEAN UNION","G20","G7","OPEC","ASEAN",
@@ -158,11 +141,16 @@ def _is_aggregate(name: str) -> bool:
     n = name.upper()
     return n in _AGG_EXACT or any(m in n for m in _AGG_MARKERS)
 
+def _to_float(v) -> float:
+    if v is None: return 0.0
+    try: return float(v)
+    except (ValueError, TypeError): return 0.0
+
 # ---------------------------------------------------------------------------
 # Generic Census HTTP helper
 # ---------------------------------------------------------------------------
 def _census_fetch(url: str, params: dict, label: str) -> list:
-    for attempt in range(5):
+    for attempt in range(4):
         try:
             r = requests.get(url, params=params, timeout=180)
         except requests.RequestException as exc:
@@ -174,38 +162,151 @@ def _census_fetch(url: str, params: dict, label: str) -> list:
                 return r.json()
             except Exception:
                 if "maintenance" in r.text.lower():
-                    print(f"\n    Census maintenance — waiting 30s")
+                    print(f"\n    Census maintenance — waiting 30 s")
                     time.sleep(30)
                     continue
-                print(f"\n    bad JSON ({label}): {r.text[:120]}")
+                print(f"\n    bad JSON ({label}): {r.text[:200]}")
                 return []
         if r.status_code == 429:
-            time.sleep(20 * (attempt + 1))
+            wait = 20 * (attempt + 1)
+            print(f"\n    rate-limited — waiting {wait} s")
+            time.sleep(wait)
             continue
-        print(f"\n    HTTP {r.status_code} ({label}): {r.text[:80]}")
+        print(f"\n    HTTP {r.status_code} ({label}): {r.text[:200]}")
         return []
     return []
 
 # ---------------------------------------------------------------------------
-# Census annual export: ae (EU27 value), aew (EU27 weight kg), awx (world value)
+# Annual EU27 exports — read from CSV produced by fetch_us_trade_raw.py
+# (more reliable than a fresh Census API call; covers 2019–latest full year)
 # ---------------------------------------------------------------------------
-def fetch_annual_exports(year: int) -> tuple[dict, dict, dict]:
-    print(f"  export annual {year} … ", end="", flush=True)
+def load_annual_from_csv() -> tuple[dict, dict]:
+    """Return (ae, aew) dicts: ae[key][year]=USD, aew[key][year]=tonnes."""
+    ae_raw:  dict[str, dict] = {k: {} for k in RAW_KEYS}
+    aew_raw: dict[str, dict] = {k: {} for k in RAW_KEYS}
+
+    if not EU27_CSV.exists():
+        print(f"  WARNING: {EU27_CSV} not found — annual EU27 data will be empty")
+        return ae_raw, aew_raw
+
+    df = pd.read_csv(EU27_CSV, dtype=str)
+    df["primaryValue"] = pd.to_numeric(df["primaryValue"], errors="coerce").fillna(0)
+    df["quantity_kg"]  = pd.to_numeric(df["quantity_kg"],  errors="coerce").fillna(0)
+
+    exports = df[df["flow"].str.strip().str.lower() == "export"]
+    for _, row in exports.iterrows():
+        hs6 = str(row.get("hs6", "")).strip()
+        key = hs6_to_key(hs6)
+        if key is None:
+            continue
+        year = str(row.get("period", "")).strip()[:4]
+        if not year.isdigit():
+            continue
+        ae_raw[key][year]  = ae_raw[key].get(year,  0.0) + float(row["primaryValue"])
+        aew_raw[key][year] = aew_raw[key].get(year, 0.0) + float(row["quantity_kg"])
+
+    # Round at the end (not per-row) to avoid accumulated rounding error
+    ae:  dict[str, dict] = {k: {y: round(v)          for y, v in ae_raw[k].items()}  for k in RAW_KEYS}
+    aew: dict[str, dict] = {k: {y: round(v/1000, 1)  for y, v in aew_raw[k].items()} for k in RAW_KEYS}
+
+    sectors_ok = sum(1 for k in RAW_KEYS if ae[k])
+    years_found = sorted({y for k in RAW_KEYS for y in ae[k]})
+    print(f"  CSV → {sectors_ok}/{len(RAW_KEYS)} sectors with data, years: {years_found}")
+    return ae, aew
+
+# ---------------------------------------------------------------------------
+# Census annual: world export total per sector (awx)
+# ---------------------------------------------------------------------------
+def fetch_annual_exports_world(year: int) -> dict:
+    print(f"  export world {year} … ", end="", flush=True)
     data = _census_fetch(EXPORT_URL, {
-        "get":      "E_COMMODITY,CTY_NAME,ALL_VAL_YR,AIR_WGT_YR,VES_WGT_YR",
+        "get":      "E_COMMODITY,CTY_CODE,CTY_NAME,ALL_VAL_YR",
         "YEAR":     str(year),
         "MONTH":    "12",
         "COMM_LVL": "HS6",
         "key":      CENSUS_KEY,
-    }, f"export {year}")
+    }, f"export world {year}")
+    if len(data) < 2:
+        print("no data")
+        return {}
+
+    headers = data[0]
+    awx: dict[str, float] = {}
+    for row_list in data[1:]:
+        row  = dict(zip(headers, row_list))
+        hs6  = row.get("E_COMMODITY", "")
+        if not _is_cbam(hs6):
+            continue
+        key = hs6_to_key(hs6)
+        if key is None:
+            continue
+        name = (row.get("CTY_NAME") or "").upper()
+        if not _is_aggregate(name):
+            awx[key] = awx.get(key, 0.0) + _to_float(row.get("ALL_VAL_YR"))
+
+    print(f"{len(data)-1:,} rows")
+    return awx
+
+# ---------------------------------------------------------------------------
+# Census annual: world import total per sector (awm)
+# ---------------------------------------------------------------------------
+def fetch_annual_imports(year: int) -> dict:
+    print(f"  import world {year} … ", end="", flush=True)
+    data = _census_fetch(IMPORT_URL, {
+        "get":      "I_COMMODITY,CTY_CODE,CTY_NAME,GEN_VAL_YR",
+        "YEAR":     str(year),
+        "MONTH":    "12",
+        "COMM_LVL": "HS6",
+        "key":      CENSUS_KEY,
+    }, f"import world {year}")
+    if len(data) < 2:
+        print("no data")
+        return {}
+
+    headers = data[0]
+    awm: dict[str, float] = {}
+    for row_list in data[1:]:
+        row = dict(zip(headers, row_list))
+        hs6 = row.get("I_COMMODITY", "")
+        if not _is_cbam(hs6):
+            continue
+        key = hs6_to_key(hs6)
+        if key is None:
+            continue
+        name = (row.get("CTY_NAME") or "").upper()
+        if not _is_aggregate(name):
+            awm[key] = awm.get(key, 0.0) + _to_float(row.get("GEN_VAL_YR"))
+
+    print(f"{len(data)-1:,} rows")
+    return awm
+
+# ---------------------------------------------------------------------------
+# Census exports YTD (cumulative through a given month)
+# Returns (eu_ytd_val, eu_ytd_kg, world_ytd_kg) — all year-to-date cumulative.
+#
+# Uses ALL_VAL_YR (cumulative Jan–month) instead of ALL_VAL_MO (point-in-time)
+# because the Census exports/hs endpoint only includes the "EUROPEAN UNION"
+# aggregate row in cumulative queries; it is absent in monthly-only responses.
+# The caller diffs consecutive months to derive point-in-time monthly values.
+# ---------------------------------------------------------------------------
+def fetch_exports_ytd(year: int, month: int) -> tuple[dict, dict, dict]:
+    label = f"{year}{month:02d}"
+    print(f"  export YTD {label} … ", end="", flush=True)
+    data = _census_fetch(EXPORT_URL, {
+        "get":      "E_COMMODITY,CTY_CODE,CTY_NAME,ALL_VAL_YR,AIR_WGT_YR,VES_WGT_YR",
+        "YEAR":     str(year),
+        "MONTH":    f"{month:02d}",
+        "COMM_LVL": "HS6",
+        "key":      CENSUS_KEY,
+    }, f"export YTD {label}")
     if len(data) < 2:
         print("no data")
         return {}, {}, {}
 
     headers = data[0]
-    ae: dict[str, float] = {}
-    aew: dict[str, float] = {}
-    awx: dict[str, float] = {}
+    eu_ytd_val:   dict[str, float] = {}
+    eu_ytd_kg:    dict[str, float] = {}
+    world_ytd_kg: dict[str, float] = {}
 
     for row_list in data[1:]:
         row  = dict(zip(headers, row_list))
@@ -215,93 +316,18 @@ def fetch_annual_exports(year: int) -> tuple[dict, dict, dict]:
         key = hs6_to_key(hs6)
         if key is None:
             continue
-        val  = float(row.get("ALL_VAL_YR") or 0)
-        wgt  = float(row.get("AIR_WGT_YR") or 0) + float(row.get("VES_WGT_YR") or 0)
+        val = _to_float(row.get("ALL_VAL_YR"))
+        wgt = _to_float(row.get("AIR_WGT_YR")) + _to_float(row.get("VES_WGT_YR"))
         name = (row.get("CTY_NAME") or "").upper()
         if _is_eu27(name):
-            ae[key]  = ae.get(key, 0.0)  + val
-            aew[key] = aew.get(key, 0.0) + wgt
+            eu_ytd_val[key] = eu_ytd_val.get(key, 0.0) + val
+            eu_ytd_kg[key]  = eu_ytd_kg.get(key,  0.0) + wgt
         elif not _is_aggregate(name):
-            awx[key] = awx.get(key, 0.0) + val
+            world_ytd_kg[key] = world_ytd_kg.get(key, 0.0) + wgt
 
-    print(f"{len(data)-1:,} rows")
-    return ae, aew, awx
-
-# ---------------------------------------------------------------------------
-# Census annual import: awm (world value)
-# ---------------------------------------------------------------------------
-def fetch_annual_imports(year: int) -> dict:
-    print(f"  import annual {year} … ", end="", flush=True)
-    data = _census_fetch(IMPORT_URL, {
-        "get":      "I_COMMODITY,CTY_NAME,GEN_VAL_YR",
-        "YEAR":     str(year),
-        "MONTH":    "12",
-        "COMM_LVL": "HS6",
-        "key":      CENSUS_KEY,
-    }, f"import {year}")
-    if len(data) < 2:
-        print("no data")
-        return {}
-
-    headers = data[0]
-    awm: dict[str, float] = {}
-
-    for row_list in data[1:]:
-        row = dict(zip(headers, row_list))
-        hs6 = row.get("I_COMMODITY", "")
-        if not _is_cbam(hs6):
-            continue
-        key = hs6_to_key(hs6)
-        if key is None:
-            continue
-        if not _is_aggregate((row.get("CTY_NAME") or "").upper()):
-            awm[key] = awm.get(key, 0.0) + float(row.get("GEN_VAL_YR") or 0)
-
-    print(f"{len(data)-1:,} rows")
-    return awm
-
-# ---------------------------------------------------------------------------
-# Census monthly exports: me (EU27 value), mew (EU27 weight kg), mw (world weight kg)
-# ---------------------------------------------------------------------------
-def fetch_monthly_exports(year: int, month: int) -> tuple[dict, dict, dict]:
-    label = f"{year}{month:02d}"
-    print(f"  export monthly {label} … ", end="", flush=True)
-    data = _census_fetch(EXPORT_URL, {
-        "get":      "E_COMMODITY,CTY_NAME,ALL_VAL_MO,AIR_WGT_MO,VES_WGT_MO",
-        "YEAR":     str(year),
-        "MONTH":    f"{month:02d}",
-        "COMM_LVL": "HS6",
-        "key":      CENSUS_KEY,
-    }, f"monthly {label}")
-    if len(data) < 2:
-        print("no data")
-        return {}, {}, {}
-
-    headers = data[0]
-    me:  dict[str, float] = {}
-    mew: dict[str, float] = {}
-    mw:  dict[str, float] = {}
-
-    for row_list in data[1:]:
-        row = dict(zip(headers, row_list))
-        hs6 = row.get("E_COMMODITY", "")
-        if not _is_cbam(hs6):
-            continue
-        key = hs6_to_key(hs6)
-        if key is None:
-            continue
-        val  = float(row.get("ALL_VAL_MO") or 0)
-        wgt  = float(row.get("AIR_WGT_MO") or 0) + float(row.get("VES_WGT_MO") or 0)
-        name = (row.get("CTY_NAME") or "").upper()
-        if _is_eu27(name):
-            me[key]  = me.get(key,  0.0) + val
-            mew[key] = mew.get(key, 0.0) + wgt
-        elif not _is_aggregate(name):
-            mw[key] = mw.get(key, 0.0) + wgt
-
-    eu_keys = sum(1 for v in me.values() if v > 0)
-    print(f"{len(data)-1:,} rows → {eu_keys} EU sectors")
-    return me, mew, mw
+    eu_n = sum(1 for v in eu_ytd_val.values() if v > 0)
+    print(f"{len(data)-1:,} rows → {eu_n} EU sectors")
+    return eu_ytd_val, eu_ytd_kg, world_ytd_kg
 
 # ---------------------------------------------------------------------------
 # Comext: monthly EU27 imports from US per CBAM sector
@@ -357,11 +383,11 @@ def fetch_comext_monthly(sector: str, cn_codes: list[str]) -> dict[str, list]:
     batches = [cn_codes[i:i+_COMEXT_BATCH] for i in range(0, len(cn_codes), _COMEXT_BATCH)]
 
     for batch in batches:
-        url = f"{COMEXT_BASE}/M.EU27_2020.US.{'+'.join(batch)}.1./"
+        url    = f"{COMEXT_BASE}/M.EU27_2020.US.{'+'.join(batch)}.1./"
         params = {"format": "SDMX-CSV", "startPeriod": "2022-01", "lang": "EN"}
+        df     = pd.DataFrame()
 
-        df = pd.DataFrame()
-        for attempt in range(5):
+        for attempt in range(4):
             try:
                 r = requests.get(url, params=params, timeout=120)
             except requests.RequestException as exc:
@@ -384,24 +410,20 @@ def fetch_comext_monthly(sector: str, cn_codes: list[str]) -> dict[str, list]:
             continue
 
         df.columns = [c.lower() for c in df.columns]
-        needed = {"time_period", "obs_value", "indicators"}
-        if not needed.issubset(df.columns):
+        if not {"time_period", "obs_value", "indicators"}.issubset(df.columns):
             time.sleep(0.3)
             continue
 
         df["period"]    = df["time_period"].astype(str).str.replace("-", "", regex=False)
         df["obs_value"] = pd.to_numeric(df["obs_value"], errors="coerce").fillna(0)
 
-        val_rows = df[df["indicators"].str.upper() == "VALUE_IN_EUROS"]
-        qty_rows = df[df["indicators"].str.upper() == "QUANTITY_IN_100KG"]
-
-        for _, row in val_rows.iterrows():
+        for _, row in df[df["indicators"].str.upper() == "VALUE_IN_EUROS"].iterrows():
             p = str(row["period"])
             if len(p) == 6:
                 result.setdefault(p, [0.0, 0.0])
                 result[p][0] += float(row["obs_value"])
 
-        for _, row in qty_rows.iterrows():
+        for _, row in df[df["indicators"].str.upper() == "QUANTITY_IN_100KG"].iterrows():
             p = str(row["period"])
             if len(p) == 6:
                 result.setdefault(p, [0.0, 0.0])
@@ -409,8 +431,7 @@ def fetch_comext_monthly(sector: str, cn_codes: list[str]) -> dict[str, list]:
 
         time.sleep(0.4)
 
-    rounded = {p: [round(v, 2), round(t, 1)]
-               for p, (v, t) in sorted(result.items())}
+    rounded = {p: [round(v, 2), round(t, 1)] for p, (v, t) in sorted(result.items())}
     print(f"{len(rounded)} months")
     return rounded
 
@@ -420,62 +441,120 @@ def fetch_comext_monthly(sector: str, cn_codes: list[str]) -> dict[str, list]:
 RAW_KEYS = ["72", "73", "76", "2523", "280410", "31", "2814"]
 
 def build() -> None:
-    RAW: dict = {k: {"ae": {}, "awx": {}, "awm": {}, "aew": {},
-                      "me": {}, "mw": {}, "mew": {}} for k in RAW_KEYS}
+    # Load existing file as baseline so API failures never wipe good old data
+    ex_raw: dict = {}
+    ex_eu:  dict = {}
+    if OUT.exists():
+        try:
+            existing = json.loads(OUT.read_text())
+            ex_raw = existing.get("RAW", {})
+            ex_eu  = existing.get("RAWEU", {})
+            print(f"Loaded baseline from {OUT}  ({OUT.stat().st_size//1024} KB)")
+        except Exception as e:
+            print(f"Warning: could not parse existing {OUT} ({e}) — starting fresh")
 
-    # --- Annual ---
-    print("\n=== Census annual exports ===")
+    RAW: dict = {k: {
+        "ae":  dict(ex_raw.get(k, {}).get("ae",  {})),
+        "awx": dict(ex_raw.get(k, {}).get("awx", {})),
+        "awm": dict(ex_raw.get(k, {}).get("awm", {})),
+        "aew": dict(ex_raw.get(k, {}).get("aew", {})),
+        "me":  dict(ex_raw.get(k, {}).get("me",  {})),
+        "mw":  dict(ex_raw.get(k, {}).get("mw",  {})),
+        "mew": dict(ex_raw.get(k, {}).get("mew", {})),
+    } for k in RAW_KEYS}
+
+    RAWEU: dict = {k: dict(ex_eu.get(k, {})) for k in COMEXT_SECTORS}
+
+    # ---- Annual EU27 exports from CSV (ae, aew) ----
+    print("\n=== Annual EU27 exports (from us_eu27_trade_raw.csv) ===")
+    ae, aew = load_annual_from_csv()
+    for k in RAW_KEYS:
+        RAW[k]["ae"].update(ae[k])
+        RAW[k]["aew"].update(aew[k])
+
+    # ---- Annual world exports from Census (awx) ----
+    print("\n=== Census annual exports (world total for awx) ===")
     for year in range(START_YEAR, CURRENT_YEAR + 1):
-        ae, aew_kg, awx = fetch_annual_exports(year)
+        awx = fetch_annual_exports_world(year)
         y = str(year)
         for k in RAW_KEYS:
-            if ae.get(k):  RAW[k]["ae"][y]  = round(ae[k])
-            if aew_kg.get(k): RAW[k]["aew"][y] = round(aew_kg[k] / 1000, 1)  # kg → t
-            if awx.get(k): RAW[k]["awx"][y] = round(awx[k])
+            if awx.get(k):
+                RAW[k]["awx"][y] = round(awx[k])
         time.sleep(0.5)
 
-    print("\n=== Census annual imports ===")
+    # ---- Annual world imports from Census (awm) ----
+    print("\n=== Census annual imports (world total for awm) ===")
     for year in range(START_YEAR, CURRENT_YEAR + 1):
         awm = fetch_annual_imports(year)
         y = str(year)
         for k in RAW_KEYS:
-            if awm.get(k): RAW[k]["awm"][y] = round(awm[k])
+            if awm.get(k):
+                RAW[k]["awm"][y] = round(awm[k])
         time.sleep(0.5)
 
-    # --- Monthly ---
-    print("\n=== Census monthly exports ===")
+    # ---- Monthly exports from Census (me, mew, mw) ----
+    # Each call fetches the cumulative YTD total through that month from the
+    # annual endpoint (which includes the EU27 aggregate row).  Point-in-time
+    # monthly values are the diff between consecutive months.
+    print("\n=== Census monthly exports (me, mew, mw via YTD diff) ===")
     today = date.today()
-    y, m = MONTHLY_FROM
+    y, m  = MONTHLY_FROM
+    prev_eu_val:   dict[str, float] = {}
+    prev_eu_kg:    dict[str, float] = {}
+    prev_world_kg: dict[str, float] = {}
+    cur_year = y
+
     while (y, m) <= (today.year, today.month):
-        me, mew_kg, mw = fetch_monthly_exports(y, m)
+        if y != cur_year:           # New calendar year — YTD accumulators reset
+            prev_eu_val   = {}
+            prev_eu_kg    = {}
+            prev_world_kg = {}
+            cur_year      = y
+
+        curr_eu_val, curr_eu_kg, curr_world_kg = fetch_exports_ytd(y, m)
         label = f"{y}{m:02d}"
+
         for k in RAW_KEYS:
-            # Only write a month if there's any EU export value
-            if me.get(k, 0) > 0:
-                RAW[k]["me"][label]  = round(me[k])
-            if mew_kg.get(k, 0) > 0:
-                RAW[k]["mew"][label] = round(mew_kg[k] / 1000, 1)  # kg → t
-            if mw.get(k, 0) > 0:
-                RAW[k]["mw"][label]  = round(mw[k])
+            me_val  = curr_eu_val.get(k, 0)   - prev_eu_val.get(k, 0)
+            mew_val = (curr_eu_kg.get(k, 0)   - prev_eu_kg.get(k, 0))   / 1000  # kg→t
+            mw_val  = curr_world_kg.get(k, 0)  - prev_world_kg.get(k, 0)         # kg
+
+            if me_val  > 0: RAW[k]["me"][label]  = round(me_val)
+            if mew_val > 0: RAW[k]["mew"][label] = round(mew_val, 1)
+            if mw_val  > 0: RAW[k]["mw"][label]  = round(mw_val)
+
+        prev_eu_val   = curr_eu_val
+        prev_eu_kg    = curr_eu_kg
+        prev_world_kg = curr_world_kg
+
         m += 1
         if m > 12:
             m, y = 1, y + 1
         time.sleep(0.5)
 
-    # --- Comext ---
+    # ---- Comext monthly EU27 imports from US (RAWEU) ----
     print("\n=== Comext monthly EU imports from US ===")
-    RAWEU: dict = {}
     for sector, codes in COMEXT_SECTORS.items():
-        RAWEU[sector] = fetch_comext_monthly(sector, codes)
+        fresh = fetch_comext_monthly(sector, codes)
+        if fresh:
+            RAWEU[sector] = fresh
         time.sleep(1.0)
 
-    # --- Write ---
+    # ---- Write ----
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with OUT.open("w") as fh:
         json.dump({"RAW": RAW, "RAWEU": RAWEU}, fh, separators=(",", ":"))
 
     size_kb = OUT.stat().st_size / 1024
     print(f"\nWrote {OUT}  ({size_kb:.0f} KB)")
+
+    # Quick sanity check
+    ae_ok  = sum(1 for k in RAW_KEYS if RAW[k]["ae"])
+    me_ok  = sum(1 for k in RAW_KEYS if RAW[k]["me"])
+    eu_ok  = sum(1 for k in RAWEU if RAWEU[k])
+    print(f"  ae populated: {ae_ok}/{len(RAW_KEYS)} sectors")
+    print(f"  me populated: {me_ok}/{len(RAW_KEYS)} sectors")
+    print(f"  RAWEU populated: {eu_ok}/{len(COMEXT_SECTORS)} sectors")
 
 
 if __name__ == "__main__":
