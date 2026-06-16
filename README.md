@@ -1,75 +1,109 @@
-# Hard-to-Abate Trade Monitor
+# US–EU CBAM Trade Monitor
 
-Bilateral trade flows in hard-to-abate sectors (iron & steel, aluminum, cement) for both the EU and the U.S., 2019–2023. Built for the Niskanen Center to contextualize the EU Carbon Border Adjustment Mechanism (CBAM) and U.S. trade policy.
+Monthly trade flows in CBAM-regulated sectors (iron & steel, aluminum, cement, fertilizers, hydrogen) between the US and EU, with the EU's own import data from Eurostat as a cross-check. Built for the Niskanen Center.
 
-## Live dashboard
+**Live dashboard:** [deeper747.github.io/Climate_Trade](https://deeper747.github.io/Climate_Trade/)
 
-[deeper747.github.io/Climate_Trade](https://deeper747.github.io/Climate_Trade/)
+---
 
-Two tabs:
+## How the data pipeline works
 
-- **EU Trade — CBAM Exposure** — EU import and export partners by sector, with partner share trends on hover
-- **U.S. Trade** — same sectors for the U.S., as a comparison
+```
+Census Bureau API ──┐
+                    ├──► python/build_data.py ──► docs/data/trade_data.json
+Eurostat Comext  ───┘                                        │
+                                                             ▼
+                                                   docs/index.html (GitHub Pages)
+                                                             │
+                                                             ▼
+                                                   User's browser fetches JSON on load
+```
+
+**Two data sources** are pulled on each update:
+
+| Source | What it provides | Script |
+|--------|-----------------|--------|
+| US Census Bureau International Trade API | Monthly US exports/imports by HS6 code and partner country (2019–present) | `python/build_data.py` |
+| Eurostat Comext DS-045409 | Monthly EU27 imports from the US by CN code (2022–present) | `python/build_data.py` |
+
+`build_data.py` aggregates both into a single `docs/data/trade_data.json` file. The dashboard (`docs/index.html`) fetches that file in the browser every time a visitor loads the page — no server required.
+
+The two fetch scripts (`fetch_eu_trade_raw.py`, `fetch_us_trade_raw.py`) produce the partner-level bilateral CSVs in `data/raw/` used for historical analysis and are run as part of the update cycle.
+
+---
+
+## Updating the data (one command)
+
+```bash
+./update.sh
+```
+
+This runs four steps in sequence:
+
+1. `fetch_eu_trade_raw.py` — pulls annual EU bilateral trade from Eurostat Comext → `data/raw/eu_trade_hard_to_abate_partner_raw.csv`
+2. `fetch_us_trade_raw.py` — pulls annual US bilateral trade from Census Bureau → `data/raw/us_trade_hard_to_abate_partner_raw.csv`
+3. `build_data.py` — calls both APIs again for full monthly time-series, writes `docs/data/trade_data.json`
+4. `git commit` + `git push` — deploys the updated JSON to GitHub Pages
+
+A cloud routine (via Claude Code) creates a GitHub issue on the 15th of each month as a reminder to run this script.
+
+**Requires:** `CENSUS_API_KEY` in a `.env` file at the project root. The Eurostat API needs no key.
+
+```
+CENSUS_API_KEY=your_key_here
+```
+
+---
 
 ## Repository structure
 
 ```
 python/
-  build_pages_trade_data.py     # Generates JSON payloads for GitHub Pages
-  fetch_eu_trade_raw.py         # Downloads EU trade data from UN Comtrade API
-  fetch_us_trade_raw.py         # Downloads U.S. trade data from UN Comtrade API
-  build_eu_trade_processed.py   # Cleans and aggregates raw EU trade data
-  process_exports.py            # Processes U.S. export data
+  build_data.py               # Fetches Census + Comext APIs → docs/data/trade_data.json
+  fetch_eu_trade_raw.py       # Annual EU bilateral trade from Eurostat Comext
+  fetch_us_trade_raw.py       # Annual US bilateral trade from Census Bureau
 
 data/
   raw/
-    us_trade_hard_to_abate_partner_raw.csv   # U.S. bilateral trade by partner/sector/year
-    eu_trade_hard_to_abate_partner_raw.csv   # EU bilateral trade (raw, pre-processing)
-    comext_us_cbam_trade.csv                 # EU→US trade by CN4 code (Eurostat COMEXT)
-    comext_us_cbam_trade_by_year.csv         # Same, broken out by year
-    us_exports_hard_to_abate_comtrade_v1_raw.csv
+    eu_trade_hard_to_abate_partner_raw.csv   # EU bilateral trade by partner/sector/year (EUR)
+    us_trade_hard_to_abate_partner_raw.csv   # US bilateral trade by partner/sector/year (USD)
+    us_eu27_trade_raw.csv                    # US→EU27 trade by HS6 code
+    comext_us_cbam_trade.csv                 # CN-level Comext snapshot
   processed/
     eu_trade_hard_to_abate_partner.csv       # Cleaned EU trade data
-    us_exports_hard_to_abate_top3_partners.csv
-    wb_exports_2023_datawrapper.csv
 
 docs/
-  index.html                    # GitHub Pages entrypoint
-  assets/
-    app.js                      # Chart logic
-    styles.css                  # Styles
+  index.html                  # Dashboard (self-contained, fetches trade_data.json on load)
   data/
-    eu_trade.json               # Generated by build_pages_trade_data.py
-    us_trade.json               # Generated by build_pages_trade_data.py
-  EU_CBAM_default_value_US.xlsx # Official EU CBAM default embedded-emission values
-                                # per CN code for U.S. exporters (2026–2028+)
+    trade_data.json           # Generated by build_data.py — the single data file the browser loads
+
+update.sh                     # One-command update + deploy
 ```
+
+---
+
+## CBAM sectors covered
+
+| Dashboard key | HS codes | Notes |
+|--------------|----------|-------|
+| Iron & steel (primary) | HS 72 + HS 2601.12 | CBAM: full chapter |
+| Steel articles | HS 73 | CBAM: partial, treated as upper bound |
+| Aluminum | HS 76 | CBAM: most of chapter |
+| Cement | HS 2523 + 2507 | CBAM: full |
+| Fertilizers | HS 31 | CBAM: nitrogenous only |
+| Ammonia | HS 2814 | CBAM: full |
+| Hydrogen | HS 2804.10 | CBAM: full |
+
+---
 
 ## Data sources
 
-- **UN Comtrade** — bilateral trade flows by HS product code and partner country, 2019–2023
-- **Eurostat COMEXT** (`DS-045409`) — EU imports from the U.S. by CN4 product code, 2022–2024
-- Sectors: Iron & Steel (HS 72, 73), Aluminum (HS 76), Cement (HS 2523)
+- **US Census Bureau** — [International Trade API](https://www.census.gov/data/developers/data-sets/international-trade.html): domestic exports (FAS value), general imports, and shipping weights by HS6 code and partner country
+- **Eurostat Comext** ([DS-045409](https://ec.europa.eu/eurostat/web/international-trade-in-goods/database)): EU27 imports from the US by CN code, monthly, in EUR and tonnes
 
-## Running locally
+All values are nominal. Comext values are CIF in euros and are not directly comparable to Census Bureau FAS dollar figures.
 
-```bash
-python3 python/build_pages_trade_data.py   # regenerate docs/data/*.json
-python3 -m http.server 8000 --directory .
-```
-
-Then open `http://localhost:8000/docs/`.
-
-## Refreshing the data
-
-Re-downloading requires a `COMTRADE_API_KEY` in a `.env` file. The Eurostat COMEXT API (`fetch_eu_trade_raw.py`) requires no key.
-
-```bash
-python3 python/fetch_eu_trade_raw.py       # → data/raw/eu_trade_hard_to_abate_partner_raw.csv
-python3 python/build_eu_trade_processed.py # → data/processed/eu_trade_hard_to_abate_partner.csv
-python3 python/fetch_us_trade_raw.py       # → data/raw/us_trade_hard_to_abate_partner_raw.csv
-python3 python/build_pages_trade_data.py   # → docs/data/eu_trade.json, us_trade.json
-```
+---
 
 ## License
 
