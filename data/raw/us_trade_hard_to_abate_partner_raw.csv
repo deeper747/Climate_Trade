@@ -4903,7 +4903,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,aluminum_76,Bahrain,1456733,153975
 2023,Export,aluminum_76,Bangladesh,246011,11576
 2023,Export,aluminum_76,Barbados,4730235,551178
-2023,Export,aluminum_76,Belgium,38287616,2017141
+2023,Export,aluminum_76,Belgium,38292466,2017149
 2023,Export,aluminum_76,Belize,1881432,227086
 2023,Export,aluminum_76,Bermuda,2083501,153707
 2023,Export,aluminum_76,Bhutan,3500,34
@@ -4950,7 +4950,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,aluminum_76,Gabon,119044,8416
 2023,Export,aluminum_76,Gambia,16000,2181
 2023,Export,aluminum_76,Georgia,111185,4537
-2023,Export,aluminum_76,Germany,162979888,10171295
+2023,Export,aluminum_76,Germany,162977150,10171278
 2023,Export,aluminum_76,Ghana,417790,139443
 2023,Export,aluminum_76,Greece,1386092,59541
 2023,Export,aluminum_76,Grenada,806261,107334
@@ -5027,7 +5027,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,aluminum_76,Poland,31447960,1667727
 2023,Export,aluminum_76,Portugal,6744205,287292
 2023,Export,aluminum_76,Qatar,2029540,83464
-2023,Export,aluminum_76,Rep. of Korea,263545217,30527551
+2023,Export,aluminum_76,Rep. of Korea,263635815,30530614
 2023,Export,aluminum_76,Romania,12369493,1302323
 2023,Export,aluminum_76,Russian Federation,391181,9863
 2023,Export,aluminum_76,Rwanda,23437,310
@@ -5062,7 +5062,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,aluminum_76,Uganda,186556,6140
 2023,Export,aluminum_76,Ukraine,218056,3808
 2023,Export,aluminum_76,United Arab Emirates,28467604,2808012
-2023,Export,aluminum_76,United Kingdom,217821331,10440353
+2023,Export,aluminum_76,United Kingdom,217813341,10437728
 2023,Export,aluminum_76,Uruguay,558548,35964
 2023,Export,aluminum_76,Uzbekistan,209773,3262
 2023,Export,aluminum_76,Vanuatu,11200,98
@@ -5203,7 +5203,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,fertilizers,Brazil,643791299,1377513307
 2023,Export,fertilizers,British Virgin Islands,53239,17033
 2023,Export,fertilizers,Bulgaria,533051,462000
-2023,Export,fertilizers,Cacm,43755952,76720259
+2023,Export,fertilizers,Cacm,43797952,76732259
 2023,Export,fertilizers,Cambodia,57877,15500
 2023,Export,fertilizers,Cameroon,2253486,12034274
 2023,Export,fertilizers,Canada,2023206018,195654506
@@ -5211,7 +5211,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,fertilizers,Chile,66708728,354577091
 2023,Export,fertilizers,China,24106086,37655713
 2023,Export,fertilizers,Colombia,81550542,163289952
-2023,Export,fertilizers,Costa Rica,4759381,2929397
+2023,Export,fertilizers,Costa Rica,4801381,2941397
 2023,Export,fertilizers,Cote D'Ivoire,3309915,24753716
 2023,Export,fertilizers,Curacao,95723,115714
 2023,Export,fertilizers,Cyprus,138624,38896
@@ -5257,14 +5257,13 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,fertilizers,Malaysia,7634050,5658182
 2023,Export,fertilizers,Martinique,922001,1499188
 2023,Export,fertilizers,Mauritius,37968,18000
-2023,Export,fertilizers,Mexico,399827489,339976496
+2023,Export,fertilizers,Mexico,399943739,339986666
 2023,Export,fertilizers,Micronesia,10500,5000
 2023,Export,fertilizers,Morocco,59503493,180768246
 2023,Export,fertilizers,Netherlands,38421462,121827232
 2023,Export,fertilizers,New Caledonia,16848,3000
 2023,Export,fertilizers,New Zealand,2352293,1312485
 2023,Export,fertilizers,Nicaragua,1450902,135168
-2023,Export,fertilizers,Norfolk Island,116250,10170
 2023,Export,fertilizers,Norway,77885562,170887826
 2023,Export,fertilizers,Oman,539990,529079
 2023,Export,fertilizers,Pakistan,1075124,606999
@@ -5339,9 +5338,9 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_72,Argentina,2637849,1030690
 2023,Export,iron_steel_72,Aruba,1854937,1561433
 2023,Export,iron_steel_72,Australia,3471576,1297840
-2023,Export,iron_steel_72,Austria,148833790,345180233
+2023,Export,iron_steel_72,Austria,151309734,352554320
 2023,Export,iron_steel_72,Azerbaijan,7302,472
-2023,Export,iron_steel_72,Bahamas,12951437,14767853
+2023,Export,iron_steel_72,Bahamas,12947729,14743851
 2023,Export,iron_steel_72,Bahrain,24847,4734
 2023,Export,iron_steel_72,Bangladesh,3600205,5526280
 2023,Export,iron_steel_72,Barbados,899940,573057
@@ -5350,7 +5349,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_72,Bermuda,1311349,1372052
 2023,Export,iron_steel_72,Bolivia,84991,58323
 2023,Export,iron_steel_72,Bosnia And Herzegovina,69033,70540
-2023,Export,iron_steel_72,Brazil,49022930,71588292
+2023,Export,iron_steel_72,Brazil,50105230,73940130
 2023,Export,iron_steel_72,British Virgin Islands,2762410,3627237
 2023,Export,iron_steel_72,Brunei,15679,1344
 2023,Export,iron_steel_72,Bulgaria,12119,636
@@ -5362,7 +5361,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_72,Chad,3600,7
 2023,Export,iron_steel_72,Chile,1044522,729373
 2023,Export,iron_steel_72,China,98016357,28893483
-2023,Export,iron_steel_72,Colombia,4551587,3777130
+2023,Export,iron_steel_72,Colombia,4548068,3776044
 2023,Export,iron_steel_72,Congo,18888,1618
 2023,Export,iron_steel_72,Costa Rica,34756396,3030964
 2023,Export,iron_steel_72,Cote D'Ivoire,720250,35864
@@ -5399,10 +5398,10 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_72,Indonesia,745944,485293
 2023,Export,iron_steel_72,Iraq,112782,87451
 2023,Export,iron_steel_72,Ireland,23308015,876601
-2023,Export,iron_steel_72,Israel,2895973,1366471
-2023,Export,iron_steel_72,Italy,54255701,81154888
+2023,Export,iron_steel_72,Israel,2864703,784576
+2023,Export,iron_steel_72,Italy,54247201,81108885
 2023,Export,iron_steel_72,Jamaica,885402,860991
-2023,Export,iron_steel_72,Japan,49720279,250281054
+2023,Export,iron_steel_72,Japan,49715779,250257052
 2023,Export,iron_steel_72,Jordan,282975,311038
 2023,Export,iron_steel_72,Kazakhstan,320531,46460
 2023,Export,iron_steel_72,Kenya,290262,368958
@@ -5422,7 +5421,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_72,Martinique,2865,698
 2023,Export,iron_steel_72,Mauritania,88667,0
 2023,Export,iron_steel_72,Mauritius,2761,1
-2023,Export,iron_steel_72,Mexico,3801628584,713888781
+2023,Export,iron_steel_72,Mexico,3801612514,713888781
 2023,Export,iron_steel_72,Micronesia,168813,207067
 2023,Export,iron_steel_72,Monaco,32614,0
 2023,Export,iron_steel_72,Mongolia,31173,29903
@@ -5497,7 +5496,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,Bahrain,6047299,1000361
 2023,Export,iron_steel_73,Bangladesh,1770783,138903
 2023,Export,iron_steel_73,Barbados,5083371,872347
-2023,Export,iron_steel_73,Belgium,43685933,5021110
+2023,Export,iron_steel_73,Belgium,43694083,5021113
 2023,Export,iron_steel_73,Belize,2073754,374563
 2023,Export,iron_steel_73,Benin,242333,20385
 2023,Export,iron_steel_73,Bermuda,3199952,592259
@@ -5546,7 +5545,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,Ethiopia,2156368,75652
 2023,Export,iron_steel_73,Fiji,41795,1899
 2023,Export,iron_steel_73,Finland,2387430,313534
-2023,Export,iron_steel_73,France,198376180,5871869
+2023,Export,iron_steel_73,France,198376180,5871871
 2023,Export,iron_steel_73,French Polynesia,129986,7841
 2023,Export,iron_steel_73,Gabon,2788875,267118
 2023,Export,iron_steel_73,Gambia,10500,2163
@@ -5561,7 +5560,6 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,Guinea,457066,31241
 2023,Export,iron_steel_73,Guyana,53957824,3091283
 2023,Export,iron_steel_73,Haiti,961870,483087
-2023,Export,iron_steel_73,Heard And Mcdonald Islands,3088,0
 2023,Export,iron_steel_73,Honduras,8030797,1256761
 2023,Export,iron_steel_73,Hong Kong,25545906,1365381
 2023,Export,iron_steel_73,Hungary,14940288,980474
@@ -5573,9 +5571,9 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,Israel,56193721,3287124
 2023,Export,iron_steel_73,Italy,61000411,6623000
 2023,Export,iron_steel_73,Jamaica,13801635,2660683
-2023,Export,iron_steel_73,Japan,264575432,44723817
+2023,Export,iron_steel_73,Japan,264583320,44717576
 2023,Export,iron_steel_73,Jordan,3136925,148236
-2023,Export,iron_steel_73,Kazakhstan,4503022,216450
+2023,Export,iron_steel_73,Kazakhstan,4498478,216406
 2023,Export,iron_steel_73,Kenya,736200,106265
 2023,Export,iron_steel_73,Kiribati,230710,2000
 2023,Export,iron_steel_73,Kosovo,5890,0
@@ -5601,7 +5599,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,Mauritania,5607942,1292541
 2023,Export,iron_steel_73,Mauritius,150335,18447
 2023,Export,iron_steel_73,Mayotte,7370,0
-2023,Export,iron_steel_73,Mexico,5314210671,8022888
+2023,Export,iron_steel_73,Mexico,5314224671,8022888
 2023,Export,iron_steel_73,Micronesia,1005945,212647
 2023,Export,iron_steel_73,Moldova,16814,1
 2023,Export,iron_steel_73,Mongolia,1012905,60569
@@ -5629,7 +5627,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,Poland,49447788,3852184
 2023,Export,iron_steel_73,Portugal,9519166,637712
 2023,Export,iron_steel_73,Qatar,12283898,876258
-2023,Export,iron_steel_73,Rep. of Korea,158858457,24126702
+2023,Export,iron_steel_73,Rep. of Korea,159142893,24132373
 2023,Export,iron_steel_73,Reunion,27710,1555
 2023,Export,iron_steel_73,Romania,10839858,2320891
 2023,Export,iron_steel_73,Russian Federation,766110,13276
@@ -5653,7 +5651,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Export,iron_steel_73,St Kitts And Nevis,1863348,419331
 2023,Export,iron_steel_73,St Lucia,1465736,284730
 2023,Export,iron_steel_73,St Vincent And The Grenadines,3753377,517632
-2023,Export,iron_steel_73,Suriname,3696254,515880
+2023,Export,iron_steel_73,Suriname,3699154,516512
 2023,Export,iron_steel_73,"Svalbard, Jan Mayen Island",3943,151
 2023,Export,iron_steel_73,Sweden,20195551,2835587
 2023,Export,iron_steel_73,Switzerland,25615780,826450
@@ -5686,7 +5684,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Australia,604652475,220635666
 2023,Import,aluminum_76,Austria,215763442,35323745
 2023,Import,aluminum_76,Azerbaijan,26902023,8337366
-2023,Import,aluminum_76,Bahrain,645924484,228269085
+2023,Import,aluminum_76,Bahrain,647015217,228512971
 2023,Import,aluminum_76,Bangladesh,23376,1611
 2023,Import,aluminum_76,Belarus,748188,90538
 2023,Import,aluminum_76,Belgium,126334417,17372935
@@ -5699,7 +5697,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Cambodia,7402996,2258428
 2023,Import,aluminum_76,Canada,9888467780,699470175
 2023,Import,aluminum_76,Chile,16294584,1828509
-2023,Import,aluminum_76,China,1485400795,342945282
+2023,Import,aluminum_76,China,1485313365,342912914
 2023,Import,aluminum_76,Colombia,588647451,65691218
 2023,Import,aluminum_76,Costa Rica,18105396,787825
 2023,Import,aluminum_76,Croatia,3901527,486114
@@ -5712,10 +5710,10 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Egypt,3058236,1009873
 2023,Import,aluminum_76,El Salvador,6158811,1086320
 2023,Import,aluminum_76,Estonia,355469,7501
-2023,Import,aluminum_76,Finland,801970,84564
+2023,Import,aluminum_76,Finland,801425,84531
 2023,Import,aluminum_76,France,255679672,22890820
 2023,Import,aluminum_76,Georgia,854838,74599
-2023,Import,aluminum_76,Germany,531509992,59314735
+2023,Import,aluminum_76,Germany,531502683,59292956
 2023,Import,aluminum_76,Greece,172369169,36843348
 2023,Import,aluminum_76,Guatemala,104888,19588
 2023,Import,aluminum_76,Guinea,4325,112
@@ -5724,13 +5722,13 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Hong Kong,4650660,1079900
 2023,Import,aluminum_76,Hungary,20559478,3275350
 2023,Import,aluminum_76,Iceland,212916,8213
-2023,Import,aluminum_76,India,752086043,224303798
+2023,Import,aluminum_76,India,752170794,224322894
 2023,Import,aluminum_76,Indonesia,110911461,27630647
 2023,Import,aluminum_76,Ireland,4339402,119258
 2023,Import,aluminum_76,Israel,14597883,1748856
-2023,Import,aluminum_76,Italy,254806009,32430624
+2023,Import,aluminum_76,Italy,254805155,32430622
 2023,Import,aluminum_76,Japan,200589638,26326511
-2023,Import,aluminum_76,Jordan,1056816,268864
+2023,Import,aluminum_76,Jordan,219872,77380
 2023,Import,aluminum_76,Kazakhstan,49828,4341
 2023,Import,aluminum_76,Kenya,167170,52501
 2023,Import,aluminum_76,Kosovo,184619,18701
@@ -5747,7 +5745,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Malta,229357,10301
 2023,Import,aluminum_76,Marshall Islands,13330,0
 2023,Import,aluminum_76,Mayotte,7191,315
-2023,Import,aluminum_76,Mexico,1336385769,13270567
+2023,Import,aluminum_76,Mexico,1336302153,13270567
 2023,Import,aluminum_76,Moldova,98114,8530
 2023,Import,aluminum_76,Morocco,779426,97460
 2023,Import,aluminum_76,Mozambique,5344684,1594723
@@ -5761,10 +5759,10 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Panama,15484,1813
 2023,Import,aluminum_76,Peru,233262,25927
 2023,Import,aluminum_76,Philippines,2681058,165638
-2023,Import,aluminum_76,Poland,56132978,7012243
+2023,Import,aluminum_76,Poland,56181737,7026542
 2023,Import,aluminum_76,Portugal,14660674,910504
 2023,Import,aluminum_76,Qatar,280086891,104781843
-2023,Import,aluminum_76,Rep. of Korea,568937523,145547548
+2023,Import,aluminum_76,Rep. of Korea,568937019,145712441
 2023,Import,aluminum_76,Romania,6419088,1123246
 2023,Import,aluminum_76,Russian Federation,43526697,17104660
 2023,Import,aluminum_76,Samoa,7073,16
@@ -5777,16 +5775,16 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,aluminum_76,Slovakia,8950474,826304
 2023,Import,aluminum_76,Slovenia,33972166,3650845
 2023,Import,aluminum_76,Solomon Islands,2009,24
-2023,Import,aluminum_76,South Africa,539143234,202914020
-2023,Import,aluminum_76,Spain,111058728,19703989
+2023,Import,aluminum_76,South Africa,539073397,202914020
+2023,Import,aluminum_76,Spain,111057948,19700782
 2023,Import,aluminum_76,Sri Lanka,781727,391995
 2023,Import,aluminum_76,St Vincent And The Grenadines,2043,47
 2023,Import,aluminum_76,Suriname,178882,52
 2023,Import,aluminum_76,Sweden,92409385,18992342
-2023,Import,aluminum_76,Switzerland,81256118,10870970
-2023,Import,aluminum_76,Taiwan,205583962,20976820
+2023,Import,aluminum_76,Switzerland,81253405,10870705
+2023,Import,aluminum_76,Taiwan,205583450,20976820
 2023,Import,aluminum_76,Tanzania,39798,0
-2023,Import,aluminum_76,Thailand,234199976,53601893
+2023,Import,aluminum_76,Thailand,234199977,53610980
 2023,Import,aluminum_76,Trinidad And Tobago,88550,763
 2023,Import,aluminum_76,Tunisia,982642,17409
 2023,Import,aluminum_76,Türkiye,318409970,75277241
@@ -5912,7 +5910,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_72,Algeria,287288673,472198659
 2023,Import,iron_steel_72,Argentina,7489,22
 2023,Import,iron_steel_72,Australia,265083296,267338168
-2023,Import,iron_steel_72,Austria,28617423,15960015
+2023,Import,iron_steel_72,Austria,28617423,15960470
 2023,Import,iron_steel_72,Belgium,79566308,70791166
 2023,Import,iron_steel_72,Bosnia And Herzegovina,70351,43146
 2023,Import,iron_steel_72,Brazil,2396827369,6166865256
@@ -5921,7 +5919,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_72,Cacm,10429969,6209200
 2023,Import,iron_steel_72,Canada,4841928611,2123121546
 2023,Import,iron_steel_72,Chile,19147,2159
-2023,Import,iron_steel_72,China,237294791,206785963
+2023,Import,iron_steel_72,China,235831214,206008108
 2023,Import,iron_steel_72,Colombia,12896543,4514870
 2023,Import,iron_steel_72,Costa Rica,3930360,2124869
 2023,Import,iron_steel_72,Croatia,28246,2707
@@ -5935,7 +5933,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_72,Finland,49055396,38831694
 2023,Import,iron_steel_72,France,148736540,99546939
 2023,Import,iron_steel_72,Georgia,291886,325000
-2023,Import,iron_steel_72,Germany,826930283,486328010
+2023,Import,iron_steel_72,Germany,827003699,486391651
 2023,Import,iron_steel_72,Greece,3633692,5906194
 2023,Import,iron_steel_72,Guatemala,5293342,3688950
 2023,Import,iron_steel_72,Honduras,702893,289114
@@ -5944,16 +5942,16 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_72,Indonesia,12017841,12080606
 2023,Import,iron_steel_72,Ireland,1194410,103790
 2023,Import,iron_steel_72,Israel,44296,3240
-2023,Import,iron_steel_72,Italy,141308063,118361834
-2023,Import,iron_steel_72,Japan,607510664,469590826
+2023,Import,iron_steel_72,Italy,119357778,68361184
+2023,Import,iron_steel_72,Japan,607980638,471263993
 2023,Import,iron_steel_72,Kazakhstan,160105666,51317519
 2023,Import,iron_steel_72,Liechtenstein,8628,1668
 2023,Import,iron_steel_72,Lithuania,58602,34471
 2023,Import,iron_steel_72,Luxembourg,68441139,56369597
 2023,Import,iron_steel_72,Macedonia,358640,349653
 2023,Import,iron_steel_72,Malaysia,160787691,156303666
-2023,Import,iron_steel_72,Mexico,1800575127,92363995
-2023,Import,iron_steel_72,Netherlands,635702077,452519266
+2023,Import,iron_steel_72,Mexico,1800515244,92363995
+2023,Import,iron_steel_72,Netherlands,633672339,452519101
 2023,Import,iron_steel_72,New Caledonia,17510775,4288380
 2023,Import,iron_steel_72,New Zealand,8624075,14344588
 2023,Import,iron_steel_72,Norway,3136989,270489
@@ -5965,22 +5963,22 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_72,Poland,3757072,1563016
 2023,Import,iron_steel_72,Portugal,22004334,28868026
 2023,Import,iron_steel_72,Qatar,137696,61425
-2023,Import,iron_steel_72,Rep. of Korea,1477449061,1278203119
+2023,Import,iron_steel_72,Rep. of Korea,1478655344,1278348923
 2023,Import,iron_steel_72,Romania,12190520,8232286
 2023,Import,iron_steel_72,Saudi Arabia,22372444,44647744
 2023,Import,iron_steel_72,Serbia,1175677,792266
 2023,Import,iron_steel_72,Singapore,9531,11720
 2023,Import,iron_steel_72,Slovakia,10978231,3542962
 2023,Import,iron_steel_72,Slovenia,4700232,1576121
-2023,Import,iron_steel_72,South Africa,326134875,370456058
+2023,Import,iron_steel_72,South Africa,326132967,370453880
 2023,Import,iron_steel_72,Spain,121233040,102698880
 2023,Import,iron_steel_72,Sweden,272802651,429387194
 2023,Import,iron_steel_72,Switzerland,4650154,1385458
 2023,Import,iron_steel_72,Taiwan,328312265,255148057
 2023,Import,iron_steel_72,Thailand,36647115,30573776
 2023,Import,iron_steel_72,Trinidad And Tobago,571450524,1316794740
-2023,Import,iron_steel_72,Türkiye,146867227,146676832
-2023,Import,iron_steel_72,Ukraine,520945643,1075059558
+2023,Import,iron_steel_72,Türkiye,146867227,150192940
+2023,Import,iron_steel_72,Ukraine,542895928,1125060208
 2023,Import,iron_steel_72,United Arab Emirates,95630398,102364058
 2023,Import,iron_steel_72,United Kingdom,178989830,85948199
 2023,Import,iron_steel_72,Venezuela,129409,127729
@@ -5992,16 +5990,16 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Argentina,20221164,6426717
 2023,Import,iron_steel_73,Armenia,155854,30657
 2023,Import,iron_steel_73,Aruba,12398,157
-2023,Import,iron_steel_73,Australia,36191774,7538222
-2023,Import,iron_steel_73,Austria,179555445,32041116
+2023,Import,iron_steel_73,Australia,36177069,7537749
+2023,Import,iron_steel_73,Austria,179547281,32040269
 2023,Import,iron_steel_73,Azerbaijan,61167,810
 2023,Import,iron_steel_73,Bahamas,43801,9186
 2023,Import,iron_steel_73,Bahrain,165685,82165
 2023,Import,iron_steel_73,Bangladesh,311473,17072
 2023,Import,iron_steel_73,Belarus,706742,294385
-2023,Import,iron_steel_73,Belgium,125631985,20115820
+2023,Import,iron_steel_73,Belgium,125625037,20115510
 2023,Import,iron_steel_73,Bosnia And Herzegovina,3616719,514953
-2023,Import,iron_steel_73,Brazil,205444160,64550953
+2023,Import,iron_steel_73,Brazil,205438468,64550727
 2023,Import,iron_steel_73,Brunei,20467623,15172485
 2023,Import,iron_steel_73,Bulgaria,9871114,822476
 2023,Import,iron_steel_73,Burma,8176,162
@@ -6009,14 +6007,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Cacm,23144104,7495471
 2023,Import,iron_steel_73,Cambodia,6599520,1681235
 2023,Import,iron_steel_73,Cameroon,9791,25
-2023,Import,iron_steel_73,Canada,3326502937,969233
+2023,Import,iron_steel_73,Canada,3326461710,969010
 2023,Import,iron_steel_73,Chile,5714187,2607666
-2023,Import,iron_steel_73,China,3749053108,1614577973
+2023,Import,iron_steel_73,China,3739622119,1612271997
 2023,Import,iron_steel_73,Colombia,15662430,5511854
 2023,Import,iron_steel_73,Costa Rica,11686860,2101635
 2023,Import,iron_steel_73,Croatia,7714351,776738
 2023,Import,iron_steel_73,Curacao,42265,138
-2023,Import,iron_steel_73,Czech Republic,111792640,48619409
+2023,Import,iron_steel_73,Czech Republic,111782638,48619316
 2023,Import,iron_steel_73,Denmark,113220803,18167703
 2023,Import,iron_steel_73,Dominican Republic,22176179,14310686
 2023,Import,iron_steel_73,Ecuador,1232379,192598
@@ -6025,11 +6023,11 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Estonia,1939431,135911
 2023,Import,iron_steel_73,Eswatini,2219,7
 2023,Import,iron_steel_73,Finland,33863362,5072840
-2023,Import,iron_steel_73,France,337565186,27175831
+2023,Import,iron_steel_73,France,337466046,27173001
 2023,Import,iron_steel_73,French Polynesia,21238,807
 2023,Import,iron_steel_73,Gabon,4947,460
 2023,Import,iron_steel_73,Georgia,573556,403935
-2023,Import,iron_steel_73,Germany,1462944542,262815281
+2023,Import,iron_steel_73,Germany,1462141435,262748062
 2023,Import,iron_steel_73,Greece,15080276,4760223
 2023,Import,iron_steel_73,Guadeloupe,4669,2
 2023,Import,iron_steel_73,Guatemala,5818863,1604196
@@ -6039,13 +6037,13 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Hong Kong,2330423,488885
 2023,Import,iron_steel_73,Hungary,14708610,1182320
 2023,Import,iron_steel_73,Iceland,319892,3729
-2023,Import,iron_steel_73,India,1521923311,802494652
+2023,Import,iron_steel_73,India,1514107834,800788302
 2023,Import,iron_steel_73,Indonesia,16184502,9257379
 2023,Import,iron_steel_73,Iraq,3540,1437
 2023,Import,iron_steel_73,Ireland,22822210,979582
 2023,Import,iron_steel_73,Israel,19325134,2034283
-2023,Import,iron_steel_73,Italy,855749436,140213928
-2023,Import,iron_steel_73,Japan,851374232,258622730
+2023,Import,iron_steel_73,Italy,855062438,140162663
+2023,Import,iron_steel_73,Japan,851353129,258621641
 2023,Import,iron_steel_73,Jordan,441972,224552
 2023,Import,iron_steel_73,Kazakhstan,253382,212475
 2023,Import,iron_steel_73,Kosovo,1607835,577108
@@ -6059,23 +6057,23 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Macau,25994,392
 2023,Import,iron_steel_73,Macedonia,150452,40674
 2023,Import,iron_steel_73,Madagascar,14418,30
-2023,Import,iron_steel_73,Malaysia,131942469,34628695
+2023,Import,iron_steel_73,Malaysia,132249178,34672824
 2023,Import,iron_steel_73,Mali,5794,215
 2023,Import,iron_steel_73,Malta,58866,65
 2023,Import,iron_steel_73,Mauritania,13650,8
 2023,Import,iron_steel_73,Mauritius,10485,3
-2023,Import,iron_steel_73,Mexico,3960785049,38052327
+2023,Import,iron_steel_73,Mexico,3960664263,38052159
 2023,Import,iron_steel_73,Moldova,571382,134266
 2023,Import,iron_steel_73,Monaco,47903,20
 2023,Import,iron_steel_73,Montenegro,20122,2050
 2023,Import,iron_steel_73,Morocco,580324,32555
 2023,Import,iron_steel_73,Namibia,28000,1440
 2023,Import,iron_steel_73,Nepal,21470,34
-2023,Import,iron_steel_73,Netherlands,227487210,27665313
+2023,Import,iron_steel_73,Netherlands,227481725,27657316
 2023,Import,iron_steel_73,New Zealand,19130549,6046124
 2023,Import,iron_steel_73,Nicaragua,21175,734
 2023,Import,iron_steel_73,Niger,14223,498
-2023,Import,iron_steel_73,Norway,27556450,1423682
+2023,Import,iron_steel_73,Norway,27539064,1423103
 2023,Import,iron_steel_73,Oman,40747809,46349061
 2023,Import,iron_steel_73,Pakistan,4460758,1708427
 2023,Import,iron_steel_73,Panama,940683,399334
@@ -6085,8 +6083,8 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Poland,125881647,19140744
 2023,Import,iron_steel_73,Portugal,134879244,60122176
 2023,Import,iron_steel_73,Qatar,2865543,2742465
-2023,Import,iron_steel_73,Rep. of Korea,1628567557,694190267
-2023,Import,iron_steel_73,Romania,64157990,30731923
+2023,Import,iron_steel_73,Rep. of Korea,1628521292,694170330
+2023,Import,iron_steel_73,Romania,64136950,30722012
 2023,Import,iron_steel_73,Russian Federation,199918,11190
 2023,Import,iron_steel_73,Rwanda,35430,4068
 2023,Import,iron_steel_73,San Marino,6164,75
@@ -6101,21 +6099,22 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2023,Import,iron_steel_73,Slovenia,8596232,673083
 2023,Import,iron_steel_73,Somalia,2297,17
 2023,Import,iron_steel_73,South Africa,60187631,29340779
-2023,Import,iron_steel_73,Spain,500595396,116761765
+2023,Import,iron_steel_73,Spain,500591452,116756269
 2023,Import,iron_steel_73,Sri Lanka,1800744,874623
 2023,Import,iron_steel_73,St Kitts And Nevis,34935,59
 2023,Import,iron_steel_73,Suriname,66113,297
 2023,Import,iron_steel_73,Sweden,111796164,18812599
-2023,Import,iron_steel_73,Switzerland,77605901,7083431
-2023,Import,iron_steel_73,Taiwan,1626875464,382957772
+2023,Import,iron_steel_73,Switzerland,77603740,7083398
+2023,Import,iron_steel_73,Taiwan,1627296887,382973047
 2023,Import,iron_steel_73,Tanzania,12787,29
-2023,Import,iron_steel_73,Thailand,453722885,284323766
+2023,Import,iron_steel_73,Thailand,451032810,282487442
+2023,Import,iron_steel_73,Tokelau,2157,0
 2023,Import,iron_steel_73,Trinidad And Tobago,160374,64134
 2023,Import,iron_steel_73,Tunisia,822752,102007
-2023,Import,iron_steel_73,Türkiye,332358857,206423965
-2023,Import,iron_steel_73,Ukraine,63234523,42082476
+2023,Import,iron_steel_73,Türkiye,332347313,206415595
+2023,Import,iron_steel_73,Ukraine,63218484,42072233
 2023,Import,iron_steel_73,United Arab Emirates,253956467,165090075
-2023,Import,iron_steel_73,United Kingdom,423171582,38626785
+2023,Import,iron_steel_73,United Kingdom,423115356,38623626
 2023,Import,iron_steel_73,Uruguay,12444,1688
 2023,Import,iron_steel_73,Venezuela,104179,12830
 2023,Import,iron_steel_73,Viet Nam,422697789,242479399
@@ -6127,7 +6126,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Argentina,5675222,405306
 2024,Export,aluminum_76,Armenia,41773,1513
 2024,Export,aluminum_76,Aruba,3731986,1175160
-2024,Export,aluminum_76,Australia,59772212,5356137
+2024,Export,aluminum_76,Australia,59772212,5356285
 2024,Export,aluminum_76,Austria,5972403,151414
 2024,Export,aluminum_76,Azerbaijan,599629,8335
 2024,Export,aluminum_76,Bahamas,21944162,2565902
@@ -6149,12 +6148,12 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Cacm,46193396,4556647
 2024,Export,aluminum_76,Cambodia,117362,127101
 2024,Export,aluminum_76,Cameroon,140454,15825
-2024,Export,aluminum_76,Canada,2881717191,1762771
+2024,Export,aluminum_76,Canada,2883713656,1767511
 2024,Export,aluminum_76,Cayman Islands,7101242,902148
 2024,Export,aluminum_76,Central African Republic,18748,100
 2024,Export,aluminum_76,Chad,54320,544
 2024,Export,aluminum_76,Chile,16430443,789047
-2024,Export,aluminum_76,China,239006989,20640552
+2024,Export,aluminum_76,China,239014989,20643052
 2024,Export,aluminum_76,Colombia,13797521,1426226
 2024,Export,aluminum_76,Comoros,16529,3385
 2024,Export,aluminum_76,Congo,68761,711
@@ -6185,7 +6184,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Gabon,85539,2258
 2024,Export,aluminum_76,Gambia,2538,700
 2024,Export,aluminum_76,Georgia,73262,4616
-2024,Export,aluminum_76,Germany,163326601,10312300
+2024,Export,aluminum_76,Germany,163320482,10312138
 2024,Export,aluminum_76,Ghana,328727,233992
 2024,Export,aluminum_76,Gibraltar,13064,52
 2024,Export,aluminum_76,Greece,2537111,68152
@@ -6199,15 +6198,15 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Hong Kong,18972513,3240379
 2024,Export,aluminum_76,Hungary,8571131,1250893
 2024,Export,aluminum_76,Iceland,666545,40511
-2024,Export,aluminum_76,India,63165017,7591479
+2024,Export,aluminum_76,India,63186239,7611890
 2024,Export,aluminum_76,Indonesia,10552362,1839785
 2024,Export,aluminum_76,Iran,37711,615
 2024,Export,aluminum_76,Iraq,721897,10911
 2024,Export,aluminum_76,Ireland,22862558,1857519
-2024,Export,aluminum_76,Israel,68392147,8183057
-2024,Export,aluminum_76,Italy,56521429,3652744
+2024,Export,aluminum_76,Israel,68597044,8208450
+2024,Export,aluminum_76,Italy,56522429,3652744
 2024,Export,aluminum_76,Jamaica,10792626,1016204
-2024,Export,aluminum_76,Japan,322674868,21330521
+2024,Export,aluminum_76,Japan,322676373,21330545
 2024,Export,aluminum_76,Jordan,1519466,49669
 2024,Export,aluminum_76,Kazakhstan,935202,13490
 2024,Export,aluminum_76,Kenya,196097,7751
@@ -6224,7 +6223,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Macedonia,3056,90
 2024,Export,aluminum_76,Madagascar,20955,2364
 2024,Export,aluminum_76,Malawi,30356,19976
-2024,Export,aluminum_76,Malaysia,627859495,470407706
+2024,Export,aluminum_76,Malaysia,627795760,470328585
 2024,Export,aluminum_76,Maldives,181238,7948
 2024,Export,aluminum_76,Mali,7500,350
 2024,Export,aluminum_76,Malta,366429,16542
@@ -6233,7 +6232,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Mauritania,43697,93
 2024,Export,aluminum_76,Mauritius,40988,6146
 2024,Export,aluminum_76,Mayotte,14875,0
-2024,Export,aluminum_76,Mexico,3865200710,704876
+2024,Export,aluminum_76,Mexico,3865099233,704876
 2024,Export,aluminum_76,Micronesia,70554,8629
 2024,Export,aluminum_76,Monaco,20000,170
 2024,Export,aluminum_76,Mongolia,61111,1190
@@ -6242,12 +6241,12 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Morocco,2890950,90066
 2024,Export,aluminum_76,Mozambique,7390,97
 2024,Export,aluminum_76,Namibia,115452,14224
-2024,Export,aluminum_76,Netherlands,58838112,3130239
+2024,Export,aluminum_76,Netherlands,58842057,3130280
 2024,Export,aluminum_76,New Caledonia,13832,245
 2024,Export,aluminum_76,New Zealand,9691759,901323
 2024,Export,aluminum_76,Nicaragua,5110720,650023
 2024,Export,aluminum_76,Nigeria,2319995,166891
-2024,Export,aluminum_76,Norway,5616563,213616
+2024,Export,aluminum_76,Norway,5616563,213614
 2024,Export,aluminum_76,Oman,1388327,149636
 2024,Export,aluminum_76,Pakistan,2435556,1868285
 2024,Export,aluminum_76,Palau,494442,49985
@@ -6259,13 +6258,13 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Poland,33574576,1488456
 2024,Export,aluminum_76,Portugal,4469199,230145
 2024,Export,aluminum_76,Qatar,4656269,216362
-2024,Export,aluminum_76,Rep. of Korea,315152704,32060495
+2024,Export,aluminum_76,Rep. of Korea,315238002,32072849
 2024,Export,aluminum_76,Reunion,23475,148
 2024,Export,aluminum_76,Romania,13234147,1361281
 2024,Export,aluminum_76,Russian Federation,963574,11854
 2024,Export,aluminum_76,Rwanda,2904,144
 2024,Export,aluminum_76,Samoa,42205,3421
-2024,Export,aluminum_76,Saudi Arabia,16737522,958963
+2024,Export,aluminum_76,Saudi Arabia,16718360,958794
 2024,Export,aluminum_76,Senegal,35575,1589
 2024,Export,aluminum_76,Serbia,336430,32371
 2024,Export,aluminum_76,Seychelles,8986,205
@@ -6287,17 +6286,17 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,aluminum_76,Taiwan,66580905,5880873
 2024,Export,aluminum_76,Tajikistan,3622,3
 2024,Export,aluminum_76,Tanzania,79251,2084
-2024,Export,aluminum_76,Thailand,60947784,23157623
+2024,Export,aluminum_76,Thailand,60962784,23174615
 2024,Export,aluminum_76,Togo,16198,254
 2024,Export,aluminum_76,Trinidad And Tobago,7027454,963449
 2024,Export,aluminum_76,Tunisia,420412,16975
 2024,Export,aluminum_76,Turkmenistan,16908,378
 2024,Export,aluminum_76,Turks And Caicos Islands,3759126,397128
-2024,Export,aluminum_76,Türkiye,60984036,4995769
+2024,Export,aluminum_76,Türkiye,60982975,4995749
 2024,Export,aluminum_76,Uganda,185919,7535
 2024,Export,aluminum_76,Ukraine,2821427,80038
 2024,Export,aluminum_76,United Arab Emirates,28788540,2384070
-2024,Export,aluminum_76,United Kingdom,200202507,9237716
+2024,Export,aluminum_76,United Kingdom,200206049,9237718
 2024,Export,aluminum_76,Uruguay,343186,25500
 2024,Export,aluminum_76,Uzbekistan,429411,3168
 2024,Export,aluminum_76,Vanuatu,2800,54
@@ -6326,10 +6325,10 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,cement_2523,British Virgin Islands,1963013,10852235
 2024,Export,cement_2523,Cacm,11783248,17981992
 2024,Export,cement_2523,Cambodia,53460,226044
-2024,Export,cement_2523,Canada,192831731,197234404
+2024,Export,cement_2523,Canada,192872602,197234404
 2024,Export,cement_2523,Cayman Islands,778054,1331322
 2024,Export,cement_2523,Chile,3187870,6108859
-2024,Export,cement_2523,China,78552158,280977032
+2024,Export,cement_2523,China,78481784,280716322
 2024,Export,cement_2523,Colombia,4881800,9630608
 2024,Export,cement_2523,Costa Rica,5883299,6705861
 2024,Export,cement_2523,Croatia,45163,76191
@@ -6362,7 +6361,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,cement_2523,Israel,598293,823981
 2024,Export,cement_2523,Italy,11589442,14197409
 2024,Export,cement_2523,Jamaica,1610210,7977092
-2024,Export,cement_2523,Japan,65727756,172168828
+2024,Export,cement_2523,Japan,65627756,171966049
 2024,Export,cement_2523,Jordan,650842,1166149
 2024,Export,cement_2523,Kenya,319857,785157
 2024,Export,cement_2523,Kuwait,91496,102681
@@ -6388,7 +6387,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,cement_2523,Poland,2135191,2780193
 2024,Export,cement_2523,Portugal,499056,570811
 2024,Export,cement_2523,Qatar,10421,18484
-2024,Export,cement_2523,Rep. of Korea,35371987,76878415
+2024,Export,cement_2523,Rep. of Korea,35376347,76884075
 2024,Export,cement_2523,Romania,16019,25351
 2024,Export,cement_2523,Samoa,2986,1025
 2024,Export,cement_2523,Saudi Arabia,976226,1400267
@@ -6411,7 +6410,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,cement_2523,Türkiye,7108363,10854939
 2024,Export,cement_2523,Uganda,3191,1025
 2024,Export,cement_2523,United Arab Emirates,364311,645211
-2024,Export,cement_2523,United Kingdom,17457770,26431547
+2024,Export,cement_2523,United Kingdom,16561821,25300973
 2024,Export,cement_2523,Uruguay,404077,518894
 2024,Export,cement_2523,Venezuela,354154,801636
 2024,Export,cement_2523,Viet Nam,1295873,2376103
@@ -6421,7 +6420,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,fertilizers,Argentina,99235369,329514017
 2024,Export,fertilizers,Armenia,4224,35
 2024,Export,fertilizers,Aruba,102478,107933
-2024,Export,fertilizers,Australia,147264529,523808701
+2024,Export,fertilizers,Australia,151360143,526811559
 2024,Export,fertilizers,Austria,1147085,410450
 2024,Export,fertilizers,Azerbaijan,32829,11944
 2024,Export,fertilizers,Bahamas,2217625,3133690
@@ -6435,15 +6434,15 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,fertilizers,British Virgin Islands,26090,14268
 2024,Export,fertilizers,Brunei,13313,2143
 2024,Export,fertilizers,Bulgaria,85405,29800
-2024,Export,fertilizers,Cacm,40013758,86816631
+2024,Export,fertilizers,Cacm,39971758,86804631
 2024,Export,fertilizers,Cambodia,74839,23872
 2024,Export,fertilizers,Cameroon,15015,2000
-2024,Export,fertilizers,Canada,2007735712,181326546
+2024,Export,fertilizers,Canada,2007908831,181326546
 2024,Export,fertilizers,Cayman Islands,510603,954255
 2024,Export,fertilizers,Chile,68999556,244288503
 2024,Export,fertilizers,China,41539618,38224333
 2024,Export,fertilizers,Colombia,102628610,205936019
-2024,Export,fertilizers,Costa Rica,6175862,8936618
+2024,Export,fertilizers,Costa Rica,6133862,8924618
 2024,Export,fertilizers,Cote D'Ivoire,2969999,22000000
 2024,Export,fertilizers,Croatia,3619,1000
 2024,Export,fertilizers,Curacao,85937,57319
@@ -6489,9 +6488,9 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,fertilizers,Malta,25000,8000
 2024,Export,fertilizers,Martinique,831341,1355349
 2024,Export,fertilizers,Mauritius,44984,1000
-2024,Export,fertilizers,Mexico,413034820,147687033
+2024,Export,fertilizers,Mexico,412952791,147687033
 2024,Export,fertilizers,Mongolia,60000,126
-2024,Export,fertilizers,Morocco,109493760,366372370
+2024,Export,fertilizers,Morocco,151573768,367914143
 2024,Export,fertilizers,Netherlands,14198805,21976154
 2024,Export,fertilizers,New Caledonia,4519,1000
 2024,Export,fertilizers,New Zealand,1807204,1552910
@@ -6502,7 +6501,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,fertilizers,Palau,2880,1000
 2024,Export,fertilizers,Panama,822582,415342
 2024,Export,fertilizers,Paraguay,451904,152535
-2024,Export,fertilizers,Peru,64034253,236285420
+2024,Export,fertilizers,Peru,65200720,244850974
 2024,Export,fertilizers,Philippines,2928320,1087671
 2024,Export,fertilizers,Poland,761317,82429
 2024,Export,fertilizers,Qatar,142965,58454
@@ -6531,7 +6530,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,fertilizers,Turks And Caicos Islands,224440,209746
 2024,Export,fertilizers,Türkiye,7826238,5629016
 2024,Export,fertilizers,United Arab Emirates,1741869,241363
-2024,Export,fertilizers,United Kingdom,72272022,280022179
+2024,Export,fertilizers,United Kingdom,72294409,280022179
 2024,Export,fertilizers,Uruguay,51700925,129360118
 2024,Export,fertilizers,Venezuela,111209,129364
 2024,Export,fertilizers,Viet Nam,2665110,1403119
@@ -6565,29 +6564,29 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_72,Antigua And Barbuda,691659,620792
 2024,Export,iron_steel_72,Argentina,2821665,992419
 2024,Export,iron_steel_72,Aruba,1139262,865331
-2024,Export,iron_steel_72,Australia,5445856,1944035
-2024,Export,iron_steel_72,Austria,90848400,211096561
+2024,Export,iron_steel_72,Australia,5437260,1877848
+2024,Export,iron_steel_72,Austria,104979579,249682327
 2024,Export,iron_steel_72,Azerbaijan,12433,9754
-2024,Export,iron_steel_72,Bahamas,16699332,17274915
+2024,Export,iron_steel_72,Bahamas,16694892,17257914
 2024,Export,iron_steel_72,Bahrain,33801,27961
 2024,Export,iron_steel_72,Bangladesh,2111839,2901019
 2024,Export,iron_steel_72,Barbados,430815,119286
-2024,Export,iron_steel_72,Belgium,15924048,5062529
+2024,Export,iron_steel_72,Belgium,16064212,5123119
 2024,Export,iron_steel_72,Belize,987660,539508
 2024,Export,iron_steel_72,Bermuda,1911710,2266951
 2024,Export,iron_steel_72,Bolivia,137819,109027
 2024,Export,iron_steel_72,Botswana,11929,1055
-2024,Export,iron_steel_72,Brazil,40585822,32649632
+2024,Export,iron_steel_72,Brazil,41633002,35051576
 2024,Export,iron_steel_72,British Virgin Islands,2894286,3544176
 2024,Export,iron_steel_72,Brunei,217360,218665
 2024,Export,iron_steel_72,Bulgaria,19279,1222
 2024,Export,iron_steel_72,Burkina Faso,215006,120768
 2024,Export,iron_steel_72,Cacm,47212177,5007567
 2024,Export,iron_steel_72,Cameroon,17824,3966
-2024,Export,iron_steel_72,Canada,3364720551,6609482888
+2024,Export,iron_steel_72,Canada,3372873438,6609482888
 2024,Export,iron_steel_72,Cayman Islands,1788980,1060293
 2024,Export,iron_steel_72,Chile,1360080,1030283
-2024,Export,iron_steel_72,China,92171356,26229520
+2024,Export,iron_steel_72,China,92209622,26268714
 2024,Export,iron_steel_72,Christmas Island,36960,850
 2024,Export,iron_steel_72,Colombia,4632862,3395068
 2024,Export,iron_steel_72,Costa Rica,40995369,2550681
@@ -6599,17 +6598,17 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_72,Democratic Republic Of The Congo,35812,11038
 2024,Export,iron_steel_72,Denmark,9340666,539052
 2024,Export,iron_steel_72,Dominica,108424,156068
-2024,Export,iron_steel_72,Dominican Republic,39968967,43394511
+2024,Export,iron_steel_72,Dominican Republic,39965517,43387707
 2024,Export,iron_steel_72,Ecuador,2178905,1356860
 2024,Export,iron_steel_72,Egypt,1489957,3789706
 2024,Export,iron_steel_72,El Salvador,319002,263122
 2024,Export,iron_steel_72,Equatorial Guinea,996898,603991
 2024,Export,iron_steel_72,Ethiopia,23060,538
 2024,Export,iron_steel_72,Finland,7491427,60528366
-2024,Export,iron_steel_72,France,41148315,227117102
+2024,Export,iron_steel_72,France,42509015,227117102
 2024,Export,iron_steel_72,French Polynesia,32767,4495
 2024,Export,iron_steel_72,Gabon,31357,5420
-2024,Export,iron_steel_72,Germany,39642722,128540949
+2024,Export,iron_steel_72,Germany,33283191,64130397
 2024,Export,iron_steel_72,Ghana,47641,25946
 2024,Export,iron_steel_72,Greece,2090393,1696542
 2024,Export,iron_steel_72,Grenada,104244,50964
@@ -6620,14 +6619,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_72,Hong Kong,4450349,741185
 2024,Export,iron_steel_72,Hungary,1116092,110044
 2024,Export,iron_steel_72,Iceland,136498,13634
-2024,Export,iron_steel_72,India,31984509,94465755
+2024,Export,iron_steel_72,India,34222562,93960432
 2024,Export,iron_steel_72,Indonesia,3588330,5451791
 2024,Export,iron_steel_72,Iraq,70280,51984
 2024,Export,iron_steel_72,Ireland,27646458,604575
-2024,Export,iron_steel_72,Israel,2995448,3103779
+2024,Export,iron_steel_72,Israel,2897785,1285734
 2024,Export,iron_steel_72,Italy,37281342,50405986
 2024,Export,iron_steel_72,Jamaica,429943,212255
-2024,Export,iron_steel_72,Japan,21872909,7230368
+2024,Export,iron_steel_72,Japan,21877945,7238532
 2024,Export,iron_steel_72,Jordan,639311,33336
 2024,Export,iron_steel_72,Kazakhstan,581538,383374
 2024,Export,iron_steel_72,Kenya,193364,310324
@@ -6644,27 +6643,27 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_72,Malaysia,16261732,2686021
 2024,Export,iron_steel_72,Mali,8408,8567
 2024,Export,iron_steel_72,Malta,57954,219
-2024,Export,iron_steel_72,Marshall Islands,1089959,1827905
+2024,Export,iron_steel_72,Marshall Islands,1094759,1828205
 2024,Export,iron_steel_72,Martinique,3969,707
 2024,Export,iron_steel_72,Mauritania,5700,6430
-2024,Export,iron_steel_72,Mexico,3794113369,937730255
+2024,Export,iron_steel_72,Mexico,3794226351,941433053
 2024,Export,iron_steel_72,Monaco,27078,0
 2024,Export,iron_steel_72,Mongolia,19563,1451
 2024,Export,iron_steel_72,Montserrat,84097,115892
 2024,Export,iron_steel_72,Morocco,206187,22065
 2024,Export,iron_steel_72,Namibia,2934,3310
-2024,Export,iron_steel_72,Netherlands,63281250,391880391
+2024,Export,iron_steel_72,Netherlands,68883549,426100706
 2024,Export,iron_steel_72,New Zealand,1466755,440582
 2024,Export,iron_steel_72,Nicaragua,590754,226553
 2024,Export,iron_steel_72,Nigeria,1133569,985993
-2024,Export,iron_steel_72,Norway,175436,94777
+2024,Export,iron_steel_72,Norway,179798,95665
 2024,Export,iron_steel_72,Oman,24634,12772
 2024,Export,iron_steel_72,Pakistan,4585602,7064790
 2024,Export,iron_steel_72,Palau,22326,13617
 2024,Export,iron_steel_72,Panama,953362,523498
 2024,Export,iron_steel_72,Peru,1765900,1758448
 2024,Export,iron_steel_72,Philippines,2150802,2619717
-2024,Export,iron_steel_72,Poland,2526738,1210172
+2024,Export,iron_steel_72,Poland,2554738,1210172
 2024,Export,iron_steel_72,Portugal,76369,11160
 2024,Export,iron_steel_72,Qatar,294747,54111
 2024,Export,iron_steel_72,Rep. of Korea,40020585,8359236
@@ -6689,14 +6688,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_72,Switzerland,2304430,441503
 2024,Export,iron_steel_72,Taiwan,26747990,5676874
 2024,Export,iron_steel_72,Tanzania,3546,50
-2024,Export,iron_steel_72,Thailand,8037114,5188809
+2024,Export,iron_steel_72,Thailand,8081574,5247375
 2024,Export,iron_steel_72,Togo,50793,0
 2024,Export,iron_steel_72,Trinidad And Tobago,908770,495399
 2024,Export,iron_steel_72,Tunisia,507709,55910
 2024,Export,iron_steel_72,Turks And Caicos Islands,842663,891303
 2024,Export,iron_steel_72,Türkiye,72426440,183960949
 2024,Export,iron_steel_72,United Arab Emirates,14043413,3208276
-2024,Export,iron_steel_72,United Kingdom,44642860,193199989
+2024,Export,iron_steel_72,United Kingdom,60065369,273401189
 2024,Export,iron_steel_72,Uruguay,73434,55190
 2024,Export,iron_steel_72,Uzbekistan,22517,16383
 2024,Export,iron_steel_72,Venezuela,1183130,441818
@@ -6709,43 +6708,43 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Angola,13910846,1699174
 2024,Export,iron_steel_73,Anguilla,798505,170059
 2024,Export,iron_steel_73,Antigua And Barbuda,3355017,703655
-2024,Export,iron_steel_73,Argentina,68136258,7470369
+2024,Export,iron_steel_73,Argentina,68133173,7468435
 2024,Export,iron_steel_73,Armenia,88213,12696
 2024,Export,iron_steel_73,Aruba,2116981,373521
-2024,Export,iron_steel_73,Australia,171528303,12218382
+2024,Export,iron_steel_73,Australia,171544733,12218497
 2024,Export,iron_steel_73,Austria,11679628,1246986
 2024,Export,iron_steel_73,Azerbaijan,2609499,62130
 2024,Export,iron_steel_73,Bahamas,49822489,9150413
 2024,Export,iron_steel_73,Bahrain,5537844,195892
 2024,Export,iron_steel_73,Bangladesh,682988,86875
 2024,Export,iron_steel_73,Barbados,9072896,1887509
-2024,Export,iron_steel_73,Belgium,40773975,3497244
+2024,Export,iron_steel_73,Belgium,40744070,3496960
 2024,Export,iron_steel_73,Belize,2102030,252395
 2024,Export,iron_steel_73,Benin,59194,18213
 2024,Export,iron_steel_73,Bermuda,3027688,433995
 2024,Export,iron_steel_73,Bolivia,773037,75520
 2024,Export,iron_steel_73,Bosnia And Herzegovina,32220,812
 2024,Export,iron_steel_73,Botswana,33042,853
-2024,Export,iron_steel_73,Brazil,240973888,15818474
+2024,Export,iron_steel_73,Brazil,241076985,15819216
 2024,Export,iron_steel_73,British Indian Ocean Territories,3680,1
 2024,Export,iron_steel_73,British Virgin Islands,3247055,597030
 2024,Export,iron_steel_73,Brunei,714747,30741
-2024,Export,iron_steel_73,Bulgaria,1110165,126203
+2024,Export,iron_steel_73,Bulgaria,1207865,126241
 2024,Export,iron_steel_73,Burkina Faso,393140,19630
 2024,Export,iron_steel_73,Burma,24692,2083
 2024,Export,iron_steel_73,Cabo Verde,4374,91
 2024,Export,iron_steel_73,Cacm,90620686,12079321
 2024,Export,iron_steel_73,Cambodia,107379,3722
 2024,Export,iron_steel_73,Cameroon,861720,64763
-2024,Export,iron_steel_73,Canada,3923692618,10960241
+2024,Export,iron_steel_73,Canada,3933217637,10974838
 2024,Export,iron_steel_73,Cayman Islands,18914569,2929030
 2024,Export,iron_steel_73,Central African Republic,118676,1663
 2024,Export,iron_steel_73,Chad,1785999,155792
 2024,Export,iron_steel_73,Chile,69267604,6941055
-2024,Export,iron_steel_73,China,382072527,32395530
+2024,Export,iron_steel_73,China,381970530,32395667
 2024,Export,iron_steel_73,Christmas Island,4815,486
 2024,Export,iron_steel_73,Cocos (Keeling) Islands,6000,1
-2024,Export,iron_steel_73,Colombia,91058238,9030638
+2024,Export,iron_steel_73,Colombia,91099375,9035651
 2024,Export,iron_steel_73,Comoros,47168,1761
 2024,Export,iron_steel_73,Congo,2113861,316811
 2024,Export,iron_steel_73,Costa Rica,50756866,4822381
@@ -6759,7 +6758,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Denmark,21150105,3689112
 2024,Export,iron_steel_73,Djibouti,236603,20778
 2024,Export,iron_steel_73,Dominica,527101,105190
-2024,Export,iron_steel_73,Dominican Republic,48028870,8175835
+2024,Export,iron_steel_73,Dominican Republic,48153497,8205314
 2024,Export,iron_steel_73,Ecuador,8641466,1058511
 2024,Export,iron_steel_73,Egypt,15334719,662199
 2024,Export,iron_steel_73,El Salvador,13655302,1488032
@@ -6768,13 +6767,13 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Ethiopia,2348473,146543
 2024,Export,iron_steel_73,Falkland Islands (Islas Malvinas),7623,900
 2024,Export,iron_steel_73,Fiji,240657,5957
-2024,Export,iron_steel_73,Finland,2316338,169024
-2024,Export,iron_steel_73,France,304116825,15012511
+2024,Export,iron_steel_73,Finland,2316338,169025
+2024,Export,iron_steel_73,France,304085860,15011603
 2024,Export,iron_steel_73,French Guiana,76537,3710
 2024,Export,iron_steel_73,French Polynesia,212748,18284
 2024,Export,iron_steel_73,Gabon,2693906,213481
 2024,Export,iron_steel_73,Georgia,794576,31716
-2024,Export,iron_steel_73,Germany,292663486,32889722
+2024,Export,iron_steel_73,Germany,292659903,32889872
 2024,Export,iron_steel_73,Ghana,3460331,296206
 2024,Export,iron_steel_73,Gibraltar,1125930,250318
 2024,Export,iron_steel_73,Greece,6415569,598502
@@ -6783,22 +6782,21 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Guatemala,10980511,3272209
 2024,Export,iron_steel_73,Guinea,70147,6954
 2024,Export,iron_steel_73,Guinea-Bissau,92929,649
-2024,Export,iron_steel_73,Guyana,109664201,6236305
+2024,Export,iron_steel_73,Guyana,109664200,11083381
 2024,Export,iron_steel_73,Haiti,1449254,726569
-2024,Export,iron_steel_73,Heard And Mcdonald Islands,2799,0
 2024,Export,iron_steel_73,Honduras,7905917,1404029
-2024,Export,iron_steel_73,Hong Kong,33698370,1987415
+2024,Export,iron_steel_73,Hong Kong,33735620,1987469
 2024,Export,iron_steel_73,Hungary,13854279,854975
 2024,Export,iron_steel_73,Iceland,1014418,71093
-2024,Export,iron_steel_73,India,112422729,12571916
+2024,Export,iron_steel_73,India,112429226,12571919
 2024,Export,iron_steel_73,Indonesia,18634829,4217638
 2024,Export,iron_steel_73,Iran,3237,50
 2024,Export,iron_steel_73,Iraq,6715243,441576
 2024,Export,iron_steel_73,Ireland,27927963,1104337
 2024,Export,iron_steel_73,Israel,137978120,15809463
-2024,Export,iron_steel_73,Italy,74825072,6111672
+2024,Export,iron_steel_73,Italy,74796030,6110186
 2024,Export,iron_steel_73,Jamaica,16595389,3516849
-2024,Export,iron_steel_73,Japan,289736481,43811677
+2024,Export,iron_steel_73,Japan,289679439,43812150
 2024,Export,iron_steel_73,Jordan,3601028,266103
 2024,Export,iron_steel_73,Kazakhstan,4766476,216005
 2024,Export,iron_steel_73,Kenya,386696,22518
@@ -6817,7 +6815,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Macedonia,27657,2761
 2024,Export,iron_steel_73,Madagascar,90460,6592
 2024,Export,iron_steel_73,Malawi,356800,31094
-2024,Export,iron_steel_73,Malaysia,96310450,3140662
+2024,Export,iron_steel_73,Malaysia,96377510,3140941
 2024,Export,iron_steel_73,Maldives,227189,4915
 2024,Export,iron_steel_73,Mali,451704,36556
 2024,Export,iron_steel_73,Malta,386351,30590
@@ -6826,13 +6824,13 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Mauritania,779487,61416
 2024,Export,iron_steel_73,Mauritius,252133,9548
 2024,Export,iron_steel_73,Mayotte,10203,25
-2024,Export,iron_steel_73,Mexico,5752686315,3277573
+2024,Export,iron_steel_73,Mexico,5753014887,3277573
 2024,Export,iron_steel_73,Micronesia,285587,28690
 2024,Export,iron_steel_73,Moldova,45885,436
 2024,Export,iron_steel_73,Mongolia,1752796,128735
 2024,Export,iron_steel_73,Montenegro,27667,0
 2024,Export,iron_steel_73,Montserrat,523022,62162
-2024,Export,iron_steel_73,Morocco,4523374,168489
+2024,Export,iron_steel_73,Morocco,4517928,168450
 2024,Export,iron_steel_73,Mozambique,347874,10595
 2024,Export,iron_steel_73,Namibia,1832272,176741
 2024,Export,iron_steel_73,Nepal,54426,568
@@ -6842,7 +6840,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Nicaragua,7322090,1092670
 2024,Export,iron_steel_73,Niger,187015,11077
 2024,Export,iron_steel_73,Nigeria,17901895,2333864
-2024,Export,iron_steel_73,Norway,25203295,1263998
+2024,Export,iron_steel_73,Norway,25203295,1263968
 2024,Export,iron_steel_73,Oman,5673507,627085
 2024,Export,iron_steel_73,Pakistan,2184763,53669
 2024,Export,iron_steel_73,Palau,177401,41594
@@ -6853,20 +6851,20 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Philippines,39559936,5475794
 2024,Export,iron_steel_73,Poland,52166573,2360810
 2024,Export,iron_steel_73,Portugal,10430795,573861
-2024,Export,iron_steel_73,Qatar,16691586,1715344
-2024,Export,iron_steel_73,Rep. of Korea,186506989,20025941
+2024,Export,iron_steel_73,Qatar,16701250,1715366
+2024,Export,iron_steel_73,Rep. of Korea,186841831,20032170
 2024,Export,iron_steel_73,Reunion,50650,1359
 2024,Export,iron_steel_73,Romania,12430456,2425493
 2024,Export,iron_steel_73,Russian Federation,319967,1091
 2024,Export,iron_steel_73,Rwanda,61293,4958
 2024,Export,iron_steel_73,Samoa,14458,334
 2024,Export,iron_steel_73,Sao Tome And Principe,9980,2600
-2024,Export,iron_steel_73,Saudi Arabia,102673091,8302795
+2024,Export,iron_steel_73,Saudi Arabia,102673091,8302766
 2024,Export,iron_steel_73,Senegal,513017,18947
 2024,Export,iron_steel_73,Serbia,399669,10409
 2024,Export,iron_steel_73,Seychelles,244826,12892
 2024,Export,iron_steel_73,Sierra Leone,52327,5614
-2024,Export,iron_steel_73,Singapore,169290013,6069144
+2024,Export,iron_steel_73,Singapore,169299230,6069608
 2024,Export,iron_steel_73,Sint Maarten,1135433,240609
 2024,Export,iron_steel_73,Slovakia,16295400,929870
 2024,Export,iron_steel_73,Slovenia,941954,64206
@@ -6881,11 +6879,11 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,St Vincent And The Grenadines,1141459,191571
 2024,Export,iron_steel_73,Suriname,2812458,288496
 2024,Export,iron_steel_73,Sweden,18688722,2581289
-2024,Export,iron_steel_73,Switzerland,21871980,582304
+2024,Export,iron_steel_73,Switzerland,21885979,582341
 2024,Export,iron_steel_73,Taiwan,65540587,3413687
 2024,Export,iron_steel_73,Tajikistan,14642,48
 2024,Export,iron_steel_73,Tanzania,315795,2324
-2024,Export,iron_steel_73,Thailand,61448512,7179566
+2024,Export,iron_steel_73,Thailand,61448512,7179620
 2024,Export,iron_steel_73,Togo,17238,35
 2024,Export,iron_steel_73,Tonga,3809,154
 2024,Export,iron_steel_73,Trinidad And Tobago,37436146,6236925
@@ -6895,8 +6893,8 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Türkiye,45468925,4937420
 2024,Export,iron_steel_73,Uganda,381318,33386
 2024,Export,iron_steel_73,Ukraine,33702617,2647190
-2024,Export,iron_steel_73,United Arab Emirates,79782053,5784781
-2024,Export,iron_steel_73,United Kingdom,319581215,15614088
+2024,Export,iron_steel_73,United Arab Emirates,79772389,5784759
+2024,Export,iron_steel_73,United Kingdom,319612245,15615179
 2024,Export,iron_steel_73,Uruguay,5787988,941364
 2024,Export,iron_steel_73,Uzbekistan,1779245,118631
 2024,Export,iron_steel_73,Vanuatu,98527,15869
@@ -6906,48 +6904,47 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Export,iron_steel_73,Zambia,525693,55316
 2024,Export,iron_steel_73,Zimbabwe,362083,26878
 2024,Import,aluminum_76,Albania,4909889,437971
-2024,Import,aluminum_76,Antigua And Barbuda,1395289,511704
-2024,Import,aluminum_76,Argentina,498249556,189261172
-2024,Import,aluminum_76,Armenia,14400,15140
+2024,Import,aluminum_76,Argentina,500855227,190280511
+2024,Import,aluminum_76,Armenia,16611,15319
 2024,Import,aluminum_76,Aruba,13354,4640
-2024,Import,aluminum_76,Australia,264637927,93839027
-2024,Import,aluminum_76,Austria,203953787,33854920
+2024,Import,aluminum_76,Australia,264634379,93838987
+2024,Import,aluminum_76,Austria,203948440,33854548
 2024,Import,aluminum_76,Azerbaijan,80156112,24784942
-2024,Import,aluminum_76,Bahrain,695420597,258298321
+2024,Import,aluminum_76,Bahrain,695022797,258298321
 2024,Import,aluminum_76,Bangladesh,36875,18097
 2024,Import,aluminum_76,Belarus,623962,82351
-2024,Import,aluminum_76,Belgium,140492678,22127466
+2024,Import,aluminum_76,Belgium,140615966,22129682
 2024,Import,aluminum_76,Belize,5398,403
 2024,Import,aluminum_76,Bosnia And Herzegovina,3366641,282839
-2024,Import,aluminum_76,Brazil,193589139,56306789
+2024,Import,aluminum_76,Brazil,193587253,56306779
 2024,Import,aluminum_76,British Virgin Islands,2979,1200
 2024,Import,aluminum_76,Brunei,856946,169236
-2024,Import,aluminum_76,Bulgaria,46814235,12600593
-2024,Import,aluminum_76,Cacm,77108264,12202265
-2024,Import,aluminum_76,Cambodia,22697975,6583513
+2024,Import,aluminum_76,Bulgaria,46810966,12600572
+2024,Import,aluminum_76,Cacm,77107665,12202261
+2024,Import,aluminum_76,Cambodia,22429250,6495670
 2024,Import,aluminum_76,Cameroon,31752,7333
-2024,Import,aluminum_76,Canada,10000142573,738258439
-2024,Import,aluminum_76,Chile,16289152,1768672
-2024,Import,aluminum_76,China,1642306201,390372083
-2024,Import,aluminum_76,Colombia,612956147,64328634
-2024,Import,aluminum_76,Costa Rica,19801996,1010911
+2024,Import,aluminum_76,Canada,9999185466,738258438
+2024,Import,aluminum_76,Chile,16322915,1773160
+2024,Import,aluminum_76,China,1641784258,390241167
+2024,Import,aluminum_76,Colombia,612952815,64328061
+2024,Import,aluminum_76,Costa Rica,19801397,1010907
 2024,Import,aluminum_76,Croatia,7458941,785724
 2024,Import,aluminum_76,Cyprus,74682,14507
-2024,Import,aluminum_76,Czech Republic,20067133,1296637
-2024,Import,aluminum_76,Denmark,13617228,1665145
+2024,Import,aluminum_76,Czech Republic,20066336,1296637
+2024,Import,aluminum_76,Denmark,13615618,1665017
 2024,Import,aluminum_76,Dominican Republic,103154047,23809530
-2024,Import,aluminum_76,Ecuador,60761806,13738087
+2024,Import,aluminum_76,Ecuador,60757456,13736281
 2024,Import,aluminum_76,Egypt,2674756,868738
 2024,Import,aluminum_76,El Salvador,8562346,1732039
 2024,Import,aluminum_76,Eritrea,3802,1
 2024,Import,aluminum_76,Estonia,297001,17509
 2024,Import,aluminum_76,Finland,2644015,58445
-2024,Import,aluminum_76,France,274528850,23976895
+2024,Import,aluminum_76,France,274209186,23961143
 2024,Import,aluminum_76,Gabon,3088,37
 2024,Import,aluminum_76,Gaza Strip Administered By Israel,183645,42286
 2024,Import,aluminum_76,Georgia,454648,36972
-2024,Import,aluminum_76,Germany,517639346,55777986
-2024,Import,aluminum_76,Greece,203406725,43660668
+2024,Import,aluminum_76,Germany,517854040,55859782
+2024,Import,aluminum_76,Greece,202989787,43563418
 2024,Import,aluminum_76,Guatemala,191321,39557
 2024,Import,aluminum_76,Guyana,5600,6537
 2024,Import,aluminum_76,Haiti,19980,9401
@@ -6955,14 +6952,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,aluminum_76,Hong Kong,8155058,1949304
 2024,Import,aluminum_76,Hungary,20132228,3668011
 2024,Import,aluminum_76,Iceland,120559,2898
-2024,Import,aluminum_76,India,692810807,216446097
-2024,Import,aluminum_76,Indonesia,91745684,23503993
+2024,Import,aluminum_76,India,690728553,216032711
+2024,Import,aluminum_76,Indonesia,91654000,23500572
 2024,Import,aluminum_76,Iraq,3600,2430
 2024,Import,aluminum_76,Ireland,5287433,159094
-2024,Import,aluminum_76,Israel,18518133,2543470
-2024,Import,aluminum_76,Italy,255474891,33536277
-2024,Import,aluminum_76,Japan,199874903,26052686
-2024,Import,aluminum_76,Jordan,2748136,635761
+2024,Import,aluminum_76,Israel,18500397,2542778
+2024,Import,aluminum_76,Italy,255419996,33534719
+2024,Import,aluminum_76,Japan,199744396,26027301
+2024,Import,aluminum_76,Jordan,1048994,222981
 2024,Import,aluminum_76,Kazakhstan,215271,29218
 2024,Import,aluminum_76,Kosovo,543537,58676
 2024,Import,aluminum_76,Kuwait,3041,806
@@ -6974,62 +6971,62 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,aluminum_76,Luxembourg,35552777,7146958
 2024,Import,aluminum_76,Macedonia,65379,16208
 2024,Import,aluminum_76,Madagascar,123348,140
-2024,Import,aluminum_76,Malaysia,132980367,26560729
+2024,Import,aluminum_76,Malaysia,134038166,26548970
 2024,Import,aluminum_76,Malta,93703,4620
 2024,Import,aluminum_76,Marshall Islands,53128,0
-2024,Import,aluminum_76,Mexico,1170771604,6554650
+2024,Import,aluminum_76,Mexico,1149281691,6554246
 2024,Import,aluminum_76,Moldova,58893,9416
 2024,Import,aluminum_76,Monaco,2714,150
 2024,Import,aluminum_76,Mongolia,11800,0
 2024,Import,aluminum_76,Montenegro,192000,0
 2024,Import,aluminum_76,Morocco,52090,1052
 2024,Import,aluminum_76,Mozambique,1170342,351666
-2024,Import,aluminum_76,Netherlands,71464269,5909058
+2024,Import,aluminum_76,Netherlands,71475680,5909193
 2024,Import,aluminum_76,New Zealand,15309904,4907582
 2024,Import,aluminum_76,Norway,49344683,10504015
-2024,Import,aluminum_76,Oman,231872662,70159255
+2024,Import,aluminum_76,Oman,233571804,70571750
 2024,Import,aluminum_76,Pakistan,1683942,240992
 2024,Import,aluminum_76,Panama,14773,1664
 2024,Import,aluminum_76,Paraguay,11200,2832
 2024,Import,aluminum_76,Peru,12238,27
 2024,Import,aluminum_76,Philippines,2065257,70614
-2024,Import,aluminum_76,Poland,65879287,8813636
+2024,Import,aluminum_76,Poland,65414374,8788751
 2024,Import,aluminum_76,Portugal,18303511,1193276
 2024,Import,aluminum_76,Qatar,181426587,65239098
-2024,Import,aluminum_76,Rep. of Korea,859869386,226764991
-2024,Import,aluminum_76,Romania,11082265,2223656
-2024,Import,aluminum_76,Russian Federation,2243057,836786
+2024,Import,aluminum_76,Rep. of Korea,859593967,226848382
+2024,Import,aluminum_76,Romania,11077217,2223656
+2024,Import,aluminum_76,Russian Federation,2946837,836786
 2024,Import,aluminum_76,San Marino,1132395,237368
 2024,Import,aluminum_76,Saudi Arabia,74868893,19024486
 2024,Import,aluminum_76,Serbia,5168174,588394
 2024,Import,aluminum_76,Sierra Leone,17497,1124
 2024,Import,aluminum_76,Singapore,10103901,1082412
-2024,Import,aluminum_76,Slovakia,7604754,688409
-2024,Import,aluminum_76,Slovenia,44849849,6077274
+2024,Import,aluminum_76,Slovakia,7601780,688344
+2024,Import,aluminum_76,Slovenia,44843854,6077274
 2024,Import,aluminum_76,South Africa,435217898,166739174
-2024,Import,aluminum_76,Spain,127716806,22733700
+2024,Import,aluminum_76,Spain,127740661,22736742
 2024,Import,aluminum_76,Sri Lanka,3554675,967951
 2024,Import,aluminum_76,Suriname,5858,83
-2024,Import,aluminum_76,Sweden,80279772,15905924
-2024,Import,aluminum_76,Switzerland,50020294,6182534
-2024,Import,aluminum_76,Taiwan,200051721,21497112
-2024,Import,aluminum_76,Thailand,320117945,74992779
+2024,Import,aluminum_76,Sweden,80241878,15898232
+2024,Import,aluminum_76,Switzerland,49995780,6181128
+2024,Import,aluminum_76,Taiwan,198854341,21282416
+2024,Import,aluminum_76,Thailand,319877792,75192402
 2024,Import,aluminum_76,Trinidad And Tobago,95385,10313
 2024,Import,aluminum_76,Tunisia,1735005,12631
-2024,Import,aluminum_76,Türkiye,238350504,56932791
+2024,Import,aluminum_76,Türkiye,237547860,56921549
 2024,Import,aluminum_76,Ukraine,1786161,268680
-2024,Import,aluminum_76,United Arab Emirates,1162637894,442043375
-2024,Import,aluminum_76,United Kingdom,188407379,32935754
+2024,Import,aluminum_76,United Arab Emirates,1162901121,444776226
+2024,Import,aluminum_76,United Kingdom,187926814,32721745
 2024,Import,aluminum_76,Uzbekistan,6462185,1888632
 2024,Import,aluminum_76,Venezuela,106782,40003
-2024,Import,aluminum_76,Viet Nam,330206599,71647791
+2024,Import,aluminum_76,Viet Nam,330447793,71728913
 2024,Import,cement_2523,Algeria,84201419,958449246
 2024,Import,cement_2523,Austria,4800,0
 2024,Import,cement_2523,Belgium,392824,331801
 2024,Import,cement_2523,Brazil,27103324,173589108
 2024,Import,cement_2523,Bulgaria,601796,5014967
 2024,Import,cement_2523,Cameroon,5769,6006
-2024,Import,cement_2523,Canada,562110604,2718954539
+2024,Import,cement_2523,Canada,561520600,2713704539
 2024,Import,cement_2523,China,740835,1474260
 2024,Import,cement_2523,Colombia,59173114,898612360
 2024,Import,cement_2523,Croatia,6955142,20364268
@@ -7076,12 +7073,12 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,fertilizers,Brunei,8504875,25500000
 2024,Import,fertilizers,Bulgaria,13540374,21004766
 2024,Import,fertilizers,Cacm,373329,779551
-2024,Import,fertilizers,Canada,1456072610,3154513
+2024,Import,fertilizers,Canada,1455892598,3154513
 2024,Import,fertilizers,Chile,168205231,171587965
-2024,Import,fertilizers,China,14316145,18501883
+2024,Import,fertilizers,China,14310505,18511226
 2024,Import,fertilizers,Colombia,247383,204211
 2024,Import,fertilizers,Costa Rica,74301,22887
-2024,Import,fertilizers,Czech Republic,225399,95348
+2024,Import,fertilizers,Czech Republic,222772,95073
 2024,Import,fertilizers,Denmark,452083,1542143
 2024,Import,fertilizers,Dominican Republic,2950142,5757183
 2024,Import,fertilizers,Egypt,126237211,258695945
@@ -7089,14 +7086,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,fertilizers,Eswatini,75960,0
 2024,Import,fertilizers,Finland,10733530,22294296
 2024,Import,fertilizers,France,10607682,4566085
-2024,Import,fertilizers,Germany,44423026,125974990
+2024,Import,fertilizers,Germany,44434556,125974990
 2024,Import,fertilizers,Greece,126038,28400
 2024,Import,fertilizers,Guatemala,299028,756664
 2024,Import,fertilizers,India,4220943,5836103
 2024,Import,fertilizers,Indonesia,20912713,46722736
 2024,Import,fertilizers,Ireland,2315,3
 2024,Import,fertilizers,Israel,26444845,21384810
-2024,Import,fertilizers,Italy,7385873,4053924
+2024,Import,fertilizers,Italy,7417193,4099952
 2024,Import,fertilizers,Japan,21733084,16727128
 2024,Import,fertilizers,Jordan,155066728,277116848
 2024,Import,fertilizers,Kazakhstan,13425,53420
@@ -7106,7 +7103,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,fertilizers,Malaysia,27955621,39595994
 2024,Import,fertilizers,Mexico,231481166,312092981
 2024,Import,fertilizers,Morocco,144424217,224370547
-2024,Import,fertilizers,Netherlands,106190475,412240194
+2024,Import,fertilizers,Netherlands,106190496,412240194
 2024,Import,fertilizers,Nigeria,139406071,394036316
 2024,Import,fertilizers,Norway,112473444,567179546
 2024,Import,fertilizers,Oman,86775108,262731439
@@ -7146,14 +7143,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_72,Argentina,13296274,32716846
 2024,Import,iron_steel_72,Australia,294913693,290409846
 2024,Import,iron_steel_72,Austria,20483493,11472673
-2024,Import,iron_steel_72,Belgium,108069297,97027331
+2024,Import,iron_steel_72,Belgium,110596178,100760158
 2024,Import,iron_steel_72,Bosnia And Herzegovina,115412,61569
-2024,Import,iron_steel_72,Brazil,2584299773,6558311166
+2024,Import,iron_steel_72,Brazil,2584290077,6558312393
 2024,Import,iron_steel_72,Bulgaria,66275396,95514449
 2024,Import,iron_steel_72,Cacm,11452563,6631346
-2024,Import,iron_steel_72,Canada,4634795613,2316113850
-2024,Import,iron_steel_72,Chile,29473,22637
-2024,Import,iron_steel_72,China,237624811,208114643
+2024,Import,iron_steel_72,Canada,4634626644,2316113850
+2024,Import,iron_steel_72,Chile,32420,23638
+2024,Import,iron_steel_72,China,234451017,205910111
 2024,Import,iron_steel_72,Colombia,23052075,7313042
 2024,Import,iron_steel_72,Costa Rica,2318586,579827
 2024,Import,iron_steel_72,Czech Republic,7738493,2791319
@@ -7163,31 +7160,31 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_72,El Salvador,696771,35146
 2024,Import,iron_steel_72,Estonia,48795,23868
 2024,Import,iron_steel_72,Finland,134940199,118535780
-2024,Import,iron_steel_72,France,136563468,91168749
+2024,Import,iron_steel_72,France,136602703,91234009
 2024,Import,iron_steel_72,Georgia,513107,250500
-2024,Import,iron_steel_72,Germany,907071148,560332732
+2024,Import,iron_steel_72,Germany,942377886,584168076
 2024,Import,iron_steel_72,Greece,18665563,27512656
 2024,Import,iron_steel_72,Guatemala,7957257,5826709
 2024,Import,iron_steel_72,Honduras,479949,189664
 2024,Import,iron_steel_72,Hong Kong,118750,54842
 2024,Import,iron_steel_72,Hungary,2814,368
-2024,Import,iron_steel_72,India,222213456,214671127
-2024,Import,iron_steel_72,Indonesia,11845797,13367824
+2024,Import,iron_steel_72,India,222082817,214655227
+2024,Import,iron_steel_72,Indonesia,11845797,13385497
 2024,Import,iron_steel_72,Ireland,850567,76900
 2024,Import,iron_steel_72,Israel,33022,12098
-2024,Import,iron_steel_72,Italy,73866655,31233274
-2024,Import,iron_steel_72,Japan,584397242,488249835
+2024,Import,iron_steel_72,Italy,73966350,31292223
+2024,Import,iron_steel_72,Japan,597391505,504037298
 2024,Import,iron_steel_72,Kazakhstan,110845155,52944448
 2024,Import,iron_steel_72,Kuwait,2989,2599
 2024,Import,iron_steel_72,Lithuania,20249,9787
 2024,Import,iron_steel_72,Luxembourg,79780233,68349945
 2024,Import,iron_steel_72,Macedonia,355472,340178
-2024,Import,iron_steel_72,Malaysia,120080795,118642362
-2024,Import,iron_steel_72,Mexico,1626035319,99132809
-2024,Import,iron_steel_72,Netherlands,711860369,538724379
+2024,Import,iron_steel_72,Malaysia,120120746,118642362
+2024,Import,iron_steel_72,Mexico,1625898321,99132809
+2024,Import,iron_steel_72,Netherlands,705260048,539972285
 2024,Import,iron_steel_72,New Caledonia,29810898,11846420
 2024,Import,iron_steel_72,New Zealand,14982191,21769541
-2024,Import,iron_steel_72,Norway,1548998,1598209
+2024,Import,iron_steel_72,Norway,1648520,1598209
 2024,Import,iron_steel_72,Oman,32064027,41426576
 2024,Import,iron_steel_72,Pakistan,12676618,15690830
 2024,Import,iron_steel_72,Panama,107406,42406
@@ -7195,26 +7192,26 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_72,Philippines,523558,456371
 2024,Import,iron_steel_72,Poland,23193800,28392173
 2024,Import,iron_steel_72,Portugal,20879227,28040100
-2024,Import,iron_steel_72,Rep. of Korea,1542290312,1470304337
+2024,Import,iron_steel_72,Rep. of Korea,1542160478,1470194276
 2024,Import,iron_steel_72,Romania,6003782,2538892
-2024,Import,iron_steel_72,Saudi Arabia,6651297,6542365
+2024,Import,iron_steel_72,Saudi Arabia,6651296,6542365
 2024,Import,iron_steel_72,Serbia,2600924,2090786
 2024,Import,iron_steel_72,Singapore,89280,85180
 2024,Import,iron_steel_72,Slovakia,8180268,2845694
 2024,Import,iron_steel_72,Slovenia,4059152,1210529
 2024,Import,iron_steel_72,South Africa,390644113,447705697
-2024,Import,iron_steel_72,Spain,151900280,144072216
-2024,Import,iron_steel_72,Sweden,240839414,299843713
+2024,Import,iron_steel_72,Spain,154558395,145710333
+2024,Import,iron_steel_72,Sweden,241482816,302596104
 2024,Import,iron_steel_72,Switzerland,4395255,3234991
-2024,Import,iron_steel_72,Taiwan,666311628,568513606
+2024,Import,iron_steel_72,Taiwan,666833039,569013668
 2024,Import,iron_steel_72,Thailand,42545822,40511715
 2024,Import,iron_steel_72,Trinidad And Tobago,623821772,1521638570
-2024,Import,iron_steel_72,Türkiye,181988153,230263119
+2024,Import,iron_steel_72,Türkiye,181985595,230259144
 2024,Import,iron_steel_72,Ukraine,406183786,903953418
-2024,Import,iron_steel_72,United Arab Emirates,149104329,189781885
+2024,Import,iron_steel_72,United Arab Emirates,148803128,189415909
 2024,Import,iron_steel_72,United Kingdom,173264957,94573107
 2024,Import,iron_steel_72,Venezuela,25414,9355
-2024,Import,iron_steel_72,Viet Nam,827963878,993493552
+2024,Import,iron_steel_72,Viet Nam,827963992,993493552
 2024,Import,iron_steel_72,Zambia,172146,108480
 2024,Import,iron_steel_72,Zimbabwe,258403,216732
 2024,Import,iron_steel_73,Afghanistan,42682,4411
@@ -7222,35 +7219,35 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_73,Andorra,176469,20939
 2024,Import,iron_steel_73,Angola,32576,840
 2024,Import,iron_steel_73,Antigua And Barbuda,5243,36
-2024,Import,iron_steel_73,Argentina,12356956,4744348
-2024,Import,iron_steel_73,Armenia,19808,4511
+2024,Import,iron_steel_73,Argentina,12354696,4744293
+2024,Import,iron_steel_73,Armenia,16491,4242
 2024,Import,iron_steel_73,Aruba,4685,0
-2024,Import,iron_steel_73,Australia,41855946,9348473
-2024,Import,iron_steel_73,Austria,155927981,23585008
+2024,Import,iron_steel_73,Australia,41806600,9346602
+2024,Import,iron_steel_73,Austria,155851332,23597371
 2024,Import,iron_steel_73,Azerbaijan,17150,957
 2024,Import,iron_steel_73,Bahamas,53097,3352
 2024,Import,iron_steel_73,Bahrain,36965,219
 2024,Import,iron_steel_73,Bangladesh,647450,83523
 2024,Import,iron_steel_73,Belarus,44207,22286
-2024,Import,iron_steel_73,Belgium,70676177,15144321
+2024,Import,iron_steel_73,Belgium,70580140,15132349
 2024,Import,iron_steel_73,Belize,2020,770
 2024,Import,iron_steel_73,Bermuda,30000,1109
 2024,Import,iron_steel_73,Bolivia,6699,53
-2024,Import,iron_steel_73,Bosnia And Herzegovina,4637179,526878
-2024,Import,iron_steel_73,Brazil,139949608,45887221
+2024,Import,iron_steel_73,Bosnia And Herzegovina,4632767,525155
+2024,Import,iron_steel_73,Brazil,139920268,45885629
 2024,Import,iron_steel_73,British Indian Ocean Territories,8503,1113
 2024,Import,iron_steel_73,Brunei,840064,713314
-2024,Import,iron_steel_73,Bulgaria,7350859,629896
+2024,Import,iron_steel_73,Bulgaria,7337584,629401
 2024,Import,iron_steel_73,Burma,41600,680
 2024,Import,iron_steel_73,Cabo Verde,32873,11875
 2024,Import,iron_steel_73,Cacm,29435473,10140479
-2024,Import,iron_steel_73,Cambodia,17661290,6309850
+2024,Import,iron_steel_73,Cambodia,17569580,6221450
 2024,Import,iron_steel_73,Cameroon,21423,1365
-2024,Import,iron_steel_73,Canada,3276189754,2210481
+2024,Import,iron_steel_73,Canada,3265925033,2210392
 2024,Import,iron_steel_73,Central African Republic,2920,10
 2024,Import,iron_steel_73,Chad,5000,11
 2024,Import,iron_steel_73,Chile,4190753,1952791
-2024,Import,iron_steel_73,China,3900431460,1829666723
+2024,Import,iron_steel_73,China,3908872983,1833635157
 2024,Import,iron_steel_73,Christmas Island,158630,154587
 2024,Import,iron_steel_73,Colombia,10905136,3045346
 2024,Import,iron_steel_73,Cook Islands,3002,32
@@ -7259,21 +7256,21 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_73,Croatia,5278145,574745
 2024,Import,iron_steel_73,Curacao,71363,536
 2024,Import,iron_steel_73,Cyprus,33685,107
-2024,Import,iron_steel_73,Czech Republic,105804979,37789468
+2024,Import,iron_steel_73,Czech Republic,105548165,37780970
 2024,Import,iron_steel_73,Democratic Republic Of The Congo,5587,170
-2024,Import,iron_steel_73,Denmark,338255115,68006637
-2024,Import,iron_steel_73,Dominican Republic,14592837,9585243
+2024,Import,iron_steel_73,Denmark,338206828,68005170
+2024,Import,iron_steel_73,Dominican Republic,14592837,9589785
 2024,Import,iron_steel_73,Ecuador,1772856,229974
 2024,Import,iron_steel_73,Egypt,12111385,5512077
 2024,Import,iron_steel_73,El Salvador,461907,316398
 2024,Import,iron_steel_73,Eritrea,97109,9035
 2024,Import,iron_steel_73,Estonia,2341943,201164
 2024,Import,iron_steel_73,Eswatini,10925,31
-2024,Import,iron_steel_73,Finland,30805714,5373470
-2024,Import,iron_steel_73,France,248200546,21501363
+2024,Import,iron_steel_73,Finland,32109521,5376241
+2024,Import,iron_steel_73,France,248001041,21492650
 2024,Import,iron_steel_73,Gabon,5899,0
 2024,Import,iron_steel_73,Georgia,3849626,3545107
-2024,Import,iron_steel_73,Germany,1880005796,410619655
+2024,Import,iron_steel_73,Germany,1876605032,410448339
 2024,Import,iron_steel_73,Ghana,3071,6
 2024,Import,iron_steel_73,Greece,33628559,11736886
 2024,Import,iron_steel_73,Guadeloupe,2400,12
@@ -7282,36 +7279,36 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_73,Haiti,209451,29548
 2024,Import,iron_steel_73,Honduras,8224170,5607457
 2024,Import,iron_steel_73,Hong Kong,2732064,794262
-2024,Import,iron_steel_73,Hungary,13509573,856049
+2024,Import,iron_steel_73,Hungary,13504961,855996
 2024,Import,iron_steel_73,Iceland,311380,2422
-2024,Import,iron_steel_73,India,1468342592,786698338
-2024,Import,iron_steel_73,Indonesia,38411343,16925973
+2024,Import,iron_steel_73,India,1467444454,786504720
+2024,Import,iron_steel_73,Indonesia,46038443,19950610
 2024,Import,iron_steel_73,Iraq,4000,8
-2024,Import,iron_steel_73,Ireland,18598604,662471
-2024,Import,iron_steel_73,Israel,22171670,2443582
-2024,Import,iron_steel_73,Italy,882768512,133284597
+2024,Import,iron_steel_73,Ireland,18597577,662462
+2024,Import,iron_steel_73,Israel,22170586,2443572
+2024,Import,iron_steel_73,Italy,877568881,132897825
 2024,Import,iron_steel_73,Jamaica,2376,4539
-2024,Import,iron_steel_73,Japan,926617914,271740396
+2024,Import,iron_steel_73,Japan,925443133,271718995
 2024,Import,iron_steel_73,Jordan,733940,293837
 2024,Import,iron_steel_73,Kazakhstan,60689,10801
 2024,Import,iron_steel_73,Kenya,39958,15880
 2024,Import,iron_steel_73,Kosovo,3292002,1133124
 2024,Import,iron_steel_73,Kuwait,5640,565
 2024,Import,iron_steel_73,Kyrgyzstan,29164,5762
-2024,Import,iron_steel_73,Latvia,7029045,748335
+2024,Import,iron_steel_73,Latvia,7017292,747063
 2024,Import,iron_steel_73,Lebanon,2125313,518313
 2024,Import,iron_steel_73,Liberia,10080,19296
-2024,Import,iron_steel_73,Liechtenstein,13466777,210914
+2024,Import,iron_steel_73,Liechtenstein,13468488,211441
 2024,Import,iron_steel_73,Lithuania,9565911,1376892
 2024,Import,iron_steel_73,Luxembourg,118535145,52921263
 2024,Import,iron_steel_73,Macau,11750,1256
 2024,Import,iron_steel_73,Macedonia,1056291,211478
 2024,Import,iron_steel_73,Madagascar,7197,14
-2024,Import,iron_steel_73,Malaysia,142358752,40138783
+2024,Import,iron_steel_73,Malaysia,142220039,39995856
 2024,Import,iron_steel_73,Malta,20316,9497
 2024,Import,iron_steel_73,Marshall Islands,32000,0
 2024,Import,iron_steel_73,Mauritius,6266,1179
-2024,Import,iron_steel_73,Mexico,4012254454,44688024
+2024,Import,iron_steel_73,Mexico,3973983405,44701205
 2024,Import,iron_steel_73,Micronesia,33566,0
 2024,Import,iron_steel_73,Moldova,213397,57793
 2024,Import,iron_steel_73,Monaco,13685,10
@@ -7320,92 +7317,92 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2024,Import,iron_steel_73,Namibia,33353,196
 2024,Import,iron_steel_73,Nauru,60266,222
 2024,Import,iron_steel_73,Nepal,4831,592
-2024,Import,iron_steel_73,Netherlands,169381335,15212341
+2024,Import,iron_steel_73,Netherlands,169239584,15185463
 2024,Import,iron_steel_73,New Caledonia,2270,1
-2024,Import,iron_steel_73,New Zealand,13985359,3018622
+2024,Import,iron_steel_73,New Zealand,13451602,2980814
 2024,Import,iron_steel_73,Niger,12254,168
-2024,Import,iron_steel_73,Norway,26526744,1941184
+2024,Import,iron_steel_73,Norway,26533159,1941184
 2024,Import,iron_steel_73,Oman,48638577,57912263
 2024,Import,iron_steel_73,Pakistan,4070755,1689638
 2024,Import,iron_steel_73,Panama,786404,386269
 2024,Import,iron_steel_73,Papua New Guinea,2948,218
 2024,Import,iron_steel_73,Paraguay,17742,18
-2024,Import,iron_steel_73,Peru,538247,172076
+2024,Import,iron_steel_73,Peru,530763,172004
 2024,Import,iron_steel_73,Philippines,10747737,3634184
-2024,Import,iron_steel_73,Poland,112533651,16563969
-2024,Import,iron_steel_73,Portugal,80250984,27537960
+2024,Import,iron_steel_73,Poland,112473998,16561685
+2024,Import,iron_steel_73,Portugal,80500958,27551784
 2024,Import,iron_steel_73,Qatar,222172,181935
-2024,Import,iron_steel_73,Rep. of Korea,1953837602,761840642
-2024,Import,iron_steel_73,Romania,56778890,28195936
+2024,Import,iron_steel_73,Rep. of Korea,1947050514,761419511
+2024,Import,iron_steel_73,Romania,56774023,28195895
 2024,Import,iron_steel_73,Russian Federation,50465,2591
-2024,Import,iron_steel_73,San Marino,4051,194
+2024,Import,iron_steel_73,San Marino,31869,4174
 2024,Import,iron_steel_73,Sao Tome And Principe,2620,21
 2024,Import,iron_steel_73,Saudi Arabia,2148052,1459479
 2024,Import,iron_steel_73,Senegal,90906,6433
-2024,Import,iron_steel_73,Serbia,7978134,1102010
+2024,Import,iron_steel_73,Serbia,7975802,1101992
 2024,Import,iron_steel_73,Sierra Leone,125297,9266
-2024,Import,iron_steel_73,Singapore,28732782,1076391
+2024,Import,iron_steel_73,Singapore,28727560,1076380
 2024,Import,iron_steel_73,Sint Maarten,4537,36
-2024,Import,iron_steel_73,Slovakia,19074897,5624543
-2024,Import,iron_steel_73,Slovenia,6397021,550827
-2024,Import,iron_steel_73,South Africa,41059180,21862772
-2024,Import,iron_steel_73,Spain,467261008,99625410
+2024,Import,iron_steel_73,Slovakia,18987642,5597548
+2024,Import,iron_steel_73,Slovenia,6389682,550552
+2024,Import,iron_steel_73,South Africa,41158737,21865762
+2024,Import,iron_steel_73,Spain,467130610,99664459
 2024,Import,iron_steel_73,Sri Lanka,9791582,9474029
 2024,Import,iron_steel_73,St Kitts And Nevis,66726,5186
 2024,Import,iron_steel_73,Suriname,20168,1828
-2024,Import,iron_steel_73,Sweden,110078658,17733687
-2024,Import,iron_steel_73,Switzerland,84569181,4485704
-2024,Import,iron_steel_73,Taiwan,1552357338,374607081
+2024,Import,iron_steel_73,Sweden,109984495,17732346
+2024,Import,iron_steel_73,Switzerland,85342799,4480553
+2024,Import,iron_steel_73,Taiwan,1551286255,374537505
 2024,Import,iron_steel_73,Tanzania,41834,352
-2024,Import,iron_steel_73,Thailand,441979823,266775177
+2024,Import,iron_steel_73,Thailand,435180565,261685124
 2024,Import,iron_steel_73,Tonga,53242,0
 2024,Import,iron_steel_73,Trinidad And Tobago,157500,22635
 2024,Import,iron_steel_73,Tunisia,1916553,192006
 2024,Import,iron_steel_73,Turks And Caicos Islands,18903,0
 2024,Import,iron_steel_73,Tuvalu,40746,12
-2024,Import,iron_steel_73,Türkiye,500955620,291817520
-2024,Import,iron_steel_73,Ukraine,57871162,47458434
-2024,Import,iron_steel_73,United Arab Emirates,501366741,297820757
-2024,Import,iron_steel_73,United Kingdom,413902913,51267732
+2024,Import,iron_steel_73,Türkiye,492432858,288722787
+2024,Import,iron_steel_73,Ukraine,57869253,47456764
+2024,Import,iron_steel_73,United Arab Emirates,501355454,297819072
+2024,Import,iron_steel_73,United Kingdom,413067582,51189667
 2024,Import,iron_steel_73,Uruguay,81269,24209
 2024,Import,iron_steel_73,Venezuela,43061,4833
-2024,Import,iron_steel_73,Viet Nam,472586244,283059878
+2024,Import,iron_steel_73,Viet Nam,472523032,283033495
 2025,Export,aluminum_76,Albania,510187,7989
 2025,Export,aluminum_76,Algeria,604669,10971
 2025,Export,aluminum_76,Angola,670796,17994
 2025,Export,aluminum_76,Anguilla,288951,25069
 2025,Export,aluminum_76,Antigua And Barbuda,2986085,289885
-2025,Export,aluminum_76,Argentina,4317466,224122
+2025,Export,aluminum_76,Argentina,4310420,224117
 2025,Export,aluminum_76,Aruba,3687240,694983
-2025,Export,aluminum_76,Australia,62902791,5558179
+2025,Export,aluminum_76,Australia,62953766,5551587
 2025,Export,aluminum_76,Austria,4489200,101692
 2025,Export,aluminum_76,Azerbaijan,195801,12246
 2025,Export,aluminum_76,Bahamas,22949326,2761380
 2025,Export,aluminum_76,Bahrain,1600925,92824
 2025,Export,aluminum_76,Bangladesh,361575,15200
 2025,Export,aluminum_76,Barbados,5827844,582356
-2025,Export,aluminum_76,Belgium,22150553,867162
+2025,Export,aluminum_76,Belgium,22139748,867064
 2025,Export,aluminum_76,Belize,1862947,292871
 2025,Export,aluminum_76,Bermuda,2610208,193431
 2025,Export,aluminum_76,Bhutan,9602,152
 2025,Export,aluminum_76,Bolivia,508888,32009
 2025,Export,aluminum_76,Bosnia And Herzegovina,10350,413
-2025,Export,aluminum_76,Brazil,77663206,3993914
+2025,Export,aluminum_76,Brazil,77556658,3992771
 2025,Export,aluminum_76,British Virgin Islands,2217354,214201
 2025,Export,aluminum_76,Brunei,536529,21322
 2025,Export,aluminum_76,Bulgaria,1335019,18373
 2025,Export,aluminum_76,Burkina Faso,7366,173
 2025,Export,aluminum_76,Burma,65080,28671
 2025,Export,aluminum_76,Cabo Verde,4047,0
-2025,Export,aluminum_76,Cacm,54930910,4647115
+2025,Export,aluminum_76,Cacm,54922666,4646288
 2025,Export,aluminum_76,Cambodia,1289155,1306905
 2025,Export,aluminum_76,Cameroon,49200,443
-2025,Export,aluminum_76,Canada,2636646557,1527671
+2025,Export,aluminum_76,Canada,2685633074,1655945
 2025,Export,aluminum_76,Cayman Islands,7490234,1039344
 2025,Export,aluminum_76,Chad,45402,181
-2025,Export,aluminum_76,Chile,36806612,4984449
-2025,Export,aluminum_76,China,220044129,14032912
-2025,Export,aluminum_76,Colombia,70839976,14832108
+2025,Export,aluminum_76,Chile,36730280,4966407
+2025,Export,aluminum_76,China,220449874,14043486
+2025,Export,aluminum_76,Colombia,68839976,14453921
 2025,Export,aluminum_76,Congo,106481,1652
 2025,Export,aluminum_76,Costa Rica,18751864,1395133
 2025,Export,aluminum_76,Cote D'Ivoire,69441,3222
@@ -7413,51 +7410,51 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,aluminum_76,Cuba,70201,23555
 2025,Export,aluminum_76,Curacao,816413,85106
 2025,Export,aluminum_76,Cyprus,167809,8423
-2025,Export,aluminum_76,Czech Republic,8368555,419594
+2025,Export,aluminum_76,Czech Republic,8366998,419594
 2025,Export,aluminum_76,Democratic Republic Of The Congo,9899,380
-2025,Export,aluminum_76,Denmark,6574493,195950
+2025,Export,aluminum_76,Denmark,6577333,196026
 2025,Export,aluminum_76,Djibouti,605328,15895
 2025,Export,aluminum_76,Dominica,204818,23554
-2025,Export,aluminum_76,Dominican Republic,14983839,1385017
+2025,Export,aluminum_76,Dominican Republic,14976271,1383628
 2025,Export,aluminum_76,Ecuador,3830558,545577
 2025,Export,aluminum_76,Egypt,1563590,86090
-2025,Export,aluminum_76,El Salvador,15313646,1300215
+2025,Export,aluminum_76,El Salvador,15310402,1300214
 2025,Export,aluminum_76,Equatorial Guinea,232311,9484
 2025,Export,aluminum_76,Estonia,43294,1747
 2025,Export,aluminum_76,Ethiopia,905048,16743
 2025,Export,aluminum_76,Falkland Islands (Islas Malvinas),9260,4
 2025,Export,aluminum_76,Fiji,34281,3795
 2025,Export,aluminum_76,Finland,5984948,110597
-2025,Export,aluminum_76,France,165926120,11778198
+2025,Export,aluminum_76,France,165988129,11768056
 2025,Export,aluminum_76,French Guiana,1339700,36846
 2025,Export,aluminum_76,French Polynesia,221717,16071
 2025,Export,aluminum_76,Gabon,48909,4650
 2025,Export,aluminum_76,Gambia,6100,610
 2025,Export,aluminum_76,Georgia,80450,6274
-2025,Export,aluminum_76,Germany,158799486,7024665
+2025,Export,aluminum_76,Germany,158778233,7021644
 2025,Export,aluminum_76,Ghana,754357,132927
 2025,Export,aluminum_76,Gibraltar,2999,52
 2025,Export,aluminum_76,Greece,3541044,141335
 2025,Export,aluminum_76,Greenland,2936,75
-2025,Export,aluminum_76,Grenada,484353,33813
+2025,Export,aluminum_76,Grenada,480359,33422
 2025,Export,aluminum_76,Guadeloupe,25387,1922
 2025,Export,aluminum_76,Guatemala,9209795,907154
 2025,Export,aluminum_76,Guinea,279112,17616
 2025,Export,aluminum_76,Guyana,2074941,107563
 2025,Export,aluminum_76,Haiti,166034,19677
 2025,Export,aluminum_76,Honduras,6606357,647861
-2025,Export,aluminum_76,Hong Kong,27066030,6630786
+2025,Export,aluminum_76,Hong Kong,27019687,6626970
 2025,Export,aluminum_76,Hungary,6066885,424816
 2025,Export,aluminum_76,Iceland,1115159,19827
-2025,Export,aluminum_76,India,63956894,5242634
-2025,Export,aluminum_76,Indonesia,10694672,1947286
+2025,Export,aluminum_76,India,63917234,5207564
+2025,Export,aluminum_76,Indonesia,10649672,1887286
 2025,Export,aluminum_76,Iran,12864,101
 2025,Export,aluminum_76,Iraq,790420,7504
 2025,Export,aluminum_76,Ireland,15896175,1175149
-2025,Export,aluminum_76,Israel,42870559,4359411
-2025,Export,aluminum_76,Italy,53698031,2686748
+2025,Export,aluminum_76,Israel,42858059,4358720
+2025,Export,aluminum_76,Italy,53632872,2675906
 2025,Export,aluminum_76,Jamaica,10359701,956084
-2025,Export,aluminum_76,Japan,238480119,14965391
+2025,Export,aluminum_76,Japan,229616405,14784513
 2025,Export,aluminum_76,Jordan,2047784,41739
 2025,Export,aluminum_76,Kazakhstan,1092459,36786
 2025,Export,aluminum_76,Kenya,163429,4704
@@ -7468,12 +7465,12 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,aluminum_76,Liberia,34202,3733
 2025,Export,aluminum_76,Libya,414948,17465
 2025,Export,aluminum_76,Liechtenstein,44389,368
-2025,Export,aluminum_76,Lithuania,943387,12570
+2025,Export,aluminum_76,Lithuania,927857,12254
 2025,Export,aluminum_76,Luxembourg,1808780,32231
 2025,Export,aluminum_76,Macau,17275,289
 2025,Export,aluminum_76,Macedonia,50028,1247
 2025,Export,aluminum_76,Madagascar,31128,492
-2025,Export,aluminum_76,Malaysia,142851889,59913787
+2025,Export,aluminum_76,Malaysia,142116448,59466575
 2025,Export,aluminum_76,Maldives,773043,22014
 2025,Export,aluminum_76,Mali,8235,439
 2025,Export,aluminum_76,Malta,300697,18688
@@ -7481,7 +7478,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,aluminum_76,Martinique,146363,7640
 2025,Export,aluminum_76,Mauritania,305398,7597
 2025,Export,aluminum_76,Mauritius,33146,462
-2025,Export,aluminum_76,Mexico,3507394386,528175
+2025,Export,aluminum_76,Mexico,3505895732,527573
 2025,Export,aluminum_76,Micronesia,101860,8397
 2025,Export,aluminum_76,Moldova,25504,404
 2025,Export,aluminum_76,Monaco,28705,0
@@ -7492,93 +7489,93 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,aluminum_76,Mozambique,23819,612
 2025,Export,aluminum_76,Namibia,129537,1177
 2025,Export,aluminum_76,Nepal,4797,10
-2025,Export,aluminum_76,Netherlands,57026022,4021114
-2025,Export,aluminum_76,New Zealand,10000256,835382
-2025,Export,aluminum_76,Nicaragua,5049248,396752
-2025,Export,aluminum_76,Nigeria,3990741,198424
-2025,Export,aluminum_76,Norway,7893671,186700
+2025,Export,aluminum_76,Netherlands,57097941,4021416
+2025,Export,aluminum_76,New Zealand,9981409,834479
+2025,Export,aluminum_76,Nicaragua,5044248,395926
+2025,Export,aluminum_76,Nigeria,3986721,198415
+2025,Export,aluminum_76,Norway,7943557,186752
 2025,Export,aluminum_76,Oman,1288556,133322
 2025,Export,aluminum_76,Pakistan,914624,236984
 2025,Export,aluminum_76,Palau,26529,4991
 2025,Export,aluminum_76,Panama,5501330,374599
 2025,Export,aluminum_76,Papua New Guinea,28981,605
 2025,Export,aluminum_76,Paraguay,401295,17353
-2025,Export,aluminum_76,Peru,12182290,2604726
-2025,Export,aluminum_76,Philippines,9105612,628508
-2025,Export,aluminum_76,Poland,39884222,1827553
+2025,Export,aluminum_76,Peru,12354010,2659842
+2025,Export,aluminum_76,Philippines,9178017,608508
+2025,Export,aluminum_76,Poland,40048014,1836769
 2025,Export,aluminum_76,Portugal,7717832,348170
-2025,Export,aluminum_76,Qatar,2167114,42418
-2025,Export,aluminum_76,Rep. of Korea,250453558,27561492
+2025,Export,aluminum_76,Qatar,2106506,41469
+2025,Export,aluminum_76,Rep. of Korea,250511007,27619093
 2025,Export,aluminum_76,Romania,10786092,863931
 2025,Export,aluminum_76,Russian Federation,568723,4984
 2025,Export,aluminum_76,Rwanda,98502,1207
-2025,Export,aluminum_76,Saudi Arabia,12492224,465358
+2025,Export,aluminum_76,Saudi Arabia,12781463,466078
 2025,Export,aluminum_76,Senegal,5175,329
 2025,Export,aluminum_76,Serbia,745427,81980
 2025,Export,aluminum_76,Seychelles,5343,139
-2025,Export,aluminum_76,Singapore,112190780,3772388
+2025,Export,aluminum_76,Singapore,112176840,3760469
 2025,Export,aluminum_76,Sint Maarten,1380098,142249
 2025,Export,aluminum_76,Slovakia,396057,5968
 2025,Export,aluminum_76,Slovenia,173898,2746
 2025,Export,aluminum_76,Somalia,472367,58856
-2025,Export,aluminum_76,South Africa,3428636,127974
+2025,Export,aluminum_76,South Africa,3433135,128128
 2025,Export,aluminum_76,South Sudan,25232,2360
-2025,Export,aluminum_76,Spain,42290764,1829292
+2025,Export,aluminum_76,Spain,42274434,1827704
 2025,Export,aluminum_76,Sri Lanka,173422,4694
 2025,Export,aluminum_76,St Kitts And Nevis,1775584,202741
 2025,Export,aluminum_76,St Lucia,784158,68493
 2025,Export,aluminum_76,St Vincent And The Grenadines,333167,29258
-2025,Export,aluminum_76,Suriname,446457,34258
-2025,Export,aluminum_76,Sweden,6651965,212976
+2025,Export,aluminum_76,Suriname,441426,33591
+2025,Export,aluminum_76,Sweden,6651965,212979
 2025,Export,aluminum_76,Switzerland,16916969,1006507
-2025,Export,aluminum_76,Taiwan,69863766,5548437
+2025,Export,aluminum_76,Taiwan,69879453,5550092
 2025,Export,aluminum_76,Tajikistan,3000,8
 2025,Export,aluminum_76,Tanzania,66569,3057
-2025,Export,aluminum_76,Thailand,41490676,13176535
+2025,Export,aluminum_76,Thailand,41537606,13291173
 2025,Export,aluminum_76,Timor-Leste,17900,79
 2025,Export,aluminum_76,Togo,6160,25
-2025,Export,aluminum_76,Trinidad And Tobago,9880556,1446634
+2025,Export,aluminum_76,Trinidad And Tobago,9890202,1447482
 2025,Export,aluminum_76,Tunisia,282188,12835
 2025,Export,aluminum_76,Turkmenistan,10149,185
-2025,Export,aluminum_76,Turks And Caicos Islands,4472552,482950
-2025,Export,aluminum_76,Türkiye,52260463,3602050
+2025,Export,aluminum_76,Turks And Caicos Islands,4475504,483308
+2025,Export,aluminum_76,Türkiye,52173348,3599119
 2025,Export,aluminum_76,Uganda,702236,55342
 2025,Export,aluminum_76,Ukraine,576498,24055
-2025,Export,aluminum_76,United Arab Emirates,33532293,4659635
-2025,Export,aluminum_76,United Kingdom,186121005,8551291
+2025,Export,aluminum_76,United Arab Emirates,33570015,4674384
+2025,Export,aluminum_76,United Kingdom,186166291,8553104
 2025,Export,aluminum_76,Uruguay,653196,36317
 2025,Export,aluminum_76,Uzbekistan,1069663,60293
 2025,Export,aluminum_76,Vanuatu,5850,1
-2025,Export,aluminum_76,Venezuela,1470450,109564
-2025,Export,aluminum_76,Viet Nam,16251982,2092465
+2025,Export,aluminum_76,Venezuela,1473690,109976
+2025,Export,aluminum_76,Viet Nam,16443754,2122219
 2025,Export,aluminum_76,Yemen,28098,3674
 2025,Export,aluminum_76,Zambia,3019,206
-2025,Export,cement_2523,Algeria,301039,305668
+2025,Export,cement_2523,Algeria,300985,305668
 2025,Export,cement_2523,Anguilla,440031,2322022
 2025,Export,cement_2523,Antigua And Barbuda,350293,582068
-2025,Export,cement_2523,Argentina,1882606,2749441
+2025,Export,cement_2523,Argentina,1889523,2749441
 2025,Export,cement_2523,Aruba,301213,629205
-2025,Export,cement_2523,Australia,2384799,2781913
+2025,Export,cement_2523,Australia,2392202,2781913
 2025,Export,cement_2523,Austria,1014879,1487546
 2025,Export,cement_2523,Azerbaijan,5091,32800
 2025,Export,cement_2523,Bahamas,12070740,56696366
-2025,Export,cement_2523,Bangladesh,26078,34835
+2025,Export,cement_2523,Bangladesh,30446,29760
 2025,Export,cement_2523,Barbados,511971,2746794
-2025,Export,cement_2523,Belgium,29836946,66303644
+2025,Export,cement_2523,Belgium,29824935,72314044
 2025,Export,cement_2523,Belize,79482,163346
 2025,Export,cement_2523,Bermuda,250275,501419
 2025,Export,cement_2523,Bolivia,324052,477226
 2025,Export,cement_2523,Bosnia And Herzegovina,23100,23144
-2025,Export,cement_2523,Brazil,20120022,31207695
+2025,Export,cement_2523,Brazil,20190325,31218608
 2025,Export,cement_2523,British Virgin Islands,2326909,15304571
-2025,Export,cement_2523,Cacm,10212129,17982206
+2025,Export,cement_2523,Cacm,10304468,18051621
 2025,Export,cement_2523,Cambodia,208956,925876
-2025,Export,cement_2523,Canada,160480258,98357312
+2025,Export,cement_2523,Canada,161313581,98357312
 2025,Export,cement_2523,Cayman Islands,831182,1227353
-2025,Export,cement_2523,Chile,3441919,5994035
-2025,Export,cement_2523,China,56203813,180286796
-2025,Export,cement_2523,Colombia,4627972,9450690
-2025,Export,cement_2523,Costa Rica,3140450,4964022
+2025,Export,cement_2523,Chile,3437975,5994035
+2025,Export,cement_2523,China,56473146,181119892
+2025,Export,cement_2523,Colombia,4650545,9510874
+2025,Export,cement_2523,Costa Rica,3209761,5014837
 2025,Export,cement_2523,Croatia,27639,32280
 2025,Export,cement_2523,Cuba,494796,1492814
 2025,Export,cement_2523,Curacao,172962,245646
@@ -7586,39 +7583,39 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,cement_2523,Czech Republic,16612,19581
 2025,Export,cement_2523,Denmark,57306,86146
 2025,Export,cement_2523,Dominica,16846,9855
-2025,Export,cement_2523,Dominican Republic,16139232,33823554
+2025,Export,cement_2523,Dominican Republic,16094719,33713090
 2025,Export,cement_2523,Ecuador,2467929,3733085
-2025,Export,cement_2523,Egypt,1019693,1889769
+2025,Export,cement_2523,Egypt,1049845,1916593
 2025,Export,cement_2523,El Salvador,3486360,4355902
 2025,Export,cement_2523,Equatorial Guinea,5512,1025
 2025,Export,cement_2523,Fiji,11004,4100
-2025,Export,cement_2523,Finland,27847835,76504836
+2025,Export,cement_2523,Finland,27833922,76506013
 2025,Export,cement_2523,France,3046814,3251873
 2025,Export,cement_2523,Georgia,42000,37200
-2025,Export,cement_2523,Germany,21919835,58834391
+2025,Export,cement_2523,Germany,22303147,59258869
 2025,Export,cement_2523,Ghana,49088,101234
-2025,Export,cement_2523,Greece,1028905,1271756
+2025,Export,cement_2523,Greece,1069473,1296365
 2025,Export,cement_2523,Grenada,94434,313595
-2025,Export,cement_2523,Guatemala,2831732,7501210
+2025,Export,cement_2523,Guatemala,2853482,7519810
 2025,Export,cement_2523,Guyana,213582,517616
 2025,Export,cement_2523,Haiti,261885,450259
 2025,Export,cement_2523,Honduras,502662,757068
 2025,Export,cement_2523,Hong Kong,54201,59884
 2025,Export,cement_2523,Hungary,207707,293611
-2025,Export,cement_2523,India,34365830,88217556
-2025,Export,cement_2523,Indonesia,8966907,21003385
+2025,Export,cement_2523,India,34445278,88260649
+2025,Export,cement_2523,Indonesia,9061971,21056344
 2025,Export,cement_2523,Iraq,24180,212174
 2025,Export,cement_2523,Ireland,122425,112395
 2025,Export,cement_2523,Israel,634465,865393
-2025,Export,cement_2523,Italy,13506657,15680029
+2025,Export,cement_2523,Italy,13483589,15671420
 2025,Export,cement_2523,Jamaica,1033832,2859322
-2025,Export,cement_2523,Japan,70187849,184189672
+2025,Export,cement_2523,Japan,70374454,184470339
 2025,Export,cement_2523,Kenya,285998,691464
 2025,Export,cement_2523,Kuwait,66688,52248
 2025,Export,cement_2523,Latvia,98280,357660
-2025,Export,cement_2523,Lebanon,186335,263638
+2025,Export,cement_2523,Lebanon,187943,263638
 2025,Export,cement_2523,Libya,4893,82000
-2025,Export,cement_2523,Malaysia,3148087,5780715
+2025,Export,cement_2523,Malaysia,3162693,5780715
 2025,Export,cement_2523,Maldives,4579,5080
 2025,Export,cement_2523,Marshall Islands,290473,1541968
 2025,Export,cement_2523,Mexico,82738747,33914307
@@ -7626,86 +7623,86 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,cement_2523,Montserrat,159530,1006747
 2025,Export,cement_2523,Morocco,190963,212663
 2025,Export,cement_2523,Netherlands,3670341,11196130
-2025,Export,cement_2523,New Zealand,1542795,3151576
-2025,Export,cement_2523,Nicaragua,250925,404004
+2025,Export,cement_2523,New Zealand,1551098,3191246
+2025,Export,cement_2523,Nicaragua,252203,404004
 2025,Export,cement_2523,Nigeria,17785,11278
 2025,Export,cement_2523,Norway,16958,20100
 2025,Export,cement_2523,Oman,2716,8200
-2025,Export,cement_2523,Pakistan,2738276,7584666
+2025,Export,cement_2523,Pakistan,2723995,7584666
 2025,Export,cement_2523,Panama,1013061,2590184
 2025,Export,cement_2523,Peru,2263767,5446482
-2025,Export,cement_2523,Philippines,2709198,5313271
+2025,Export,cement_2523,Philippines,2724196,5313271
 2025,Export,cement_2523,Poland,2259255,3069449
 2025,Export,cement_2523,Portugal,378633,422165
 2025,Export,cement_2523,Qatar,9000,3776
-2025,Export,cement_2523,Rep. of Korea,36431995,81654271
+2025,Export,cement_2523,Rep. of Korea,36424844,81642745
 2025,Export,cement_2523,Romania,16890,25527
 2025,Export,cement_2523,Saudi Arabia,658220,1171005
 2025,Export,cement_2523,Senegal,7318,19636
 2025,Export,cement_2523,Singapore,665422,882462
 2025,Export,cement_2523,Sint Maarten,161605,1023600
-2025,Export,cement_2523,Slovenia,7403520,26302136
-2025,Export,cement_2523,South Africa,2962473,4636938
+2025,Export,cement_2523,Slovenia,7414303,26302136
+2025,Export,cement_2523,South Africa,3010781,4650404
 2025,Export,cement_2523,Spain,14662182,26417471
 2025,Export,cement_2523,St Kitts And Nevis,17594,10432
 2025,Export,cement_2523,St Lucia,64136,200646
 2025,Export,cement_2523,St Vincent And The Grenadines,2542,4711
 2025,Export,cement_2523,Suriname,44311,34379
-2025,Export,cement_2523,Sweden,22946579,58481192
+2025,Export,cement_2523,Sweden,23659178,58718579
 2025,Export,cement_2523,Switzerland,994641,1129162
-2025,Export,cement_2523,Taiwan,19061496,69958931
+2025,Export,cement_2523,Taiwan,19116351,70089942
 2025,Export,cement_2523,Tajikistan,6400,3629
-2025,Export,cement_2523,Thailand,10102675,21726292
+2025,Export,cement_2523,Thailand,10093964,21529722
 2025,Export,cement_2523,Trinidad And Tobago,632280,1178182
 2025,Export,cement_2523,Tunisia,5093,30750
 2025,Export,cement_2523,Turks And Caicos Islands,1269564,7774679
-2025,Export,cement_2523,Türkiye,17453094,14306802
+2025,Export,cement_2523,Türkiye,17493485,14322047
 2025,Export,cement_2523,United Arab Emirates,418082,2346094
-2025,Export,cement_2523,United Kingdom,19238281,26756203
+2025,Export,cement_2523,United Kingdom,20071485,27847807
 2025,Export,cement_2523,Uruguay,389355,490233
 2025,Export,cement_2523,Venezuela,312507,815143
-2025,Export,cement_2523,Viet Nam,2157603,3590442
+2025,Export,cement_2523,Viet Nam,2159817,3595645
 2025,Export,fertilizers,Albania,29174,6000
 2025,Export,fertilizers,Algeria,73658,38510
 2025,Export,fertilizers,Anguilla,378628,258199
 2025,Export,fertilizers,Antigua And Barbuda,100428,112648
-2025,Export,fertilizers,Argentina,121335478,238721576
+2025,Export,fertilizers,Argentina,134287681,247255808
 2025,Export,fertilizers,Aruba,77410,18035336
-2025,Export,fertilizers,Australia,91164247,332202955
+2025,Export,fertilizers,Australia,90019247,320754130
 2025,Export,fertilizers,Austria,880877,185694
 2025,Export,fertilizers,Azerbaijan,49078,20644
 2025,Export,fertilizers,Bahamas,2018142,1340769
 2025,Export,fertilizers,Bahrain,177512,90403
 2025,Export,fertilizers,Barbados,948507,603343
-2025,Export,fertilizers,Belgium,78520629,222352137
+2025,Export,fertilizers,Belgium,79068136,218562137
 2025,Export,fertilizers,Belize,4624861,6756384
 2025,Export,fertilizers,Bermuda,494388,215412
 2025,Export,fertilizers,Bolivia,10241,4005
 2025,Export,fertilizers,Bosnia And Herzegovina,47520,23458
-2025,Export,fertilizers,Brazil,553616661,1009693157
+2025,Export,fertilizers,Brazil,623684043,1038606603
 2025,Export,fertilizers,British Virgin Islands,46619,28631
-2025,Export,fertilizers,Bulgaria,50592694,127837745
-2025,Export,fertilizers,Cacm,44433409,91343110
+2025,Export,fertilizers,Bulgaria,46557564,118379774
+2025,Export,fertilizers,Cacm,44951438,91813063
 2025,Export,fertilizers,Cambodia,190611,69891
 2025,Export,fertilizers,Cameroon,1000000,5000000
-2025,Export,fertilizers,Canada,2009748857,217473616
+2025,Export,fertilizers,Canada,2012966667,217568476
 2025,Export,fertilizers,Cayman Islands,622758,442161
-2025,Export,fertilizers,Chile,44860438,93211168
-2025,Export,fertilizers,China,35785480,55568694
-2025,Export,fertilizers,Colombia,71861619,127436696
-2025,Export,fertilizers,Costa Rica,4938668,2733227
+2025,Export,fertilizers,Chile,45157852,94281696
+2025,Export,fertilizers,China,37235947,52222583
+2025,Export,fertilizers,Colombia,71910619,127786696
+2025,Export,fertilizers,Costa Rica,4938668,2734594
 2025,Export,fertilizers,Cote D'Ivoire,1000000,5000000
 2025,Export,fertilizers,Croatia,19360,4209
 2025,Export,fertilizers,Curacao,47324,42139
-2025,Export,fertilizers,Cyprus,142434,38485
+2025,Export,fertilizers,Cyprus,169293,41485
 2025,Export,fertilizers,Denmark,79002,63333
-2025,Export,fertilizers,Dominican Republic,30608829,76921759
-2025,Export,fertilizers,Ecuador,9271478,6023626
+2025,Export,fertilizers,Dominican Republic,31426985,78259352
+2025,Export,fertilizers,Ecuador,9294420,6027085
 2025,Export,fertilizers,Egypt,6331942,2711911
 2025,Export,fertilizers,El Salvador,321906,98585
 2025,Export,fertilizers,Equatorial Guinea,12690,3000
 2025,Export,fertilizers,Finland,11340,24480
-2025,Export,fertilizers,France,109668423,413921676
+2025,Export,fertilizers,France,112743500,420026743
 2025,Export,fertilizers,French Polynesia,269600,79355
 2025,Export,fertilizers,Georgia,101006,19470
 2025,Export,fertilizers,Germany,2799048,1915101
@@ -7713,36 +7710,36 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,fertilizers,Greece,913475,241497
 2025,Export,fertilizers,Grenada,17148,12300
 2025,Export,fertilizers,Guadeloupe,571500,900000
-2025,Export,fertilizers,Guatemala,5781505,3005762
-2025,Export,fertilizers,Guinea,112924,142811
+2025,Export,fertilizers,Guatemala,5900976,3023903
+2025,Export,fertilizers,Guinea,121328,151883
 2025,Export,fertilizers,Guyana,137058,62592
 2025,Export,fertilizers,Haiti,114385,71333
-2025,Export,fertilizers,Honduras,32335435,85311679
+2025,Export,fertilizers,Honduras,32733993,85762124
 2025,Export,fertilizers,Hong Kong,6555138,355414
 2025,Export,fertilizers,India,27650960,41706315
 2025,Export,fertilizers,Indonesia,570475,718240
 2025,Export,fertilizers,Iran,482811,173610
 2025,Export,fertilizers,Iraq,411501,140664
-2025,Export,fertilizers,Ireland,7098249,3154293
+2025,Export,fertilizers,Ireland,7105326,3154293
 2025,Export,fertilizers,Israel,1811164,1465857
 2025,Export,fertilizers,Italy,3901517,2195019
-2025,Export,fertilizers,Jamaica,5563024,12996537
+2025,Export,fertilizers,Jamaica,5453629,13008944
 2025,Export,fertilizers,Japan,5691465,6818481
 2025,Export,fertilizers,Jordan,460120,175804
 2025,Export,fertilizers,Kuwait,59248,22040
 2025,Export,fertilizers,Kyrgyzstan,5950,303
 2025,Export,fertilizers,Latvia,29890,15250
-2025,Export,fertilizers,Lebanon,178373,90380
+2025,Export,fertilizers,Lebanon,194475,112398
 2025,Export,fertilizers,Lithuania,12015,1020
 2025,Export,fertilizers,Macedonia,464511,93406
 2025,Export,fertilizers,Malaysia,10534103,8547464
 2025,Export,fertilizers,Martinique,865319,1387771
 2025,Export,fertilizers,Mauritius,75457,33831
 2025,Export,fertilizers,Mayotte,30400,0
-2025,Export,fertilizers,Mexico,337255155,107548910
+2025,Export,fertilizers,Mexico,339716482,107501986
 2025,Export,fertilizers,Micronesia,16424,10388
-2025,Export,fertilizers,Morocco,154578797,491656153
-2025,Export,fertilizers,Netherlands,43239762,127711734
+2025,Export,fertilizers,Morocco,160360186,483834712
+2025,Export,fertilizers,Netherlands,48521795,120589276
 2025,Export,fertilizers,New Zealand,1415925,921606
 2025,Export,fertilizers,Nicaragua,1055895,193857
 2025,Export,fertilizers,Nigeria,546570,410268
@@ -7751,14 +7748,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,fertilizers,Pakistan,694627,577541
 2025,Export,fertilizers,Panama,720248,2071755
 2025,Export,fertilizers,Paraguay,108017,36361
-2025,Export,fertilizers,Peru,79619183,224660317
-2025,Export,fertilizers,Philippines,3164646,1788215
+2025,Export,fertilizers,Peru,81867592,234459497
+2025,Export,fertilizers,Philippines,2878291,1743175
 2025,Export,fertilizers,Poland,1221781,246537
-2025,Export,fertilizers,Rep. of Korea,5610807,3025396
+2025,Export,fertilizers,Rep. of Korea,5566628,3025396
 2025,Export,fertilizers,Romania,426299,183102
 2025,Export,fertilizers,Saudi Arabia,995036,208915
 2025,Export,fertilizers,Senegal,400000,4000000
-2025,Export,fertilizers,Singapore,3274501,1834400
+2025,Export,fertilizers,Singapore,3274501,1824556
 2025,Export,fertilizers,Sint Maarten,31909,16000
 2025,Export,fertilizers,Slovakia,28058,6316
 2025,Export,fertilizers,South Africa,4134649,1981725
@@ -7772,21 +7769,21 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,fertilizers,Switzerland,108460,35395
 2025,Export,fertilizers,Taiwan,2852766,1148113
 2025,Export,fertilizers,Thailand,4136362,1594432
-2025,Export,fertilizers,Trinidad And Tobago,1656761,2377771
+2025,Export,fertilizers,Trinidad And Tobago,1674041,2393501
 2025,Export,fertilizers,Tunisia,97818,18758
 2025,Export,fertilizers,Turks And Caicos Islands,301577,181479
 2025,Export,fertilizers,Türkiye,18968634,46977552
 2025,Export,fertilizers,Ukraine,777081,58340
 2025,Export,fertilizers,United Arab Emirates,5286530,146000
-2025,Export,fertilizers,United Kingdom,86549474,300673474
-2025,Export,fertilizers,Uruguay,35490352,107346589
+2025,Export,fertilizers,United Kingdom,94770457,300690202
+2025,Export,fertilizers,Uruguay,41698314,122182466
 2025,Export,fertilizers,Venezuela,191224,56370
 2025,Export,fertilizers,Viet Nam,3593751,2100614
 2025,Export,fertilizers,Zambia,14500,1452
 2025,Export,hydrogen_2804,Belgium,10000,29800
 2025,Export,hydrogen_2804,British Virgin Islands,16920,15386
 2025,Export,hydrogen_2804,Cacm,4045,9020
-2025,Export,hydrogen_2804,Canada,9260685,0
+2025,Export,hydrogen_2804,Canada,9273398,0
 2025,Export,hydrogen_2804,Chile,24890,3346
 2025,Export,hydrogen_2804,Colombia,26292,11391
 2025,Export,hydrogen_2804,Costa Rica,4045,9020
@@ -7809,10 +7806,10 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,Angola,316950,206327
 2025,Export,iron_steel_72,Anguilla,544792,620311
 2025,Export,iron_steel_72,Antigua And Barbuda,949130,677678
-2025,Export,iron_steel_72,Argentina,5332352,1972319
+2025,Export,iron_steel_72,Argentina,5300488,1959290
 2025,Export,iron_steel_72,Aruba,1229250,1089173
 2025,Export,iron_steel_72,Australia,2732940,699998
-2025,Export,iron_steel_72,Austria,153394911,376013438
+2025,Export,iron_steel_72,Austria,160974681,405006998
 2025,Export,iron_steel_72,Azerbaijan,2950,502
 2025,Export,iron_steel_72,Bahamas,15249921,14659290
 2025,Export,iron_steel_72,Bahrain,458360,11724
@@ -7826,14 +7823,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,British Virgin Islands,2192654,2427730
 2025,Export,iron_steel_72,Brunei,12308,13043
 2025,Export,iron_steel_72,Bulgaria,23127,4970
-2025,Export,iron_steel_72,Cacm,43896972,3638774
+2025,Export,iron_steel_72,Cacm,43879634,3631694
 2025,Export,iron_steel_72,Cameroon,20974,4012
-2025,Export,iron_steel_72,Canada,2301333761,4129910030
+2025,Export,iron_steel_72,Canada,2352995786,4153770218
 2025,Export,iron_steel_72,Cayman Islands,2070737,1954488
-2025,Export,iron_steel_72,Chile,3008121,1556842
-2025,Export,iron_steel_72,China,64082468,16642939
+2025,Export,iron_steel_72,Chile,3012578,1556906
+2025,Export,iron_steel_72,China,64150937,16663529
 2025,Export,iron_steel_72,Colombia,4686361,3353391
-2025,Export,iron_steel_72,Costa Rica,40118867,1852738
+2025,Export,iron_steel_72,Costa Rica,40118867,1852744
 2025,Export,iron_steel_72,Cote D'Ivoire,5000,1
 2025,Export,iron_steel_72,Croatia,5199333,1750532
 2025,Export,iron_steel_72,Curacao,646039,583175
@@ -7843,34 +7840,34 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,Denmark,3911044,380905
 2025,Export,iron_steel_72,Djibouti,3396,102
 2025,Export,iron_steel_72,Dominica,156979,130642
-2025,Export,iron_steel_72,Dominican Republic,23752933,26099836
+2025,Export,iron_steel_72,Dominican Republic,23394031,25820976
 2025,Export,iron_steel_72,Ecuador,1179928,1013517
-2025,Export,iron_steel_72,Egypt,63171,12648
+2025,Export,iron_steel_72,Egypt,57225,12563
 2025,Export,iron_steel_72,El Salvador,375671,222032
 2025,Export,iron_steel_72,Equatorial Guinea,472059,322896
 2025,Export,iron_steel_72,Estonia,28709,5610
 2025,Export,iron_steel_72,Ethiopia,10595,582
 2025,Export,iron_steel_72,Finland,152410,55390
-2025,Export,iron_steel_72,France,18503878,86999807
+2025,Export,iron_steel_72,France,25508965,134695679
 2025,Export,iron_steel_72,French Polynesia,4224,96
 2025,Export,iron_steel_72,Gabon,15037,6780
 2025,Export,iron_steel_72,Gambia,2920,1733
-2025,Export,iron_steel_72,Germany,44457881,100265494
+2025,Export,iron_steel_72,Germany,44457881,100267564
 2025,Export,iron_steel_72,Ghana,209831,50643
 2025,Export,iron_steel_72,Greece,2507167,1676290
 2025,Export,iron_steel_72,Grenada,315175,105244
-2025,Export,iron_steel_72,Guatemala,1332785,530477
+2025,Export,iron_steel_72,Guatemala,1315447,523391
 2025,Export,iron_steel_72,Guyana,1080499,356466
 2025,Export,iron_steel_72,Haiti,29323,4916
 2025,Export,iron_steel_72,Honduras,1165571,521455
 2025,Export,iron_steel_72,Hong Kong,4146797,599604
 2025,Export,iron_steel_72,Hungary,800393,77712
 2025,Export,iron_steel_72,Iceland,92187,18517
-2025,Export,iron_steel_72,India,23602536,12924429
+2025,Export,iron_steel_72,India,23658849,12927425
 2025,Export,iron_steel_72,Indonesia,3100842,1143811
-2025,Export,iron_steel_72,Ireland,22148610,458216
-2025,Export,iron_steel_72,Israel,2885727,600205
-2025,Export,iron_steel_72,Italy,45935252,97126333
+2025,Export,iron_steel_72,Ireland,22162310,466496
+2025,Export,iron_steel_72,Israel,2850831,371343
+2025,Export,iron_steel_72,Italy,45881302,97120596
 2025,Export,iron_steel_72,Jamaica,1266238,1056572
 2025,Export,iron_steel_72,Japan,21659930,5534173
 2025,Export,iron_steel_72,Jordan,41302,10502
@@ -7881,19 +7878,19 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,Libya,24000,15150
 2025,Export,iron_steel_72,Luxembourg,11504,2702
 2025,Export,iron_steel_72,Macau,10485,102
-2025,Export,iron_steel_72,Malaysia,10927194,4688294
+2025,Export,iron_steel_72,Malaysia,10878405,4648495
 2025,Export,iron_steel_72,Maldives,3784,1623
 2025,Export,iron_steel_72,Mali,8400,898
 2025,Export,iron_steel_72,Malta,11638,72
 2025,Export,iron_steel_72,Marshall Islands,599533,889545
 2025,Export,iron_steel_72,Martinique,4570,692
-2025,Export,iron_steel_72,Mexico,3137072053,710748413
+2025,Export,iron_steel_72,Mexico,3136474903,710747323
 2025,Export,iron_steel_72,Micronesia,23247,6451
 2025,Export,iron_steel_72,Moldova,21888,0
 2025,Export,iron_steel_72,Monaco,42571,0
 2025,Export,iron_steel_72,Montserrat,11271,5388
 2025,Export,iron_steel_72,Morocco,65831,4162
-2025,Export,iron_steel_72,Netherlands,48011874,374270341
+2025,Export,iron_steel_72,Netherlands,42364552,333629576
 2025,Export,iron_steel_72,New Zealand,1717639,456003
 2025,Export,iron_steel_72,Nicaragua,904078,512072
 2025,Export,iron_steel_72,Niger,84503,30540
@@ -7904,25 +7901,25 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,Panama,1213734,727988
 2025,Export,iron_steel_72,Papua New Guinea,19480,378
 2025,Export,iron_steel_72,Paraguay,6081,11676
-2025,Export,iron_steel_72,Peru,2178508,1644509
+2025,Export,iron_steel_72,Peru,2162465,1634876
 2025,Export,iron_steel_72,Philippines,1711094,1405596
 2025,Export,iron_steel_72,Poland,5065303,1422913
 2025,Export,iron_steel_72,Portugal,59436,4734
 2025,Export,iron_steel_72,Qatar,100021,8287
 2025,Export,iron_steel_72,Rep. of Korea,39953698,8681113
-2025,Export,iron_steel_72,Romania,2774304,2259650
+2025,Export,iron_steel_72,Romania,2766904,2259642
 2025,Export,iron_steel_72,Russian Federation,3547,2538
 2025,Export,iron_steel_72,Saudi Arabia,1634955,499135
 2025,Export,iron_steel_72,Serbia,48504,14948
 2025,Export,iron_steel_72,Sierra Leone,6000,1200
-2025,Export,iron_steel_72,Singapore,7849442,1928438
+2025,Export,iron_steel_72,Singapore,7889442,1983047
 2025,Export,iron_steel_72,Sint Maarten,1469657,1216191
 2025,Export,iron_steel_72,Slovakia,2233984,367535
 2025,Export,iron_steel_72,Slovenia,195246,18164
 2025,Export,iron_steel_72,Solomon Islands,158885,80525
 2025,Export,iron_steel_72,Somalia,1215089,451141
 2025,Export,iron_steel_72,South Africa,552722,203738
-2025,Export,iron_steel_72,Spain,5887393,3025428
+2025,Export,iron_steel_72,Spain,5909032,3039312
 2025,Export,iron_steel_72,St Kitts And Nevis,514318,395014
 2025,Export,iron_steel_72,St Lucia,83584,33481
 2025,Export,iron_steel_72,St Vincent And The Grenadines,102606,37045
@@ -7930,15 +7927,15 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,Sweden,3821157,1165187
 2025,Export,iron_steel_72,Switzerland,1784889,253236
 2025,Export,iron_steel_72,Taiwan,17262976,5152572
-2025,Export,iron_steel_72,Thailand,10909206,5790765
+2025,Export,iron_steel_72,Thailand,10909206,5790764
 2025,Export,iron_steel_72,Trinidad And Tobago,5048591,1548599
 2025,Export,iron_steel_72,Tunisia,100890,45685
 2025,Export,iron_steel_72,Turkmenistan,4310,26
-2025,Export,iron_steel_72,Turks And Caicos Islands,1213384,1146044
-2025,Export,iron_steel_72,Türkiye,70513596,202202475
+2025,Export,iron_steel_72,Turks And Caicos Islands,1213987,1146128
+2025,Export,iron_steel_72,Türkiye,70833137,201234185
 2025,Export,iron_steel_72,Ukraine,4325,140
 2025,Export,iron_steel_72,United Arab Emirates,13143244,1512333
-2025,Export,iron_steel_72,United Kingdom,14868389,7002416
+2025,Export,iron_steel_72,United Kingdom,14868371,7002416
 2025,Export,iron_steel_72,Uruguay,284828,134243
 2025,Export,iron_steel_72,Uzbekistan,7100,123
 2025,Export,iron_steel_72,Venezuela,318045,199973
@@ -7946,99 +7943,99 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_72,Zambia,3872,161
 2025,Export,iron_steel_73,Albania,199820,17388
 2025,Export,iron_steel_73,Algeria,4426275,183119
-2025,Export,iron_steel_73,Angola,11388492,796263
+2025,Export,iron_steel_73,Angola,11385075,796262
 2025,Export,iron_steel_73,Anguilla,1427302,280611
-2025,Export,iron_steel_73,Antigua And Barbuda,4329690,708518
-2025,Export,iron_steel_73,Argentina,64416608,6140867
+2025,Export,iron_steel_73,Antigua And Barbuda,4337985,720614
+2025,Export,iron_steel_73,Argentina,64458865,6138251
 2025,Export,iron_steel_73,Armenia,44481,1937
 2025,Export,iron_steel_73,Aruba,4172642,582263
-2025,Export,iron_steel_73,Australia,167899943,10784004
-2025,Export,iron_steel_73,Austria,13725690,1157650
+2025,Export,iron_steel_73,Australia,167967903,10785230
+2025,Export,iron_steel_73,Austria,13725744,1157655
 2025,Export,iron_steel_73,Azerbaijan,5193204,152941
-2025,Export,iron_steel_73,Bahamas,72049153,15446213
+2025,Export,iron_steel_73,Bahamas,72094377,15460308
 2025,Export,iron_steel_73,Bahrain,1500749,54484
 2025,Export,iron_steel_73,Bangladesh,386648,9036
 2025,Export,iron_steel_73,Barbados,8717386,2430170
-2025,Export,iron_steel_73,Belgium,48063639,3225669
-2025,Export,iron_steel_73,Belize,3202967,398125
+2025,Export,iron_steel_73,Belgium,48066809,3227867
+2025,Export,iron_steel_73,Belize,3229267,398669
 2025,Export,iron_steel_73,Benin,58125,15033
 2025,Export,iron_steel_73,Bermuda,3137688,596131
 2025,Export,iron_steel_73,Bhutan,9588,1
 2025,Export,iron_steel_73,Bolivia,762128,36140
 2025,Export,iron_steel_73,Bosnia And Herzegovina,115264,2206
 2025,Export,iron_steel_73,Botswana,528590,124060
-2025,Export,iron_steel_73,Brazil,241388292,14185602
+2025,Export,iron_steel_73,Brazil,241343485,14175758
 2025,Export,iron_steel_73,British Virgin Islands,3783466,799324
-2025,Export,iron_steel_73,Brunei,1073013,15023
+2025,Export,iron_steel_73,Brunei,1073013,15305
 2025,Export,iron_steel_73,Bulgaria,2158901,138399
 2025,Export,iron_steel_73,Burkina Faso,216534,9241
 2025,Export,iron_steel_73,Burma,213266,46535
 2025,Export,iron_steel_73,Cabo Verde,15833,599
-2025,Export,iron_steel_73,Cacm,105408811,12163693
+2025,Export,iron_steel_73,Cacm,104473070,12128046
 2025,Export,iron_steel_73,Cambodia,388450,83711
 2025,Export,iron_steel_73,Cameroon,542800,13603
-2025,Export,iron_steel_73,Canada,3316218968,7361274
+2025,Export,iron_steel_73,Canada,3367563153,8396804
 2025,Export,iron_steel_73,Cayman Islands,14125312,2649239
 2025,Export,iron_steel_73,Central African Republic,6140,5
-2025,Export,iron_steel_73,Chad,1885692,145600
-2025,Export,iron_steel_73,Chile,97988042,12444896
-2025,Export,iron_steel_73,China,407327485,36047603
-2025,Export,iron_steel_73,Colombia,57184339,5492877
-2025,Export,iron_steel_73,Congo,2555980,60496
-2025,Export,iron_steel_73,Costa Rica,63409583,5748580
+2025,Export,iron_steel_73,Chad,1848567,145560
+2025,Export,iron_steel_73,Chile,98118074,12504455
+2025,Export,iron_steel_73,China,407057236,35945382
+2025,Export,iron_steel_73,Colombia,57401115,5527375
+2025,Export,iron_steel_73,Congo,2573168,71350
+2025,Export,iron_steel_73,Costa Rica,62465615,5712865
 2025,Export,iron_steel_73,Cote D'Ivoire,11602992,2152120
 2025,Export,iron_steel_73,Croatia,1443260,176757
 2025,Export,iron_steel_73,Cuba,276760,60918
 2025,Export,iron_steel_73,Curacao,2183135,235101
 2025,Export,iron_steel_73,Cyprus,846552,30701
-2025,Export,iron_steel_73,Czech Republic,20333112,1387856
+2025,Export,iron_steel_73,Czech Republic,20333112,1390347
 2025,Export,iron_steel_73,Democratic Republic Of The Congo,342557,24130
-2025,Export,iron_steel_73,Denmark,33854755,3569031
+2025,Export,iron_steel_73,Denmark,33868235,3569039
 2025,Export,iron_steel_73,Djibouti,449114,53340
 2025,Export,iron_steel_73,Dominica,899782,108647
-2025,Export,iron_steel_73,Dominican Republic,46634132,8073809
-2025,Export,iron_steel_73,Ecuador,5770799,569777
+2025,Export,iron_steel_73,Dominican Republic,46592632,8121395
+2025,Export,iron_steel_73,Ecuador,5779093,572542
 2025,Export,iron_steel_73,Egypt,36473291,22047784
-2025,Export,iron_steel_73,El Salvador,12517178,1347852
+2025,Export,iron_steel_73,El Salvador,12522081,1347885
 2025,Export,iron_steel_73,Equatorial Guinea,2803904,354208
 2025,Export,iron_steel_73,Estonia,374268,23962
 2025,Export,iron_steel_73,Eswatini,31009,1571
 2025,Export,iron_steel_73,Ethiopia,2415659,79906
 2025,Export,iron_steel_73,Fiji,257791,3249
-2025,Export,iron_steel_73,Finland,5060384,129250
-2025,Export,iron_steel_73,France,340817176,12486041
+2025,Export,iron_steel_73,Finland,5077193,129552
+2025,Export,iron_steel_73,France,340720294,12483476
 2025,Export,iron_steel_73,French Guiana,2151233,65785
 2025,Export,iron_steel_73,French Polynesia,105875,13422
 2025,Export,iron_steel_73,Gabon,3078814,599461
-2025,Export,iron_steel_73,Georgia,969124,22303
-2025,Export,iron_steel_73,Germany,320405710,32930127
-2025,Export,iron_steel_73,Ghana,3393300,277578
+2025,Export,iron_steel_73,Georgia,960079,21969
+2025,Export,iron_steel_73,Germany,317986385,32680098
+2025,Export,iron_steel_73,Ghana,3382153,277462
 2025,Export,iron_steel_73,Gibraltar,169864,24810
-2025,Export,iron_steel_73,Greece,7116752,449879
+2025,Export,iron_steel_73,Greece,7116752,449881
 2025,Export,iron_steel_73,Greenland,28575,674
-2025,Export,iron_steel_73,Grenada,3078228,436669
+2025,Export,iron_steel_73,Grenada,3074594,436533
 2025,Export,iron_steel_73,Guadeloupe,146018,18022
-2025,Export,iron_steel_73,Guatemala,16320268,2840021
+2025,Export,iron_steel_73,Guatemala,16323592,2840056
 2025,Export,iron_steel_73,Guinea,431884,21274
-2025,Export,iron_steel_73,Guyana,91022291,4274394
-2025,Export,iron_steel_73,Haiti,1915162,730352
+2025,Export,iron_steel_73,Guyana,91662541,4293666
+2025,Export,iron_steel_73,Haiti,1902562,737449
 2025,Export,iron_steel_73,Honduras,6128479,810496
-2025,Export,iron_steel_73,Hong Kong,33865966,1355590
+2025,Export,iron_steel_73,Hong Kong,33865966,1355115
 2025,Export,iron_steel_73,Hungary,17173565,1110924
 2025,Export,iron_steel_73,Iceland,1000635,32257
-2025,Export,iron_steel_73,India,150764985,20780736
-2025,Export,iron_steel_73,Indonesia,16614316,3804786
-2025,Export,iron_steel_73,Iraq,5081652,1028853
-2025,Export,iron_steel_73,Ireland,68055410,9562791
-2025,Export,iron_steel_73,Israel,88656759,6040135
-2025,Export,iron_steel_73,Italy,93756342,9855889
+2025,Export,iron_steel_73,India,153642312,21028483
+2025,Export,iron_steel_73,Indonesia,16542683,3791585
+2025,Export,iron_steel_73,Iraq,5062037,1028387
+2025,Export,iron_steel_73,Ireland,68047133,9562723
+2025,Export,iron_steel_73,Israel,88599500,6027813
+2025,Export,iron_steel_73,Italy,93737724,9855032
 2025,Export,iron_steel_73,Jamaica,17165799,3778112
-2025,Export,iron_steel_73,Japan,291024422,39222193
+2025,Export,iron_steel_73,Japan,290831177,39177799
 2025,Export,iron_steel_73,Jordan,4505182,200108
-2025,Export,iron_steel_73,Kazakhstan,4278320,282221
+2025,Export,iron_steel_73,Kazakhstan,4275323,282220
 2025,Export,iron_steel_73,Kenya,534672,32339
 2025,Export,iron_steel_73,Kiribati,24000,750
-2025,Export,iron_steel_73,Kuwait,9728694,1484653
+2025,Export,iron_steel_73,Kuwait,9678787,1480285
 2025,Export,iron_steel_73,Kyrgyzstan,124690,4756
 2025,Export,iron_steel_73,Laos,21712,46
 2025,Export,iron_steel_73,Latvia,452583,91252
@@ -8052,7 +8049,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_73,Macedonia,159827,9797
 2025,Export,iron_steel_73,Madagascar,525249,52619
 2025,Export,iron_steel_73,Malawi,21969,602
-2025,Export,iron_steel_73,Malaysia,128864991,4905522
+2025,Export,iron_steel_73,Malaysia,128541640,4895598
 2025,Export,iron_steel_73,Maldives,359859,13349
 2025,Export,iron_steel_73,Mali,400117,27866
 2025,Export,iron_steel_73,Malta,733940,25671
@@ -8060,212 +8057,212 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Export,iron_steel_73,Martinique,22503,113
 2025,Export,iron_steel_73,Mauritania,1679949,111443
 2025,Export,iron_steel_73,Mauritius,255484,3172
-2025,Export,iron_steel_73,Mexico,5268583845,2692489
+2025,Export,iron_steel_73,Mexico,5268600149,2685409
 2025,Export,iron_steel_73,Micronesia,136517,29813
 2025,Export,iron_steel_73,Moldova,445421,30904
 2025,Export,iron_steel_73,Monaco,1711000,5800
 2025,Export,iron_steel_73,Mongolia,1502201,58248
 2025,Export,iron_steel_73,Montenegro,210402,13494
 2025,Export,iron_steel_73,Montserrat,937688,116058
-2025,Export,iron_steel_73,Morocco,5062267,217562
+2025,Export,iron_steel_73,Morocco,5062267,217563
 2025,Export,iron_steel_73,Mozambique,214182,22838
 2025,Export,iron_steel_73,Namibia,2142369,69306
 2025,Export,iron_steel_73,Nepal,35237,286
-2025,Export,iron_steel_73,Netherlands,146600638,9166518
+2025,Export,iron_steel_73,Netherlands,146429100,9170475
 2025,Export,iron_steel_73,New Caledonia,27689,357
-2025,Export,iron_steel_73,New Zealand,21679821,786816
+2025,Export,iron_steel_73,New Zealand,21670958,786268
 2025,Export,iron_steel_73,Nicaragua,7033303,1416744
 2025,Export,iron_steel_73,Niger,45271,3054
-2025,Export,iron_steel_73,Nigeria,18305237,1365229
-2025,Export,iron_steel_73,Norway,31306740,1476312
+2025,Export,iron_steel_73,Nigeria,18301837,1365226
+2025,Export,iron_steel_73,Norway,31272891,1477263
 2025,Export,iron_steel_73,Oman,7925106,1261279
 2025,Export,iron_steel_73,Pakistan,2214318,73712
 2025,Export,iron_steel_73,Palau,48730,3018
 2025,Export,iron_steel_73,Panama,12764435,1339399
 2025,Export,iron_steel_73,Papua New Guinea,523476,15124
 2025,Export,iron_steel_73,Paraguay,751234,59876
-2025,Export,iron_steel_73,Peru,69426482,8663640
-2025,Export,iron_steel_73,Philippines,32945190,3507173
+2025,Export,iron_steel_73,Peru,69141376,8510870
+2025,Export,iron_steel_73,Philippines,32951943,3507203
 2025,Export,iron_steel_73,Poland,69137213,2355784
-2025,Export,iron_steel_73,Portugal,10835865,864604
-2025,Export,iron_steel_73,Qatar,29404967,1628345
-2025,Export,iron_steel_73,Rep. of Korea,238319487,27094518
+2025,Export,iron_steel_73,Portugal,10832884,864517
+2025,Export,iron_steel_73,Qatar,29379068,1628216
+2025,Export,iron_steel_73,Rep. of Korea,237958415,26993629
 2025,Export,iron_steel_73,Reunion,2902,2
 2025,Export,iron_steel_73,Romania,17910150,3361611
 2025,Export,iron_steel_73,Russian Federation,137426,1559
 2025,Export,iron_steel_73,Rwanda,62476,6758
 2025,Export,iron_steel_73,Samoa,148238,9956
 2025,Export,iron_steel_73,Sao Tome And Principe,3924223,779681
-2025,Export,iron_steel_73,Saudi Arabia,85816403,5060024
-2025,Export,iron_steel_73,Senegal,573023,21620
+2025,Export,iron_steel_73,Saudi Arabia,84474746,5051953
+2025,Export,iron_steel_73,Senegal,633606,24163
 2025,Export,iron_steel_73,Serbia,1421563,126393
 2025,Export,iron_steel_73,Seychelles,94212,4982
 2025,Export,iron_steel_73,Sierra Leone,212604,8977
-2025,Export,iron_steel_73,Singapore,188938784,5964735
+2025,Export,iron_steel_73,Singapore,188918212,5964480
 2025,Export,iron_steel_73,Sint Maarten,1660234,284407
 2025,Export,iron_steel_73,Slovakia,8982820,506517
-2025,Export,iron_steel_73,Slovenia,4240211,354621
+2025,Export,iron_steel_73,Slovenia,3083322,221263
 2025,Export,iron_steel_73,Solomon Islands,133199,26236
-2025,Export,iron_steel_73,Somalia,224565,33926
-2025,Export,iron_steel_73,South Africa,32670174,2682495
+2025,Export,iron_steel_73,Somalia,229397,36776
+2025,Export,iron_steel_73,South Africa,32619119,2680608
 2025,Export,iron_steel_73,South Sudan,445986,39760
-2025,Export,iron_steel_73,Spain,90316517,11916421
-2025,Export,iron_steel_73,Sri Lanka,1102856,33627
+2025,Export,iron_steel_73,Spain,89295697,11749406
+2025,Export,iron_steel_73,Sri Lanka,858011,51173
 2025,Export,iron_steel_73,St Kitts And Nevis,6503209,1306080
 2025,Export,iron_steel_73,St Lucia,2796991,495327
 2025,Export,iron_steel_73,St Vincent And The Grenadines,1873116,358694
-2025,Export,iron_steel_73,Suriname,16951663,1083800
-2025,Export,iron_steel_73,Sweden,21780452,1932730
-2025,Export,iron_steel_73,Switzerland,28254257,820594
-2025,Export,iron_steel_73,Taiwan,84924878,3525529
+2025,Export,iron_steel_73,Suriname,16662800,1076563
+2025,Export,iron_steel_73,Sweden,21708298,1931295
+2025,Export,iron_steel_73,Switzerland,28271419,820656
+2025,Export,iron_steel_73,Taiwan,84887943,3524181
 2025,Export,iron_steel_73,Tajikistan,23395,4253
 2025,Export,iron_steel_73,Tanzania,807169,79252
-2025,Export,iron_steel_73,Thailand,64832533,9317420
+2025,Export,iron_steel_73,Thailand,64800735,9316786
 2025,Export,iron_steel_73,Togo,1752601,90845
 2025,Export,iron_steel_73,Tonga,248522,22616
-2025,Export,iron_steel_73,Trinidad And Tobago,32172027,5340667
+2025,Export,iron_steel_73,Trinidad And Tobago,32157701,5339603
 2025,Export,iron_steel_73,Tunisia,5978115,72485
 2025,Export,iron_steel_73,Turkmenistan,713394,31494
-2025,Export,iron_steel_73,Turks And Caicos Islands,6397739,1092103
-2025,Export,iron_steel_73,Türkiye,64210206,9287526
+2025,Export,iron_steel_73,Turks And Caicos Islands,6448217,1094381
+2025,Export,iron_steel_73,Türkiye,64191319,9285533
 2025,Export,iron_steel_73,Uganda,251775,16872
 2025,Export,iron_steel_73,Ukraine,54775988,2797079
-2025,Export,iron_steel_73,United Arab Emirates,79931074,5297355
-2025,Export,iron_steel_73,United Kingdom,362935016,17830535
+2025,Export,iron_steel_73,United Arab Emirates,79951777,5304431
+2025,Export,iron_steel_73,United Kingdom,362692189,17838394
 2025,Export,iron_steel_73,Uruguay,7507609,1177820
 2025,Export,iron_steel_73,Uzbekistan,3382136,162659
 2025,Export,iron_steel_73,Vanuatu,153825,5516
-2025,Export,iron_steel_73,Venezuela,1222457,183121
-2025,Export,iron_steel_73,Viet Nam,32998737,12511246
+2025,Export,iron_steel_73,Venezuela,1203658,175011
+2025,Export,iron_steel_73,Viet Nam,33041332,12492218
 2025,Export,iron_steel_73,Yemen,3955,453
 2025,Export,iron_steel_73,Zambia,362324,21949
-2025,Export,iron_steel_73,Zimbabwe,196836,22299
+2025,Export,iron_steel_73,Zimbabwe,201290,22822
 2025,Import,aluminum_76,Afghanistan,2486,14
-2025,Import,aluminum_76,Albania,1570500,277417
+2025,Import,aluminum_76,Albania,1537097,273783
 2025,Import,aluminum_76,Argentina,450714949,166857511
 2025,Import,aluminum_76,Armenia,7054,4448
-2025,Import,aluminum_76,Australia,218064382,69807309
-2025,Import,aluminum_76,Austria,203054286,35623797
-2025,Import,aluminum_76,Azerbaijan,63592432,19118702
-2025,Import,aluminum_76,Bahrain,740528759,258651249
+2025,Import,aluminum_76,Australia,220021420,70507536
+2025,Import,aluminum_76,Austria,202942706,35614703
+2025,Import,aluminum_76,Azerbaijan,63102465,18966156
+2025,Import,aluminum_76,Bahrain,739282531,258701174
 2025,Import,aluminum_76,Bangladesh,113334,13933
 2025,Import,aluminum_76,Belarus,411299,67092
-2025,Import,aluminum_76,Belgium,153182195,24997466
+2025,Import,aluminum_76,Belgium,152875672,24963003
 2025,Import,aluminum_76,Belize,2790,208
 2025,Import,aluminum_76,Bosnia And Herzegovina,1127530,141068
-2025,Import,aluminum_76,Brazil,252437198,73199186
+2025,Import,aluminum_76,Brazil,252400785,73124245
 2025,Import,aluminum_76,Brunei,1144027,298705
-2025,Import,aluminum_76,Bulgaria,33315094,7347297
+2025,Import,aluminum_76,Bulgaria,33302802,7350774
 2025,Import,aluminum_76,Burma,42630,10306
-2025,Import,aluminum_76,Cacm,51366266,9998741
-2025,Import,aluminum_76,Cambodia,39453949,10574470
+2025,Import,aluminum_76,Cacm,51396017,9997286
+2025,Import,aluminum_76,Cambodia,39330337,10538866
 2025,Import,aluminum_76,Cameroon,3199,31
-2025,Import,aluminum_76,Canada,7858701956,396701197
-2025,Import,aluminum_76,Chile,17110832,1816157
-2025,Import,aluminum_76,China,1190176753,265527558
-2025,Import,aluminum_76,Colombia,580525853,67620941
-2025,Import,aluminum_76,Costa Rica,6657278,958714
+2025,Import,aluminum_76,Canada,7850997919,396711046
+2025,Import,aluminum_76,Chile,17030015,1811668
+2025,Import,aluminum_76,China,1188416658,265229129
+2025,Import,aluminum_76,Colombia,580416979,67592276
+2025,Import,aluminum_76,Costa Rica,6695093,958853
 2025,Import,aluminum_76,Croatia,6586357,598917
 2025,Import,aluminum_76,Cyprus,23918,285
-2025,Import,aluminum_76,Czech Republic,28466694,2875844
-2025,Import,aluminum_76,Denmark,13365022,1515050
-2025,Import,aluminum_76,Dominican Republic,8806154,2168472
-2025,Import,aluminum_76,Ecuador,75437828,18132984
-2025,Import,aluminum_76,Egypt,6103645,1690392
-2025,Import,aluminum_76,El Salvador,8382175,1611142
+2025,Import,aluminum_76,Czech Republic,28122633,2823463
+2025,Import,aluminum_76,Denmark,13182906,1504718
+2025,Import,aluminum_76,Dominican Republic,8807581,2328651
+2025,Import,aluminum_76,Ecuador,75463984,18138194
+2025,Import,aluminum_76,Egypt,6294574,1731722
+2025,Import,aluminum_76,El Salvador,8374111,1609548
 2025,Import,aluminum_76,Estonia,294154,18889
-2025,Import,aluminum_76,Finland,2805315,122604
-2025,Import,aluminum_76,France,269967710,25015807
+2025,Import,aluminum_76,Finland,2701328,118375
+2025,Import,aluminum_76,France,269856515,25044146
 2025,Import,aluminum_76,French Polynesia,15000,37
 2025,Import,aluminum_76,Georgia,188442,33793
-2025,Import,aluminum_76,Germany,504490139,54513096
-2025,Import,aluminum_76,Greece,217749818,45813529
+2025,Import,aluminum_76,Germany,498621455,54230188
+2025,Import,aluminum_76,Greece,217019179,45678798
 2025,Import,aluminum_76,Guatemala,214474,37807
 2025,Import,aluminum_76,Guyana,9050,31
 2025,Import,aluminum_76,Honduras,36112339,7391078
-2025,Import,aluminum_76,Hong Kong,6616327,1646701
-2025,Import,aluminum_76,Hungary,12372932,2013769
+2025,Import,aluminum_76,Hong Kong,6603863,1646426
+2025,Import,aluminum_76,Hungary,12477804,2038303
 2025,Import,aluminum_76,Iceland,110650,2807
-2025,Import,aluminum_76,India,879929535,263901712
-2025,Import,aluminum_76,Indonesia,123704896,33616451
-2025,Import,aluminum_76,Ireland,6386132,157274
-2025,Import,aluminum_76,Israel,19286071,2119287
-2025,Import,aluminum_76,Italy,231571754,28064127
-2025,Import,aluminum_76,Japan,151517585,16078638
-2025,Import,aluminum_76,Jordan,3500812,782210
+2025,Import,aluminum_76,India,876141635,263409671
+2025,Import,aluminum_76,Indonesia,124218373,33701277
+2025,Import,aluminum_76,Ireland,6390427,157274
+2025,Import,aluminum_76,Israel,19133971,2102235
+2025,Import,aluminum_76,Italy,231295991,28280701
+2025,Import,aluminum_76,Japan,151410167,16078211
+2025,Import,aluminum_76,Jordan,2381750,518014
 2025,Import,aluminum_76,Kiribati,2751,232
 2025,Import,aluminum_76,Kosovo,69182,6758
 2025,Import,aluminum_76,Latvia,1124114,175957
-2025,Import,aluminum_76,Lebanon,383116,37459
+2025,Import,aluminum_76,Lebanon,381901,37390
 2025,Import,aluminum_76,Liechtenstein,74936,250
-2025,Import,aluminum_76,Lithuania,1582558,151644
-2025,Import,aluminum_76,Luxembourg,36696541,7358400
+2025,Import,aluminum_76,Lithuania,1572355,150865
+2025,Import,aluminum_76,Luxembourg,36751670,7391638
 2025,Import,aluminum_76,Macedonia,33634,8339
 2025,Import,aluminum_76,Madagascar,145978,160
-2025,Import,aluminum_76,Malaysia,124797183,23039044
+2025,Import,aluminum_76,Malaysia,122512129,22722141
 2025,Import,aluminum_76,Malta,5592,80
-2025,Import,aluminum_76,Mexico,975452757,9882243
+2025,Import,aluminum_76,Mexico,968016118,9882072
 2025,Import,aluminum_76,Moldova,48907,10702
 2025,Import,aluminum_76,Morocco,309001,40145
-2025,Import,aluminum_76,Mozambique,26028,1795
-2025,Import,aluminum_76,Netherlands,67558445,6903866
-2025,Import,aluminum_76,New Zealand,24610167,6538028
-2025,Import,aluminum_76,Norway,40107378,7888453
-2025,Import,aluminum_76,Oman,250025965,72480011
+2025,Import,aluminum_76,Mozambique,14320,1688
+2025,Import,aluminum_76,Netherlands,67497038,6779630
+2025,Import,aluminum_76,New Zealand,24595178,6537984
+2025,Import,aluminum_76,Norway,39751501,7888451
+2025,Import,aluminum_76,Oman,252007208,73002204
 2025,Import,aluminum_76,Pakistan,994073,112377
 2025,Import,aluminum_76,Panama,8859,5100
 2025,Import,aluminum_76,Paraguay,17500,4717
 2025,Import,aluminum_76,Peru,145321,20363
-2025,Import,aluminum_76,Philippines,1923759,149300
-2025,Import,aluminum_76,Poland,60401308,8897656
-2025,Import,aluminum_76,Portugal,8844425,776020
-2025,Import,aluminum_76,Qatar,107312537,37271174
-2025,Import,aluminum_76,Rep. of Korea,1130294592,295601065
+2025,Import,aluminum_76,Philippines,1920449,149141
+2025,Import,aluminum_76,Poland,59858140,8855419
+2025,Import,aluminum_76,Portugal,8799080,765090
+2025,Import,aluminum_76,Qatar,107924059,37520612
+2025,Import,aluminum_76,Rep. of Korea,1126222570,294311949
 2025,Import,aluminum_76,Reunion,2286,1
-2025,Import,aluminum_76,Romania,29496916,6232430
-2025,Import,aluminum_76,Russian Federation,8004,58
-2025,Import,aluminum_76,San Marino,322770,29830
-2025,Import,aluminum_76,Saudi Arabia,233900913,61901061
-2025,Import,aluminum_76,Serbia,2919741,207207
+2025,Import,aluminum_76,Romania,29440446,6225922
+2025,Import,aluminum_76,Russian Federation,76828,58
+2025,Import,aluminum_76,San Marino,320434,29550
+2025,Import,aluminum_76,Saudi Arabia,232794645,61598607
+2025,Import,aluminum_76,Serbia,2919741,208422
 2025,Import,aluminum_76,Sierra Leone,96245,9153
-2025,Import,aluminum_76,Singapore,11161660,1458750
-2025,Import,aluminum_76,Slovakia,4807413,493758
-2025,Import,aluminum_76,Slovenia,33564444,4503821
-2025,Import,aluminum_76,South Africa,572157957,194227619
-2025,Import,aluminum_76,Spain,126833524,23234689
-2025,Import,aluminum_76,Sri Lanka,7709364,2327373
+2025,Import,aluminum_76,Singapore,11127723,1452482
+2025,Import,aluminum_76,Slovakia,4799552,492345
+2025,Import,aluminum_76,Slovenia,33464724,4503443
+2025,Import,aluminum_76,South Africa,572039974,194197840
+2025,Import,aluminum_76,Spain,126608868,23292894
+2025,Import,aluminum_76,Sri Lanka,7708314,2326331
 2025,Import,aluminum_76,Suriname,3611,5
-2025,Import,aluminum_76,Sweden,110406060,21706226
-2025,Import,aluminum_76,Switzerland,128895027,24962649
-2025,Import,aluminum_76,Taiwan,173081085,16517718
-2025,Import,aluminum_76,Thailand,451444271,111769486
-2025,Import,aluminum_76,Tunisia,1163612,10727
-2025,Import,aluminum_76,Türkiye,242535192,58565921
-2025,Import,aluminum_76,Ukraine,2255521,347776
-2025,Import,aluminum_76,United Arab Emirates,1522918466,544979047
-2025,Import,aluminum_76,United Kingdom,173780333,34673062
+2025,Import,aluminum_76,Sweden,110386469,21709035
+2025,Import,aluminum_76,Switzerland,128937969,24969033
+2025,Import,aluminum_76,Taiwan,173226026,16659126
+2025,Import,aluminum_76,Thailand,451436910,112209090
+2025,Import,aluminum_76,Tunisia,1150490,12213
+2025,Import,aluminum_76,Türkiye,242295477,58567903
+2025,Import,aluminum_76,Ukraine,2250965,346513
+2025,Import,aluminum_76,United Arab Emirates,1523230190,546133501
+2025,Import,aluminum_76,United Kingdom,173734099,34667606
 2025,Import,aluminum_76,Uzbekistan,10269311,2836562
 2025,Import,aluminum_76,Venezuela,94619,42313
-2025,Import,aluminum_76,Viet Nam,280994747,68916016
-2025,Import,cement_2523,Algeria,51254742,737417000
+2025,Import,aluminum_76,Viet Nam,279597706,68599786
+2025,Import,cement_2523,Algeria,49154082,737417000
 2025,Import,cement_2523,Austria,39311,39400
 2025,Import,cement_2523,Bahrain,500000,3889200
 2025,Import,cement_2523,Belgium,174730,205920
 2025,Import,cement_2523,Brazil,5959630,13190543
-2025,Import,cement_2523,Canada,513746849,2606132616
+2025,Import,cement_2523,Canada,513863355,2606889616
 2025,Import,cement_2523,China,1076015,3173345
-2025,Import,cement_2523,Colombia,51466742,773237400
+2025,Import,cement_2523,Colombia,50150491,754809900
 2025,Import,cement_2523,Cote D'Ivoire,2500,7007
 2025,Import,cement_2523,Croatia,6793958,24800423
 2025,Import,cement_2523,Denmark,53489,375895
 2025,Import,cement_2523,Dominican Republic,1237484,17325000
-2025,Import,cement_2523,Egypt,72989741,1040857154
+2025,Import,cement_2523,Egypt,71939756,1040866325
 2025,Import,cement_2523,France,47483116,127046878
 2025,Import,cement_2523,Germany,1110872,2804815
-2025,Import,cement_2523,Greece,67984997,1350243368
+2025,Import,cement_2523,Greece,67984997,1356694963
 2025,Import,cement_2523,India,228663,234417
 2025,Import,cement_2523,Italy,2997159,39536401
-2025,Import,cement_2523,Japan,523742,261862
+2025,Import,cement_2523,Japan,516614,260861
 2025,Import,cement_2523,Kuwait,2100,1001
 2025,Import,cement_2523,Latvia,13453,4650
 2025,Import,cement_2523,Malaysia,5415,19500
@@ -8273,7 +8270,7 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Import,cement_2523,Netherlands,4403198,4103558
 2025,Import,cement_2523,New Zealand,759539,687501
 2025,Import,cement_2523,Pakistan,12453566,215945668
-2025,Import,cement_2523,Poland,13987176,13268640
+2025,Import,cement_2523,Poland,13870156,13268640
 2025,Import,cement_2523,Portugal,22169,153600
 2025,Import,cement_2523,Rep. of Korea,29128855,574746444
 2025,Import,cement_2523,Saudi Arabia,23343117,563870487
@@ -8283,14 +8280,14 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Import,cement_2523,Sweden,87312,116699
 2025,Import,cement_2523,Thailand,16250323,317487472
 2025,Import,cement_2523,Tunisia,4985838,58111760
-2025,Import,cement_2523,Türkiye,485673213,8302868217
+2025,Import,cement_2523,Türkiye,485289631,8325961291
 2025,Import,cement_2523,Ukraine,4450,0
 2025,Import,cement_2523,United Arab Emirates,24376360,467050000
 2025,Import,cement_2523,United Kingdom,3380370,4690196
 2025,Import,cement_2523,Viet Nam,207059321,4863938223
-2025,Import,fertilizers,Algeria,165544857,412733008
+2025,Import,fertilizers,Algeria,165543708,412794224
 2025,Import,fertilizers,Antigua And Barbuda,521188,0
-2025,Import,fertilizers,Australia,19960999,34764304
+2025,Import,fertilizers,Australia,20376740,35400919
 2025,Import,fertilizers,Austria,286595,307903
 2025,Import,fertilizers,Bahrain,40450896,105116959
 2025,Import,fertilizers,Belarus,26566,56000
@@ -8298,39 +8295,38 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Import,fertilizers,Brazil,21927239,29173733
 2025,Import,fertilizers,Bulgaria,2238,1
 2025,Import,fertilizers,Cacm,46135,111985
-2025,Import,fertilizers,Canada,1472762193,42356
+2025,Import,fertilizers,Canada,1473131968,42356
 2025,Import,fertilizers,Chile,91259117,91916855
-2025,Import,fertilizers,China,4846794,5851767
+2025,Import,fertilizers,China,4592629,5597450
 2025,Import,fertilizers,Colombia,219191,250620
 2025,Import,fertilizers,Costa Rica,27595,25315
-2025,Import,fertilizers,Czech Republic,575414,127165
+2025,Import,fertilizers,Czech Republic,569636,126863
 2025,Import,fertilizers,Denmark,255581,897663
 2025,Import,fertilizers,Dominican Republic,2865990,5151210
 2025,Import,fertilizers,Egypt,93261536,162941956
 2025,Import,fertilizers,Estonia,403374,75055
 2025,Import,fertilizers,Eswatini,19755,0
 2025,Import,fertilizers,Finland,15243180,29759184
-2025,Import,fertilizers,France,14249093,6791881
+2025,Import,fertilizers,France,13795493,6676753
 2025,Import,fertilizers,Gabon,16380,0
-2025,Import,fertilizers,Germany,38312413,78732966
+2025,Import,fertilizers,Germany,38362570,78853692
 2025,Import,fertilizers,Greece,74340,14910
 2025,Import,fertilizers,Guatemala,18540,86670
-2025,Import,fertilizers,India,4824602,5413547
+2025,Import,fertilizers,India,4821793,5411547
 2025,Import,fertilizers,Indonesia,7864684,16267789
 2025,Import,fertilizers,Ireland,62442,97977
 2025,Import,fertilizers,Israel,25059950,62589559
-2025,Import,fertilizers,Italy,4566983,3353764
+2025,Import,fertilizers,Italy,4520003,3284722
 2025,Import,fertilizers,Japan,21407718,14530416
 2025,Import,fertilizers,Jordan,2200394,7398409
 2025,Import,fertilizers,Kazakhstan,3189798,6805530
 2025,Import,fertilizers,Latvia,358076,3857
-2025,Import,fertilizers,Liechtenstein,265200,263620
-2025,Import,fertilizers,Lithuania,144088827,212662867
+2025,Import,fertilizers,Lithuania,144354027,212926487
 2025,Import,fertilizers,Macau,14098,0
 2025,Import,fertilizers,Malaysia,31986941,74901735
-2025,Import,fertilizers,Mexico,220384336,249031446
-2025,Import,fertilizers,Morocco,147316625,205703584
-2025,Import,fertilizers,Netherlands,115908673,387408894
+2025,Import,fertilizers,Mexico,220420648,249031446
+2025,Import,fertilizers,Morocco,143031567,200011173
+2025,Import,fertilizers,Netherlands,115906513,387408894
 2025,Import,fertilizers,Nigeria,155775292,401318320
 2025,Import,fertilizers,Norway,90193566,470439639
 2025,Import,fertilizers,Oman,19297952,52440087
@@ -8344,12 +8340,12 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Import,fertilizers,Slovakia,100426,173028
 2025,Import,fertilizers,Slovenia,30887,0
 2025,Import,fertilizers,South Africa,23188052,31759095
-2025,Import,fertilizers,Spain,28670473,28475860
+2025,Import,fertilizers,Spain,28693873,28494602
 2025,Import,fertilizers,Sweden,2001,1004
-2025,Import,fertilizers,Switzerland,601330,208704
+2025,Import,fertilizers,Switzerland,589985,208676
 2025,Import,fertilizers,Taiwan,1810806,3754246
 2025,Import,fertilizers,Thailand,323364,637473
-2025,Import,fertilizers,Trinidad And Tobago,569638137,1426523893
+2025,Import,fertilizers,Trinidad And Tobago,569950548,1426523893
 2025,Import,fertilizers,Tunisia,208210,174762
 2025,Import,fertilizers,Turkmenistan,18194715,28352985
 2025,Import,fertilizers,Türkiye,4116825,5675006
@@ -8358,8 +8354,8 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Import,fertilizers,United Kingdom,7824551,2600056
 2025,Import,fertilizers,Uruguay,41530,549
 2025,Import,fertilizers,Uzbekistan,10756,0
-2025,Import,fertilizers,Viet Nam,11607289,14153801
-2025,Import,hydrogen_2804,Canada,77315333,38
+2025,Import,fertilizers,Viet Nam,11567797,14130221
+2025,Import,hydrogen_2804,Canada,77313237,38
 2025,Import,hydrogen_2804,France,101151,30226
 2025,Import,hydrogen_2804,Germany,3848,1647
 2025,Import,hydrogen_2804,Malaysia,8000,27
@@ -8369,204 +8365,204 @@ period,flow,sector,partnerDesc,primaryValue,quantity_kg
 2025,Import,iron_steel_72,Algeria,61831432,115891502
 2025,Import,iron_steel_72,Angola,20599543,53271000
 2025,Import,iron_steel_72,Australia,112263466,158652972
-2025,Import,iron_steel_72,Austria,20173510,13650132
-2025,Import,iron_steel_72,Belgium,66465647,53771290
+2025,Import,iron_steel_72,Austria,20104502,13571558
+2025,Import,iron_steel_72,Belgium,66250875,53770689
 2025,Import,iron_steel_72,Belize,2981255,842060
 2025,Import,iron_steel_72,Bosnia And Herzegovina,16428597,7672672
-2025,Import,iron_steel_72,Brazil,2066362973,6038839530
+2025,Import,iron_steel_72,Brazil,2066550531,6039227651
 2025,Import,iron_steel_72,Bulgaria,44224785,68990303
-2025,Import,iron_steel_72,Cacm,7277845,4168326
+2025,Import,iron_steel_72,Cacm,7290812,4168329
 2025,Import,iron_steel_72,Cambodia,14515,20966
-2025,Import,iron_steel_72,Canada,2987430349,2644976481
-2025,Import,iron_steel_72,Chile,1110793,1071345
-2025,Import,iron_steel_72,China,215875036,220980126
+2025,Import,iron_steel_72,Canada,2970967973,2644976481
+2025,Import,iron_steel_72,Chile,1085601,1069873
+2025,Import,iron_steel_72,China,217992815,221427581
 2025,Import,iron_steel_72,Colombia,13688238,5834382
-2025,Import,iron_steel_72,Costa Rica,1160609,241802
+2025,Import,iron_steel_72,Costa Rica,1160609,241805
 2025,Import,iron_steel_72,Croatia,63819,29168
 2025,Import,iron_steel_72,Czech Republic,14017383,6775492
 2025,Import,iron_steel_72,Denmark,1657914,188359
 2025,Import,iron_steel_72,Dominican Republic,30342714,44844484
-2025,Import,iron_steel_72,Egypt,177506400,310883108
+2025,Import,iron_steel_72,Egypt,177333095,310730172
 2025,Import,iron_steel_72,El Salvador,278776,14905
 2025,Import,iron_steel_72,Estonia,10410,7331
-2025,Import,iron_steel_72,Finland,119298849,112561174
-2025,Import,iron_steel_72,France,107106738,64582904
+2025,Import,iron_steel_72,Finland,119296831,112561174
+2025,Import,iron_steel_72,France,107163502,64766388
 2025,Import,iron_steel_72,Gabon,46234,0
-2025,Import,iron_steel_72,Germany,1001395949,625654160
+2025,Import,iron_steel_72,Germany,1001306535,625565903
 2025,Import,iron_steel_72,Greece,9691399,14141448
-2025,Import,iron_steel_72,Guatemala,5334773,3890432
+2025,Import,iron_steel_72,Guatemala,5347740,3890432
 2025,Import,iron_steel_72,Honduras,503687,21187
 2025,Import,iron_steel_72,Hong Kong,69818,5961
 2025,Import,iron_steel_72,Hungary,3150123,3441492
-2025,Import,iron_steel_72,India,501194550,575700796
-2025,Import,iron_steel_72,Indonesia,105284982,153534015
+2025,Import,iron_steel_72,India,502383928,576605729
+2025,Import,iron_steel_72,Indonesia,104517031,152723137
 2025,Import,iron_steel_72,Ireland,557984,20800
-2025,Import,iron_steel_72,Israel,56236,42410
-2025,Import,iron_steel_72,Italy,62179730,21580281
-2025,Import,iron_steel_72,Japan,526441701,390217896
+2025,Import,iron_steel_72,Israel,58575,43410
+2025,Import,iron_steel_72,Italy,63207899,21959373
+2025,Import,iron_steel_72,Japan,517102678,387417200
 2025,Import,iron_steel_72,Kazakhstan,93270137,54774360
 2025,Import,iron_steel_72,Lithuania,206471,164887
 2025,Import,iron_steel_72,Luxembourg,58658804,57459758
 2025,Import,iron_steel_72,Malaysia,174529467,237235544
-2025,Import,iron_steel_72,Mexico,773713780,24116899
-2025,Import,iron_steel_72,Netherlands,551801321,427808376
+2025,Import,iron_steel_72,Mexico,773442516,24607759
+2025,Import,iron_steel_72,Netherlands,551607940,427608753
 2025,Import,iron_steel_72,New Caledonia,27379343,10911010
 2025,Import,iron_steel_72,New Zealand,12256661,18785729
 2025,Import,iron_steel_72,Norway,2051179,2710628
-2025,Import,iron_steel_72,Oman,28716985,166848967
-2025,Import,iron_steel_72,Pakistan,25094488,31446301
+2025,Import,iron_steel_72,Oman,28652684,166830647
+2025,Import,iron_steel_72,Pakistan,25082424,31457972
 2025,Import,iron_steel_72,Panama,1072836,865663
 2025,Import,iron_steel_72,Peru,231049,240732
 2025,Import,iron_steel_72,Philippines,3401766,3184766
-2025,Import,iron_steel_72,Poland,5497468,2356985
+2025,Import,iron_steel_72,Poland,5495466,2356141
 2025,Import,iron_steel_72,Portugal,7144925,8210115
-2025,Import,iron_steel_72,Rep. of Korea,1157534888,1251397902
+2025,Import,iron_steel_72,Rep. of Korea,1157168651,1251093034
 2025,Import,iron_steel_72,Romania,3908889,1558851
-2025,Import,iron_steel_72,Saudi Arabia,18235994,19289009
+2025,Import,iron_steel_72,Saudi Arabia,18275478,19416239
 2025,Import,iron_steel_72,Serbia,2023523,1623390
 2025,Import,iron_steel_72,Singapore,23356,384
 2025,Import,iron_steel_72,Slovakia,9164290,3351742
 2025,Import,iron_steel_72,Slovenia,2905217,1353700
 2025,Import,iron_steel_72,South Africa,254493280,299859996
-2025,Import,iron_steel_72,Spain,140651010,117504438
+2025,Import,iron_steel_72,Spain,140782232,117589198
 2025,Import,iron_steel_72,Sri Lanka,234566,245369
-2025,Import,iron_steel_72,Sweden,198398964,160421432
-2025,Import,iron_steel_72,Switzerland,5326838,3009576
-2025,Import,iron_steel_72,Taiwan,643602784,582072179
-2025,Import,iron_steel_72,Thailand,58571809,67508596
+2025,Import,iron_steel_72,Sweden,198761103,160743270
+2025,Import,iron_steel_72,Switzerland,5329773,3010342
+2025,Import,iron_steel_72,Taiwan,639472083,579092899
+2025,Import,iron_steel_72,Thailand,58594961,67526640
 2025,Import,iron_steel_72,Trinidad And Tobago,592340070,1536069941
 2025,Import,iron_steel_72,Tunisia,104858,176026
-2025,Import,iron_steel_72,Türkiye,265157353,370825500
+2025,Import,iron_steel_72,Türkiye,265139449,370953031
 2025,Import,iron_steel_72,Ukraine,591851654,1401570227
-2025,Import,iron_steel_72,United Arab Emirates,84141748,100233424
-2025,Import,iron_steel_72,United Kingdom,163585980,91912869
+2025,Import,iron_steel_72,United Arab Emirates,84111231,100258393
+2025,Import,iron_steel_72,United Kingdom,161992023,91509653
 2025,Import,iron_steel_72,Venezuela,2003940,3853730
-2025,Import,iron_steel_72,Viet Nam,263338846,463299161
+2025,Import,iron_steel_72,Viet Nam,263380275,463355346
 2025,Import,iron_steel_73,Albania,346540,199469
 2025,Import,iron_steel_73,Andorra,2186,209
 2025,Import,iron_steel_73,Angola,2200,165
-2025,Import,iron_steel_73,Argentina,2893753,873567
+2025,Import,iron_steel_73,Argentina,2892661,873530
 2025,Import,iron_steel_73,Armenia,6040,1
 2025,Import,iron_steel_73,Aruba,66431,29938
-2025,Import,iron_steel_73,Australia,24133840,5811393
-2025,Import,iron_steel_73,Austria,121229042,25155660
+2025,Import,iron_steel_73,Australia,24064419,5798894
+2025,Import,iron_steel_73,Austria,120684268,25148155
 2025,Import,iron_steel_73,Azerbaijan,75000,15010
 2025,Import,iron_steel_73,Bahamas,9420,1420
 2025,Import,iron_steel_73,Bahrain,46707,1593
 2025,Import,iron_steel_73,Bangladesh,1390190,531777
 2025,Import,iron_steel_73,Belarus,24604,14473
-2025,Import,iron_steel_73,Belgium,291273345,65104740
-2025,Import,iron_steel_73,Bosnia And Herzegovina,8476757,3138597
+2025,Import,iron_steel_73,Belgium,344227695,80573739
+2025,Import,iron_steel_73,Bosnia And Herzegovina,8467785,3136110
 2025,Import,iron_steel_73,Botswana,2070,37
-2025,Import,iron_steel_73,Brazil,111793488,38363005
-2025,Import,iron_steel_73,Bulgaria,3903942,296192
+2025,Import,iron_steel_73,Brazil,111686373,38354911
+2025,Import,iron_steel_73,Bulgaria,3833147,295631
 2025,Import,iron_steel_73,Burma,7044,171
-2025,Import,iron_steel_73,Cacm,21296737,8538418
-2025,Import,iron_steel_73,Cambodia,69471715,34760927
+2025,Import,iron_steel_73,Cacm,21253271,8535981
+2025,Import,iron_steel_73,Cambodia,69378560,34670250
 2025,Import,iron_steel_73,Cameroon,3456,17
-2025,Import,iron_steel_73,Canada,2110535640,521630
+2025,Import,iron_steel_73,Canada,2104763997,521229
 2025,Import,iron_steel_73,Cayman Islands,9000,10
-2025,Import,iron_steel_73,Chile,4773410,2311993
-2025,Import,iron_steel_73,China,3182033178,1596057897
-2025,Import,iron_steel_73,Colombia,13155356,3785517
-2025,Import,iron_steel_73,Costa Rica,6313710,967889
-2025,Import,iron_steel_73,Croatia,4130940,897530
+2025,Import,iron_steel_73,Chile,4754974,2311040
+2025,Import,iron_steel_73,China,3170228918,1588962277
+2025,Import,iron_steel_73,Colombia,13080266,3786207
+2025,Import,iron_steel_73,Costa Rica,6292902,962268
+2025,Import,iron_steel_73,Croatia,4133075,897533
 2025,Import,iron_steel_73,Curacao,2302,518
 2025,Import,iron_steel_73,Cyprus,6076,2
-2025,Import,iron_steel_73,Czech Republic,64815966,19110125
-2025,Import,iron_steel_73,Denmark,750964639,156960412
-2025,Import,iron_steel_73,Dominican Republic,9478300,7534773
+2025,Import,iron_steel_73,Czech Republic,64382734,19096262
+2025,Import,iron_steel_73,Denmark,745747228,156931513
+2025,Import,iron_steel_73,Dominican Republic,9469375,7550953
 2025,Import,iron_steel_73,Ecuador,727111,180020
-2025,Import,iron_steel_73,Egypt,8015825,4438355
+2025,Import,iron_steel_73,Egypt,7928847,4744272
 2025,Import,iron_steel_73,El Salvador,1745389,1335406
-2025,Import,iron_steel_73,Estonia,3897793,279668
+2025,Import,iron_steel_73,Estonia,3894794,279412
 2025,Import,iron_steel_73,Eswatini,6523,255
 2025,Import,iron_steel_73,Faroe Islands,43500,36250
 2025,Import,iron_steel_73,Fiji,4385,0
-2025,Import,iron_steel_73,Finland,17449532,1257254
-2025,Import,iron_steel_73,France,280258205,19836825
+2025,Import,iron_steel_73,Finland,16965093,1225711
+2025,Import,iron_steel_73,France,206777057,15519858
 2025,Import,iron_steel_73,French Polynesia,6274,202
 2025,Import,iron_steel_73,Georgia,10652751,11630680
-2025,Import,iron_steel_73,Germany,1312970776,339118752
-2025,Import,iron_steel_73,Greece,113187523,55376895
-2025,Import,iron_steel_73,Guatemala,6884693,1357415
+2025,Import,iron_steel_73,Germany,1307803252,339155302
+2025,Import,iron_steel_73,Greece,113048959,55372582
+2025,Import,iron_steel_73,Guatemala,6862035,1357415
 2025,Import,iron_steel_73,Haiti,61802,7725
-2025,Import,iron_steel_73,Honduras,6352945,4877708
-2025,Import,iron_steel_73,Hong Kong,1213817,459884
-2025,Import,iron_steel_73,Hungary,9557079,1257459
-2025,Import,iron_steel_73,Iceland,130219,782
-2025,Import,iron_steel_73,India,1491307309,790590446
-2025,Import,iron_steel_73,Indonesia,63535103,29157481
-2025,Import,iron_steel_73,Ireland,15554449,1199201
-2025,Import,iron_steel_73,Israel,21071067,1719725
-2025,Import,iron_steel_73,Italy,759724566,123643747
+2025,Import,iron_steel_73,Honduras,6352945,4880892
+2025,Import,iron_steel_73,Hong Kong,1188373,459837
+2025,Import,iron_steel_73,Hungary,9529337,1256252
+2025,Import,iron_steel_73,Iceland,126519,761
+2025,Import,iron_steel_73,India,1488088770,790963048
+2025,Import,iron_steel_73,Indonesia,63397734,29093012
+2025,Import,iron_steel_73,Ireland,15606190,1198532
+2025,Import,iron_steel_73,Israel,21006462,1714564
+2025,Import,iron_steel_73,Italy,749470206,122884047
 2025,Import,iron_steel_73,Jamaica,4500,73
-2025,Import,iron_steel_73,Japan,785413034,218453130
+2025,Import,iron_steel_73,Japan,782007046,218041759
 2025,Import,iron_steel_73,Jordan,552171,280088
 2025,Import,iron_steel_73,Kazakhstan,519222,96718
 2025,Import,iron_steel_73,Kosovo,1318714,701186
 2025,Import,iron_steel_73,Kyrgyzstan,13567,664
 2025,Import,iron_steel_73,Laos,9397,1366
-2025,Import,iron_steel_73,Latvia,12997598,1503584
+2025,Import,iron_steel_73,Latvia,12852526,1480726
 2025,Import,iron_steel_73,Lebanon,1632196,504554
-2025,Import,iron_steel_73,Liechtenstein,10878041,198490
-2025,Import,iron_steel_73,Lithuania,14740995,2271671
-2025,Import,iron_steel_73,Luxembourg,100437497,68643555
+2025,Import,iron_steel_73,Liechtenstein,10874949,198192
+2025,Import,iron_steel_73,Lithuania,15044683,2261493
+2025,Import,iron_steel_73,Luxembourg,100260570,68642702
 2025,Import,iron_steel_73,Macau,54808,0
-2025,Import,iron_steel_73,Macedonia,2090679,382964
+2025,Import,iron_steel_73,Macedonia,2087531,382873
 2025,Import,iron_steel_73,Madagascar,3439,10
-2025,Import,iron_steel_73,Malaysia,128598620,29678975
+2025,Import,iron_steel_73,Malaysia,129745673,29593380
 2025,Import,iron_steel_73,Malta,32480,84
 2025,Import,iron_steel_73,Mauritius,13645,1435
-2025,Import,iron_steel_73,Mexico,3340747423,58184128
+2025,Import,iron_steel_73,Mexico,3282803572,56865407
 2025,Import,iron_steel_73,Moldova,130978,33977
 2025,Import,iron_steel_73,Mongolia,20163,108
 2025,Import,iron_steel_73,Morocco,607548,22498
 2025,Import,iron_steel_73,Nepal,2630,788
-2025,Import,iron_steel_73,Netherlands,384344961,104612782
-2025,Import,iron_steel_73,New Zealand,7374032,1784033
+2025,Import,iron_steel_73,Netherlands,383438097,104579437
+2025,Import,iron_steel_73,New Zealand,6654889,1746221
 2025,Import,iron_steel_73,Niger,40871,1243
 2025,Import,iron_steel_73,Nigeria,6450,0
-2025,Import,iron_steel_73,Norway,49241410,2468664
-2025,Import,iron_steel_73,Oman,38402708,51098590
+2025,Import,iron_steel_73,Norway,49221178,2475197
+2025,Import,iron_steel_73,Oman,38394755,51087158
 2025,Import,iron_steel_73,Pakistan,2541722,1348029
 2025,Import,iron_steel_73,Panama,485434,261607
 2025,Import,iron_steel_73,Paraguay,232592,101460
-2025,Import,iron_steel_73,Peru,772268,156969
-2025,Import,iron_steel_73,Philippines,12986931,4899473
-2025,Import,iron_steel_73,Poland,121452789,20880245
-2025,Import,iron_steel_73,Portugal,73161993,20225762
+2025,Import,iron_steel_73,Peru,761219,156731
+2025,Import,iron_steel_73,Philippines,12983290,4896569
+2025,Import,iron_steel_73,Poland,120541950,20702606
+2025,Import,iron_steel_73,Portugal,72833875,20341916
 2025,Import,iron_steel_73,Qatar,63623,2836
-2025,Import,iron_steel_73,Rep. of Korea,1291304467,685912467
+2025,Import,iron_steel_73,Rep. of Korea,1293636563,686009768
 2025,Import,iron_steel_73,Reunion,9541,75
-2025,Import,iron_steel_73,Romania,38009684,20665716
+2025,Import,iron_steel_73,Romania,37083854,20646348
 2025,Import,iron_steel_73,Russian Federation,39121,602
 2025,Import,iron_steel_73,San Marino,11641,363
 2025,Import,iron_steel_73,Sao Tome And Principe,9016,0
 2025,Import,iron_steel_73,Saudi Arabia,2572164,864088
 2025,Import,iron_steel_73,Senegal,11550,19
-2025,Import,iron_steel_73,Serbia,3891209,599700
+2025,Import,iron_steel_73,Serbia,3883022,599439
 2025,Import,iron_steel_73,Sierra Leone,253466,16208
-2025,Import,iron_steel_73,Singapore,16923529,879752
+2025,Import,iron_steel_73,Singapore,16933042,879488
 2025,Import,iron_steel_73,Sint Maarten,11641,208
-2025,Import,iron_steel_73,Slovakia,14897913,3834415
-2025,Import,iron_steel_73,Slovenia,13235206,2249023
-2025,Import,iron_steel_73,South Africa,16668222,9185852
-2025,Import,iron_steel_73,Spain,293019833,79934859
-2025,Import,iron_steel_73,Sri Lanka,8599809,9586060
+2025,Import,iron_steel_73,Slovakia,15219361,3844245
+2025,Import,iron_steel_73,Slovenia,13198707,2248650
+2025,Import,iron_steel_73,South Africa,16702812,9195867
+2025,Import,iron_steel_73,Spain,292609683,79811958
+2025,Import,iron_steel_73,Sri Lanka,8553051,9587252
 2025,Import,iron_steel_73,St Kitts And Nevis,35217,651
-2025,Import,iron_steel_73,Sweden,81513650,12809797
-2025,Import,iron_steel_73,Switzerland,70284667,5337895
-2025,Import,iron_steel_73,Taiwan,1350294743,337563100
-2025,Import,iron_steel_73,Thailand,375899993,212853179
+2025,Import,iron_steel_73,Sweden,80730941,12795790
+2025,Import,iron_steel_73,Switzerland,69880888,5327193
+2025,Import,iron_steel_73,Taiwan,1345911517,337182416
+2025,Import,iron_steel_73,Thailand,369479599,209582714
 2025,Import,iron_steel_73,Tonga,16721,2112
 2025,Import,iron_steel_73,Trinidad And Tobago,7136,696
 2025,Import,iron_steel_73,Tunisia,1325797,44570
 2025,Import,iron_steel_73,Turks And Caicos Islands,6160,16
-2025,Import,iron_steel_73,Türkiye,369936452,177197792
-2025,Import,iron_steel_73,Ukraine,52044962,40277028
-2025,Import,iron_steel_73,United Arab Emirates,392899630,272852331
-2025,Import,iron_steel_73,United Kingdom,299635657,46674282
+2025,Import,iron_steel_73,Türkiye,368695099,176789214
+2025,Import,iron_steel_73,Ukraine,44347672,33952290
+2025,Import,iron_steel_73,United Arab Emirates,391759033,271952095
+2025,Import,iron_steel_73,United Kingdom,299465451,46653324
 2025,Import,iron_steel_73,Uruguay,62568,35013
 2025,Import,iron_steel_73,Venezuela,2067,476
-2025,Import,iron_steel_73,Viet Nam,537013790,348772027
+2025,Import,iron_steel_73,Viet Nam,535345887,348117547
