@@ -27,9 +27,13 @@ echo "=== Step 3: Build docs/data/trade_data.json ==="
 "$VENV" python/build_data.py
 
 echo ""
+echo "=== Step 3b: Build docs/data/us_eu_cbam_cn_trade.json (CN-level dashboard data) ==="
+"$VENV" python/build_cn_trade.py
+
+echo ""
 echo "=== Step 4: Commit and push ==="
 TODAY="$(date +%Y-%m-%d)"
-git add docs/data/trade_data.json
+git add docs/data/trade_data.json docs/data/us_eu_cbam_cn_trade.json
 git commit -m "data: update trade data ${TODAY}" || echo "(nothing to commit)"
 git push
 
