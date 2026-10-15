@@ -14,6 +14,9 @@ html{color-scheme:light}
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
+.logo-link{display:inline-block;width:max-content;margin:-14px 0 -6px -15px}
+.logo{display:block;height:65px;width:auto;filter:brightness(0) invert(1)}
+.logo-link:focus-visible{outline:2px solid var(--band-sub);outline-offset:2px}
 /* Layout: navy masthead band, sticky control bar, one panel per sector (annual beside monthly), then a collapsible CN code ledger whose rows open into per-code charts */
 :root{
   --bg:#ffffff; --panel:#edf1f2; --fg:#0c2a30; --muted:#4d6a70; --rule:#d0dbdd;
@@ -111,7 +114,8 @@ details.cn:last-child{border-bottom:0}
 <body>
 
 <header class="band"><div class="wrap">
-  <div class="eyebrow">Niskanen Center · US–EU CBAM Trade Monitor</div>
+  <a class="logo-link" href="https://www.niskanencenter.org/" target="_blank" rel="noopener"><img class="logo" src="Niskanen%20Center_RGB_Logo%20Teal.png" alt="Niskanen Center" width="120" height="65"></a>
+  <div class="eyebrow">US–EU CBAM Trade Monitor</div>
   <h1>U.S. exports to the EU in CBAM-covered goods, 2021 to <span id="hlast">July 2026</span></h1>
   <p class="lede">Monthly and annual EU imports from the United States in the five sectors the EU Carbon Border Adjustment Mechanism (CBAM) covers, by sector and by Combined Nomenclature (CN) code. The code list matches the U.S. CBAM Exposure Calculator. Source: Eurostat Comext, DS-045409.</p>
 </div></header>
