@@ -20,3 +20,11 @@ Thumbs.db
 .env.*
 __pycache__/
 *.pyc
+
+# Local research material, not part of the dashboard
+summer/
+figs/
+reference/
+data/
+.claude/
+.venv/
