@@ -4,16 +4,25 @@ Pulls EU27 imports from the United States (Eurostat Comext DS-045409, monthly, J
 for the CBAM CN codes used by the U.S. CBAM Exposure Calculator, plus each code's Comext label.
 Stdlib only; the Comext API needs no key.
 
+Hydrogen (CN 2804 10 00 = HS 2804.10) is the exception: Comext's series contains an implausible
+Aug 2025 entry (57,134 t at EUR 3.5M), so hydrogen comes from U.S. Census Bureau exports to the
+European Union instead (USD converted to EUR at ECB monthly average rates; volume = air + vessel
+shipping weight). This needs CENSUS_API_KEY in the environment or in the project .env file.
+
 Usage: python python/build_cn_trade.py
 """
-import csv, io, json, re, sys, time, urllib.request
+import csv, io, json, os, re, sys, time, urllib.parse, urllib.request
 from datetime import date
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parent.parent / "docs" / "data" / "us_eu_cbam_cn_trade.json"
+ROOT = Path(__file__).resolve().parent.parent
+OUT = ROOT / "docs" / "data" / "us_eu_cbam_cn_trade.json"
 START = "2021-01"
 SDMX = "https://ec.europa.eu/eurostat/api/comext/dissemination/sdmx/2.1/data/DS-045409"
 STATS = "https://ec.europa.eu/eurostat/api/comext/dissemination/statistics/1.0/data/DS-045409"
+CENSUS = "https://api.census.gov/data/timeseries/intltrade/exports/hs"
+ECB_FX = "https://data-api.ecb.europa.eu/service/data/EXR/M.USD.EUR.SP00.A?format=csvdata"
+H2_CN, H2_HS = "28041000", "280410"
 
 # CN code lists: same as US_CBAM_Exposure-dashboard/scripts/fetch_comext_jan_mar.mjs
 SECTORS = {
@@ -56,12 +65,39 @@ for i in range(0, len(all_codes), 30):
 clean = lambda l: re.split(r"\(\d{4}-\d{4}\)", l)[0].strip()
 
 P = sorted(periods)
-out = {"periods": P, "retrieved": date.today().isoformat(), "comext_last_update": last_update, "sectors": {}}
+
+# Hydrogen: replace the Comext series with Census exports to the EU, converted to EUR
+def census_key():
+    if os.getenv("CENSUS_API_KEY"): return os.environ["CENSUS_API_KEY"]
+    env = ROOT / ".env"
+    for line in (env.read_text().splitlines() if env.exists() else []):
+        k, _, v = line.partition("=")
+        if k.strip() == "CENSUS_API_KEY": return v.strip().strip('"\'')
+    sys.exit("CENSUS_API_KEY not found (needed for hydrogen); set it or add it to .env")
+
+print("Fetching Hydrogen from U.S. Census...", file=sys.stderr)
+q = urllib.parse.urlencode({"get": "ALL_VAL_MO,AIR_WGT_MO,VES_WGT_MO", "E_COMMODITY": H2_HS, "COMM_LVL": "HS6",
+                            "CTY_CODE": "0003", "time": f"from {START}", "key": census_key()},
+                           quote_via=urllib.parse.quote)  # 0003 = European Union
+rows = json.loads(get(f"{CENSUS}?{q}"))
+hdr = rows[0]; census = {r[hdr.index("time")]: dict(zip(hdr, r)) for r in rows[1:]}
+fx = {r["TIME_PERIOD"]: float(r["OBS_VALUE"]) for r in csv.DictReader(io.StringIO(get(f"{ECB_FX}&startPeriod={START}")))}
+# Census omits months with no recorded exports (e.g. 2022-01); those are zero, not missing
+missing = [p for p in P if p not in fx or p > max(census)]
+if missing: sys.exit(f"ECB rate or Census release missing for {missing}")
+h2 = series[("Hydrogen", H2_CN)] = {}
+for p in P:
+    c = census.get(p, {"ALL_VAL_MO": 0, "AIR_WGT_MO": 0, "VES_WGT_MO": 0})
+    h2[p] = {"eur": float(c["ALL_VAL_MO"]) / fx[p], "t": (float(c["AIR_WGT_MO"]) + float(c["VES_WGT_MO"])) / 1000}
+
+out = {"periods": P, "retrieved": date.today().isoformat(), "comext_last_update": last_update,
+       "hydrogen_source": {"census_latest": max(census), "usd_per_eur": {p: round(fx[p], 4) for p in P}},
+       "sectors": {}}
 for sector, codes in SECTORS.items():
     for cn in codes.split("+"):
         s = series.get((sector, cn), {})
         out["sectors"].setdefault(sector, []).append({
-            "cn": cn, "label": clean(labels.get(cn, "")),
+            "cn": cn, "label": clean(labels.get(cn, "")), **({"src": "census"} if cn == H2_CN else {}),
             "eur": [round(s.get(p, {}).get("eur", 0)) for p in P],
             "t": [round(s.get(p, {}).get("t", 0), 1) for p in P],
         })

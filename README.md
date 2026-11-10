@@ -32,7 +32,7 @@ The dashboard is a **static site on GitHub Pages** with no backend. `build_cn_tr
 ./update.sh
 ```
 
-This runs `python/build_cn_trade.py` (Comext CN-level monthly series → `docs/data/us_eu_cbam_cn_trade.json`), then commits and pushes the JSON, which redeploys GitHub Pages. The script uses the Python standard library only, and the Eurostat API needs no key. Eurostat publishes extra-EU monthly data about six to seven weeks after the reference month.
+This runs `python/build_cn_trade.py` (Comext CN-level monthly series → `docs/data/us_eu_cbam_cn_trade.json`), then commits and pushes the JSON, which redeploys GitHub Pages. The script uses the Python standard library only. The Eurostat and ECB APIs need no key, but the hydrogen series comes from the U.S. Census Bureau, so `CENSUS_API_KEY` must be set in the environment or in a `.env` file at the project root. Eurostat publishes extra-EU monthly data about six to seven weeks after the reference month.
 
 A cloud routine (via Claude Code) opens a GitHub issue on the 15th of each month as a reminder to run the update.
 
@@ -72,14 +72,15 @@ The dashboard uses the same 102 CN codes as the U.S. CBAM Exposure Calculator. F
 Known data caveats, also noted on the page:
 
 - CN 7306 19 00 and 7202 11 did not exist in the 2021 nomenclature, so 2021 iron and steel totals omit them (both under €0.5M a year in U.S. exports to the EU).
-- August 2025 reports 57,134 t of U.S. hydrogen at €3.5M (about €61/t), almost certainly a reporting error; the volume view for hydrogen should be read with caution.
+- Hydrogen uses U.S. Census export data instead of Comext, because Comext reports 57,134 t at €3.5M (about €61/t) for August 2025, almost certainly a reporting error. Census values are FAS rather than CIF, and its volume is gross shipping weight for air and vessel shipments only.
 - The current year and, until Eurostat's annual revision, the previous year are provisional.
 
 ---
 
 ## Data sources
 
-- **Eurostat Comext** ([DS-045409](https://ec.europa.eu/eurostat/web/international-trade-in-goods/database)): EU27 imports from the US by CN code, monthly, in EUR and 100 kg units (converted to tonnes).
+- **Eurostat Comext** ([DS-045409](https://ec.europa.eu/eurostat/web/international-trade-in-goods/database)): EU27 imports from the US by CN code, monthly, in EUR and 100 kg units (converted to tonnes). Used for every sector except hydrogen.
+- **US Census Bureau** ([International Trade API](https://www.census.gov/data/developers/data-sets/international-trade.html)): U.S. exports of HS 2804.10 (hydrogen) to the European Union (country code 0003), monthly. Replaces the Comext hydrogen series, which reports an implausible 57,134 t at €3.5M for August 2025. FAS dollar values are converted to euros at ECB monthly average USD/EUR rates ([ECB Data Portal](https://data.ecb.europa.eu/), series EXR.M.USD.EUR.SP00.A); volume is air plus vessel shipping weight.
 
 All values are nominal. Comext import values are CIF (cost, insurance and freight, valued at the EU border) in euros.
 

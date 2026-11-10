@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>US–EU CBAM Trade Monitor · Niskanen Center</title>
-<meta name="description" content="Monthly and annual U.S. exports to the EU in CBAM-covered goods, by sector and CN code, from Eurostat Comext.">
+<meta name="description" content="Monthly and annual U.S. exports to the EU in CBAM-covered goods, by sector and CN code, from Eurostat Comext (hydrogen from U.S. Census Bureau).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Neuton:wght@400&family=Hanken+Grotesk:wght@300;400;600&display=swap">
@@ -117,7 +117,7 @@ details.cn:last-child{border-bottom:0}
   <a class="logo-link" href="https://www.niskanencenter.org/" target="_blank" rel="noopener"><img class="logo" src="Niskanen%20Center_RGB_Logo%20Teal.png" alt="Niskanen Center" width="120" height="65"></a>
   <div class="eyebrow">US–EU CBAM Trade Monitor</div>
   <h1>U.S. exports to the EU in CBAM-covered goods, 2021 to <span id="hlast">July 2026</span></h1>
-  <p class="lede">Monthly and annual EU imports from the United States in the five sectors the EU Carbon Border Adjustment Mechanism (CBAM) covers, by sector and by Combined Nomenclature (CN) code. The code list matches the U.S. CBAM Exposure Calculator. Source: Eurostat Comext, DS-045409.</p>
+  <p class="lede">Monthly and annual EU imports from the United States in the five sectors the EU Carbon Border Adjustment Mechanism (CBAM) covers, by sector and by Combined Nomenclature (CN) code. The code list matches the U.S. CBAM Exposure Calculator. Source: Eurostat Comext, DS-045409; hydrogen from U.S. Census Bureau export data.</p>
 </div></header>
 
 <div class="controls"><div class="wrap">
@@ -227,7 +227,7 @@ SECTORS.forEach(s=>{
   if (s.k!=="__ALL__") jump.insertAdjacentHTML('beforeend', `<a href="#${s.id}">${s.name}</a>`);
   sec.innerHTML = `<div class="shead"><h2><i style="background:${s.c}"></i>${s.name}</h2><div class="kpis"></div></div>${pairHTML(s.name)}`;
   if (s.k==="__ALL__") sec.insertAdjacentHTML('beforeend', `<div class="flag info">Annual ${LASTY} covers ${ytdLabel} only (outlined bar). Switch the annual bars to "${ytdLabel} only" to compare the same months across years.</div>`);
-  if (s.k==="Hydrogen") sec.insertAdjacentHTML('beforeend', `<div class="flag">Aug 2025 reports 57,134 t of U.S. hydrogen entering the EU at €3.5M (about €61/t), more than 99.9% of all hydrogen volume in the series. That unit value is implausible for hydrogen and most likely reflects a reporting error, so read the volume view with caution.</div>`);
+  if (s.k==="Hydrogen") sec.insertAdjacentHTML('beforeend', `<div class="flag info">Hydrogen uses U.S. Census Bureau exports to the EU (HS 2804.10), not Eurostat. Comext reports 57,134 t of U.S. hydrogen at €3.5M for Aug 2025 (about €61/t), an implausible unit value that would make up more than 99.9% of all hydrogen volume since 2021. Census values are converted from U.S. dollars at ECB monthly average rates. Volume is shipping weight for air and vessel shipments.</div>`);
   root.appendChild(sec);
   const [cy, cm] = sec.querySelectorAll('canvas');
   panels.push({s, sec, cy, cm});
@@ -246,7 +246,7 @@ SECTORS.forEach(s=>{
   rows.forEach(r=>{
     const d = document.createElement('details'); d.className='cn'; d.id = `cn-${r.cn}`;
     if (!r.eur.some(v=>v>0)) d.classList.add('zero');
-    d.innerHTML = `<summary><span class="code"><span class="chev"></span>${cnFmt(r.cn)}</span><span class="desc">${r.label}</span><span class="num c-prev"></span><span class="num c-ytd"></span><span class="share"></span><span class="c-spark"></span></summary><div class="cn-body"></div>`;
+    d.innerHTML = `<summary><span class="code"><span class="chev"></span>${cnFmt(r.cn)}</span><span class="desc">${r.label}${r.src==="census"?" (U.S. Census data)":""}</span><span class="num c-prev"></span><span class="num c-ytd"></span><span class="share"></span><span class="c-spark"></span></summary><div class="cn-body"></div>`;
     list.appendChild(d);
     const row = {s, r, d, secPrev, built:false};
     cnRows.push(row);
@@ -259,11 +259,12 @@ SECTORS.forEach(s=>{
 });
 root.insertAdjacentHTML('beforeend', `<section class="notes"><h2>Notes and sources</h2><ul>
 <li><b>Source.</b> Eurostat, “EU trade since 2002 by CN8” (Comext DS-045409): reporter EU27_2020, partner United States, flow imports, monthly. Retrieved ${fmtDate(RAW.retrieved)}; dataset last updated ${luText}. Latest month available: ${MONL[LASTM-1]} ${LASTY}. CN descriptions come from the same dataset's product labels. <a href="https://ec.europa.eu/eurostat/comext/newxtweb/" target="_blank" rel="noopener">Comext</a></li>
-<li><b>What the figures measure.</b> EU customs records of goods imported from the United States, the flow CBAM applies to. Import values are recorded CIF (cost, insurance and freight, meaning the value at the EU border), so they will differ from U.S. Census export data.</li>
+<li><b>Hydrogen source.</b> Hydrogen (CN 2804 10 00, identical to HS 2804.10) comes from the U.S. Census Bureau international trade API: domestic and foreign exports to the European Union (country code 0003), monthly, shown through the same latest month as Comext. Eurostat's hydrogen series was replaced because of an implausible Aug 2025 entry (57,134 t at €3.5M). Census values are FAS (free alongside ship, the value at the U.S. port) in U.S. dollars, converted to euros at the ECB's monthly average USD/EUR reference rate. Volume is the shipping weight of air and vessel shipments (gross weight, including packaging); Census does not record weight for overland shipments. Hydrogen is a small share of the all-sector total, so mixing sources there has little effect. <a href="https://www.census.gov/data/developers/data-sets/international-trade.html" target="_blank" rel="noopener">Census API</a></li>
+<li><b>What the figures measure.</b> EU customs records of goods imported from the United States, the flow CBAM applies to (hydrogen excepted, see above). Import values are recorded CIF (cost, insurance and freight, meaning the value at the EU border), so they will differ from U.S. Census export data.</li>
 <li><b>Scope.</b> The CN code list matches the <a href="https://the-niskanen-center.github.io/US-CBAM-calculator/" target="_blank" rel="noopener">U.S. CBAM Exposure Calculator</a>: 47 iron and steel codes (including iron ore pellets, 2601 12 00), 21 aluminium, 27 fertiliser, 6 cement and 1 hydrogen. Four-digit and six-digit codes aggregate all their subheadings.</li>
 <li><b>2021 coverage.</b> CN 7306 19 00 and 7202 11 did not exist in the 2021 nomenclature, so they show no 2021 trade. Both are small for U.S. exports to the EU (under €0.5M a year).</li>
 <li><b>Provisional data.</b> Eurostat treats ${LASTY} figures, and ${PREVY} figures until its annual revision, as provisional, so recent months can shift slightly between updates.</li>
-<li><b>Units.</b> Values in nominal euros, not adjusted for inflation or exchange rates. Volume is net mass (Comext reports 100 kg units, converted to tonnes).</li>
+<li><b>Units.</b> Values in nominal euros, not adjusted for inflation or exchange rates. Volume is net mass (Comext reports 100 kg units, converted to tonnes), except hydrogen, which uses Census shipping weight.</li>
 </ul></section>`);
 
 function buildCn(row){
