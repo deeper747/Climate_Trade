@@ -25,6 +25,6 @@ __pycache__/
 summer/
 figs/
 reference/
-data/
+/data/
 .claude/
 .venv/
